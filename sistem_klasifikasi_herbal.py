@@ -171,22 +171,32 @@ if st.session_state.page == "upload":
 # =======================
 elif st.session_state.page == "result":
 
+    # ========== GLOBAL CSS ==========
     st.markdown("""
-        <div style="text-align:center; margin-top:10px;">
-            <h2 style="margin:0; padding-bottom:15px; padding-top:20px; font-size:50px; font-weight:600;">Hasil Identifikasi</h2>
-        </div>
-        <style>
-        .custom-list li {
-            margin-bottom: 2px !important;
-            padding: 0 !important;
+    <style>
+    
+        /* CARD umum */
+        .info-card {
+            background: #ededed;
+            padding: 18px;
+            border-radius: 12px;
+            margin-top: 10px;
         }
-        
+    
+        /* Styling list */
         .custom-list {
-            margin-top: 5px !important;
-            margin-bottom: 5px !important;
+            margin-top: 6px !important;
+            margin-bottom: 6px !important;
             padding-left: 20px !important;
         }
-        </style>
+    
+        .custom-list li {
+            display: list-item !important;
+            margin-bottom: 4px !important;
+            line-height: 1.15 !important;
+        }
+    
+    </style>
     """, unsafe_allow_html=True)
 
     img = Image.open(st.session_state.image)
@@ -205,23 +215,23 @@ elif st.session_state.page == "result":
             st.image(img, caption="Gambar yang diunggah", use_column_width=True)
     
         with colA2:
-            # --- Ambil data ---
             nama_umum_list = herbal_info.get(pred_name, {}).get("nama_umum", [])
-        
-            # --- Kartu informasi ---
-            html = f"""
-            <div style="background:#ededed; padding:18px; border-radius:10px; margin-top:10px;">
-        
+            html_info = f"""
+            <div class="info-card">
+            
                 <b>Nama Ilmiah:</b><br>
                 {pred_name}<br><br>
-        
+            
                 <b>Nama Umum:</b>
                 <ul class="custom-list">
-                    {''.join(f'<li>{item}</li>' for item in nama_umum_list)}
+                    {''.join(f'<li>{nm}</li>' for nm in nama_umum_list)}
                 </ul>
+            
             </div>
             """
-            st.markdown(html, unsafe_allow_html=True)
+            
+            st.markdown(html_info, unsafe_allow_html=True)
+
     
     # ---- KANAN: STATUS ----
     with colB:
@@ -235,25 +245,25 @@ elif st.session_state.page == "result":
         """, unsafe_allow_html=True)
 
     # INFORMASI
-    st.markdown("<div style='margin-top:25px;'><b>Informasi</b></div>", unsafe_allow_html=True)
+    st.markdown("<b>Informasi:</b>", unsafe_allow_html=True)
     st.markdown(data["informasi"] if data else "Tidak ada informasi.", unsafe_allow_html=True)
 
     # LINK DINAMIS
-    st.markdown('<div style="font-size:18px; font-weight:500; margin-top:15px;">Tautan artikel:</div>', unsafe_allow_html=True)
-    st.text_input("", data["tautan_artikel"] if data else "")
+    st.markdown("<b>Tautan artikel:</b>", unsafe_allow_html=True)
+    st.text_input("", value=data["tautan_artikel"] if data else "")
 
-    st.markdown('<div style="font-size:18px; font-weight:500; margin-top:15px;">Tautan jurnal penelitian:</div>', unsafe_allow_html=True)
-    st.text_input("", data["tautan_jurnal"] if data else "")
+    st.markdown("<b>Tautan jurnal penelitian:</b>", unsafe_allow_html=True)
+    st.text_input("", value=data["tautan_jurnal"] if data else "")
 
     # CARA MENGOLAH
-    st.markdown("<b style='margin-top:20px;'>Cara mengolah herbal antidiabetes:</b>", unsafe_allow_html=True)
+    st.markdown("<b>Cara mengolah herbal antidiabetes:</b>", unsafe_allow_html=True)
     if data:
         for langkah in data["cara_mengolah"]:
             st.markdown(f"- {langkah}")
     else:
         st.markdown("- Tidak ada data.")
 
-    
+
     # Tambah jarak sebelum tombol kembali
     st.markdown("<div style='height:20px;'></div>", unsafe_allow_html=True)
     # Tombol kembali
