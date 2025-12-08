@@ -175,6 +175,20 @@ elif st.session_state.page == "result":
         <div style="text-align:center; margin-top:10px;">
             <h2 style="margin:0; padding-bottom:15px; padding-top:20px; font-size:50px; font-weight:600;">Hasil Identifikasi</h2>
         </div>
+        st.markdown("""
+            <style>
+            .custom-list li {
+                margin-bottom: 2px !important;
+                padding: 0 !important;
+            }
+            
+            .custom-list {
+                margin-top: 5px !important;
+                margin-bottom: 5px !important;
+                padding-left: 20px !important;
+            }
+            </style>
+            """, unsafe_allow_html=True)
     """, unsafe_allow_html=True)
 
     img = Image.open(st.session_state.image)
@@ -193,22 +207,6 @@ elif st.session_state.page == "result":
             st.image(img, caption="Gambar yang diunggah", use_column_width=True)
     
         with colA2:
-            # --- CSS untuk list ---
-            st.markdown("""
-            <style>
-            .custom-list li {
-                margin-bottom: 2px !important;
-                padding: 0 !important;
-            }
-            
-            .custom-list {
-                margin-top: 5px !important;
-                margin-bottom: 5px !important;
-                padding-left: 20px !important;
-            }
-            </style>
-            """, unsafe_allow_html=True)
-        
             # --- Ambil data ---
             nama_umum_list = herbal_info.get(pred_name, {}).get("nama_umum", [])
         
