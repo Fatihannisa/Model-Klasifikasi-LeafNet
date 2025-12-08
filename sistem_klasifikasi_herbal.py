@@ -204,69 +204,57 @@ elif st.session_state.page == "result":
 
     # ---- INFORMASI ----
     st.markdown("""
-        <div style="background:#f2f2f2; padding:20px; border-radius:10px; margin-top:25px;">
-            <b>Informasi (jika herbal antidiabetes)</b><br>
-            <p>Tambahkan informasi herbal di sini...</p>
-        </div>
-    """, unsafe_allow_html=True)
-
-    # ---- CSS GLOBAL ----
-    st.markdown("""
-    <style>
-    /* Hilangkan jarak besar antara judul custom dan input */
-    .custom-label {
-        font-size: 18px;
-        font-weight: 500;
-        margin-bottom: -8px;   /* kunci utama agar rapat */
-        padding-bottom: 0;
-    }
-    
-    /* Hilangkan margin default pada container input */
-    .stTextInput div[data-baseweb="input"] {
-        margin-top: 0 !important;
-    }
-    
-    /* Hapus padding bawah bawaan Streamlit */
-    main div[data-testid="block-container"] {
-        padding-bottom: 0 !important;
-        margin-bottom: 0 !important;
-    }
-    
-    /* Footer tanpa ruang ekstra */
-    .custom-footer {
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-    </style>
+    <div style="margin-top:25px;">
+        <b>Informasi (jika herbal antidiabetes)</b><br>
+        <p>Tambahkan informasi herbal di sini...</p>
+    </div>
     """, unsafe_allow_html=True)
     
     # ---- LINK ----
-    st.markdown('<div class="custom-label">Tautan artikel:</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:18px; font-weight:500; margin-top:15px; margin-bottom:-5px;">Tautan artikel:</div>', unsafe_allow_html=True)
     st.text_input("", "https://contoh-artikel.com")
     
-    st.markdown('<div class="custom-label" style="margin-top:15px;">Tautan jurnal penelitian:</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:18px; font-weight:500; margin-top:15px; margin-bottom:-5px;">Tautan jurnal penelitian:</div>', unsafe_allow_html=True)
     st.text_input("", "https://contoh-jurnal.com")
     
-    # ---- Cara mengolah ----
+    # ---- CARA MENGOLAH ----
     st.markdown("""
-        <div style="background:#f2f2f2; padding:20px; border-radius:10px; margin-top:20px;">
-            <b>Cara mengolah herbal antidiabetes</b><br>
-            1. langkah 1<br>
-            2. langkah 2<br>
-            3. langkah 3<br>
-            4. langkah x<br>
-        </div>
-    """, unsafe_allow_html=True)
-
-    # Tambah jarak kecil sebelum tombol kembali
-    st.markdown("<div style='height:15px;'></div>", unsafe_allow_html=True)
-    
-    st.button("⬅️ Kembali", on_click=lambda: (st.session_state.update({"page": "upload"}), st.rerun()))
-    
-    # ---- FOOTER ----
-    st.markdown("""
-    <div class="custom-footer">
-        <hr>
-        <center>©2025 | Klasifikasi Herbal Antidiabetes Berbasis Model LeafNet | 211401034 | Listy Zulmi</center>
+    <div style="margin-top:20px;">
+        <b>Cara mengolah herbal antidiabetes</b><br>
+        1. langkah 1<br>
+        2. langkah 2<br>
+        3. langkah 3<br>
+        4. langkah x<br>
     </div>
     """, unsafe_allow_html=True)
+    
+    # Tambah jarak sebelum tombol kembali
+    st.markdown("<div style='height:20px;'></div>", unsafe_allow_html=True)
+    
+    # Tombol kembali
+    st.button("⬅️ Kembali", on_click=lambda: (st.session_state.update({"page": "upload"}), st.rerun()))
+
+
+# ---- FOOTER ----
+st.markdown("""
+<style>
+/* Hilangkan ruang kosong default di bawah halaman */
+main > div {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Rapikan footer agar tidak ada ruang ekstra */
+.custom-footer {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown("""
+<div class="custom-footer">
+    <hr>
+    <center>©2025 | Klasifikasi Herbal Antidiabetes Berbasis Model LeafNet | 211401034 | Listy Zulmi</center>
+</div>
+""", unsafe_allow_html=True)
