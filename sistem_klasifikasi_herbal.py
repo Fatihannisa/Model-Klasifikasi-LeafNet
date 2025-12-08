@@ -80,36 +80,85 @@ if st.session_state.page == "upload":
     col1, col2 = st.columns([1.6,1.2])
 
     with col1:
+        # CUSTOM CSS – UBAH FILE UPLOADER JADI KOTAK BESAR KEREN
         st.markdown("""
-            <div style="padding:80px; background:#e0e0e0; border-radius:15px; text-align:center;">
-                <h1 style="font-size:50px; margin:0;">📷</h1>
-                <p>Unggah gambar daun (JPG/JPEG/PNG)</p>
-            </div>
-        """, unsafe_allow_html=True)
-
-        uploaded_img = st.file_uploader("", type=["jpg", "jpeg", "png"])
-
-        st.markdown("""
-            <div style="text-align:center; margin-top:20px;">
-                <button style="
-                    padding:10px 30px;
-                    background:#dcdcdc;
-                    border:none;
-                    border-radius:40px;
-                    font-size:18px;
-                    cursor:pointer;">
-                    Identifikasi
-                </button>
-            </div>
+        <style>
+        /* Hilangkan border default */
+        [data-testid="stFileUploader"] section {
+            border: 3px dashed #999 !important;
+            padding: 60px !important;
+            border-radius: 20px !important;
+            background: #fafafa;
+        }
+        
+        /* Ubah icon kecil jadi besar */
+        [data-testid="stFileUploader"] section > div {
+            text-align:center !important;
+        }
+        
+        /* Hilangkan tulisan "Drag and drop" bawaan */
+        [data-testid="stFileUploader"] label {
+            display:none !important;
+        }
+        
+        /* Teks custom */
+        .custom-upload-text {
+            text-align:center;
+            font-size:22px;
+            font-weight:600;
+            margin-top:10px;
+        }
+        
+        .custom-upload-sub {
+            text-align:center;
+            margin-top:-5px;
+            color:#777;
+        }
+        </style>
         """, unsafe_allow_html=True)
         
-        if st.button("Identifikasi", use_container_width=True):
-            if uploaded_img:
-                st.session_state.image = uploaded_img
-                st.session_state.page = "result"
-                st.rerun()
+        
+        # =============================
+        # REAL FILE UPLOADER (BUT STYLED)
+        # =============================
+        st.markdown("<div class='custom-upload-text'>📷 Seret & Lepas Gambar Daun</div>", unsafe_allow_html=True)
+        st.markdown("<div class='custom-upload-sub'>atau klik untuk memilih file (JPG/JPEG/PNG)</div>", unsafe_allow_html=True)
+        
+        uploaded_file = st.file_uploader("", type=["jpg","jpeg","png"])
+        
+        # PREVIEW GAMBAR
+        if uploaded_file:
+            img = Image.open(uploaded_file)
+            st.image(img, caption="Preview Gambar", use_column_width=True)
+        
+        
+        # =============================
+        # TOMBOL IDENTIFIKASI BULAT
+        # =============================
+        st.markdown("""
+        <style>
+        #id-btn {
+            width:200px;
+            height:60px;
+            border-radius:50px;
+            background:#dcdcdc;
+            border:none;
+            font-size:20px;
+        }
+        #id-btn:hover {
+            background:#c0c0c0;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+        
+        clicked = st.button("Identifikasi", key="id-btn")
+        
+        # AKSI MODEL
+        if clicked:
+            if not uploaded_file:
+                st.error("Silakan unggah gambar dulu.")
             else:
-                st.warning("Silakan unggah gambar terlebih dahulu.")
+                st.success("Model berjalan (hubungkan model Anda di bagian ini).")
 
     with col2:
         st.markdown("""
