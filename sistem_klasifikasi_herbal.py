@@ -208,13 +208,11 @@ elif st.session_state.page == "result":
             </style>
             """, unsafe_allow_html=True)
             
+            # Ambil data
+            nama_umum_list = herbal_info.get(pred_name, {}).get("nama_umum", [])
             
-            # --- Ambil nama umum dari dictionary ---
-            nama_umum_list = herbal_info[pred_name]["nama_umum"] if pred_name in herbal_info else []
-            
-            
-            # --- Kartu Informasi Herbal ---
-            st.markdown(f"""
+            # Card
+            html = f"""
             <div style="background:#ededed; padding:18px; border-radius:10px; margin-top:10px;">
             
                 <b>Nama Ilmiah:</b><br>
@@ -222,11 +220,13 @@ elif st.session_state.page == "result":
             
                 <b>Nama Umum:</b>
                 <ul class="custom-list">
-                    {''.join([f"<li>{item}</li>" for item in nama_umum_list])}
+                    {''.join(f"<li>{item}</li>" for item in nama_umum_list)}
                 </ul>
             
             </div>
-            """, unsafe_allow_html=True)
+            """
+            
+            st.markdown(html, unsafe_allow_html=True)
     # ---- KANAN: STATUS ----
     with colB:
         st.markdown(f"""
