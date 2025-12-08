@@ -80,104 +80,46 @@ if st.session_state.page == "upload":
     col1, col2 = st.columns([1.6,1.2])
 
     with col1:
-        # ============================
-        # HIDDEN FILE UPLOADER (ASLI)
-        # ============================
-        uploaded_file = st.file_uploader(
-            "",
-            type=["jpg","jpeg","png"],
-            label_visibility="collapsed",
-            key="real_uploader"
-        )
-        
-        # Sembunyikan uploader asli
         st.markdown("""
-        <style>
-        [data-testid="stFileUploader"] {
-            display:none;
-        }
-        #fake-upload-box:hover { 
-            background:#f2f2f2; 
-        }
-        </style>
+            <div style="padding:80px; background:#e0e0e0; border-radius:15px; text-align:center;">
+                <h1 style="font-size:50px; margin:0;">📷</h1>
+                <p>Unggah gambar daun (JPG/JPEG/PNG)</p>
+            </div>
         """, unsafe_allow_html=True)
-        
-        # ============================
-        # FAKE UPLOAD BOX
-        # ============================
-        st.markdown("""
-        <div id="fake-upload-box"
-             style="
-                border:3px dashed #999;
-                padding:60px;
-                border-radius:20px;
-                text-align:center;
-                cursor:pointer;
-                background:#fafafa;
-             "
-        >
-            <h1 style="font-size:45px;margin:0;">📷</h1>
-            <h3>Seret & Lepas Gambar Daun</h3>
-            <p>atau klik untuk memilih file (JPG/JPEG/PNG)</p>
-        </div>
-        
-        <script>
-            const fakeBox = document.getElementById("fake-upload-box");
-            fakeBox.onclick = () => {
-                const realInput = window.parent.document.querySelector('input[type="file"]');
-                if (realInput) realInput.click();
-            };
-        </script>
-        """, unsafe_allow_html=True)
-        
-        
-        # ============================
-        # PREVIEW GAMBAR
-        # ============================
-        if uploaded_file:
-            img = Image.open(uploaded_file)
-            st.image(img, caption="Preview Gambar", use_column_width=True)
 
-        # ============================
-        # TOMBOL IDENTIFIKASI (BULAT)
-        # ============================
+        uploaded_img = st.file_uploader("", type=["jpg", "jpeg", "png"])
+
         st.markdown("""
-        <style>
-        #identifikasi-btn {
-            width:200px;
-            height:60px;
-            border-radius:50px;
-            background:#dcdcdc;
-            font-size:20px;
-            border:none;
-            cursor:pointer;
-        }
-        #identifikasi-btn:hover {
-            background:#c0c0c0;
-        }
-        </style>
+            <div style="text-align:center; margin-top:20px;">
+                <button style="
+                    padding:10px 30px;
+                    background:#dcdcdc;
+                    border:none;
+                    border-radius:40px;
+                    font-size:18px;
+                    cursor:pointer;">
+                    Identifikasi
+                </button>
+            </div>
         """, unsafe_allow_html=True)
         
-        clicked = st.button("Identifikasi", key="identifikasi-btn")
-        
-        # ============================
-        # AKSI IDENTIFIKASI
-        # ============================
-        if clicked:
-            if not uploaded_file:
-                st.error("Silakan unggah gambar dulu.")
+        if st.button("Identifikasi", use_container_width=True):
+            if uploaded_img:
+                st.session_state.image = uploaded_img
+                st.session_state.page = "result"
+                st.rerun()
             else:
-                st.success("Gambar berhasil diproses. (Hubungkan model Anda di sini)")
+                st.warning("Silakan unggah gambar terlebih dahulu.")
 
     with col2:
         st.markdown("""
             <div style="padding:20px; background:#f2f2f2; border-radius:12px;">
                 <b>Tips pengambilan gambar:</b>
                 <ul>
-                    <li>Daun berada di tengah frame kamera</li>
-                    <li>Pencahayaan cukup & tidak terlalu gelap</li>
-                    <li>Latar belakang polos, lebih baik putih</li>
-                    <li>Daun harus jelas dan memenuhi area foto</li>
+                    <li>Pastikan helai daun berada tepat di tengah frame kamera</li>
+                    <li>Pastikan pencahayaan mencukupi untuk dapat melihat venasi/urat daun</li>
+                    <li>Latar belakang wajib polos dan berwarna cerah (diutamakan putih)</li>
+                    <li>Fokus gambar daun jangan terlalu kecil</li>
                 </ul>
             </div>
         """, unsafe_allow_html=True)
@@ -250,8 +192,8 @@ elif st.session_state.page == "result":
         </div>
     """, unsafe_allow_html=True)
 
-    st.button("⬅️Kembali", on_click=lambda: (st.session_state.update({"page": "upload"}), st.rerun()))
+    st.button("Kembali", on_click=lambda: (st.session_state.update({"page": "upload"}), st.rerun()))
 
 
 # ---- FOOTER ----
-st.markdown("<hr><center>©2025 | Klasifikasi Herbal Antidiabetes Berbasis Model LeafNet | 211401034 | Listy Zulmi</center>", unsafe_allow_html=True)
+st.markdown("<hr><center>copyright@2025 | Klasifikasi Herbal Antidiabetes Berbasis Model LeafNet | 211401034 | Listy Zulmi</center>", unsafe_allow_html=True)
