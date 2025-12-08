@@ -212,14 +212,14 @@ elif st.session_state.page == "result":
 
     # ---- LINK ----
     st.markdown("""
-        <div style="font-size:18px; font-weight:500; margin-top:5px; margin-bottom:8px;">
+        <div style="font-size:18px; font-weight:500; margin-top:15px; margin-bottom:0;">
             Tautan artikel:
         </div>
     """, unsafe_allow_html=True)
     st.text_input("", "https://contoh-artikel.com")
     
     st.markdown("""
-        <div style="font-size:18px; font-weight:500; margin-top:5px; margin-bottom:8px;">
+        <div style="font-size:18px; font-weight:500; margin-top:15px; margin-bottom:0;">
             Tautan jurnal penelitian:
         </div>
     """, unsafe_allow_html=True)
@@ -246,23 +246,23 @@ elif st.session_state.page == "result":
 # ---- FOOTER ----
 st.markdown("""
 <style>
-.page-container {
-    padding-bottom: 80px; /* memberi ruang agar footer tidak ikut scroll */
+/* Hilangkan ruang kosong default di bawah halaman */
+main > div {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
 }
-.footer-normal {
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 14px;
-    color: #555;
-    border-top: 1px solid #ddd;
-    background: #fafafa;
+
+/* Rapikan footer agar tidak ada ruang ekstra */
+.custom-footer {
+    padding: 10px 0 10px 0 !important;
+    margin: 0 !important;
 }
 </style>
-<div class='page-container'></div>
 """, unsafe_allow_html=True)
 
-st.markdown(
-    "<div class='footer-normal'>©2025 | Klasifikasi Herbal Antidiabetes Berbasis Model LeafNet | 211401034 | Listy Zulmi</div>",
-    unsafe_allow_html=True
-)
+st.markdown("""
+<div class="custom-footer">
+    <hr>
+    <center>©2025 | Klasifikasi Herbal Antidiabetes Berbasis Model LeafNet | 211401034 | Listy Zulmi</center>
+</div>
+""", unsafe_allow_html=True)
