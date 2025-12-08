@@ -83,7 +83,7 @@ if st.session_state.page == "upload":
 
         uploaded_img = st.file_uploader("", type=["jpg", "jpeg", "png"])
 
-        st.write(inout_details)
+        st.write(input_details)
         if st.button("Identifikasi", use_container_width=True):
             if uploaded_img:
                 st.session_state.image = uploaded_img
