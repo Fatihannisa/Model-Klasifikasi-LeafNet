@@ -73,32 +73,6 @@ if "page" not in st.session_state:
 # === HALAMAN UPLOAD ====
 # =======================
 if st.session_state.page == "upload":
-
-    # ---- Custom CSS Upload ----
-    st.markdown("""
-    <style>
-    .upload-box {
-        padding: 60px;
-        border: 3px dashed #999;
-        border-radius: 15px;
-        text-align: center;
-        background: #f5f5f5;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-    .upload-box:hover {
-        border-color: #4CAF50;
-        background: #eef7ee;
-    }
-    .upload-icon {
-        font-size: 60px;
-        color: #666;
-    }
-    .hidden-uploader {
-        display: none;
-    }
-    </style>
-    """, unsafe_allow_html=True)
     
     st.markdown("""
         <h2 style="margin:0px; font-size:55px; font-weight:600;">Sistem Identifikasi Daun Herbal Antidiabetes Berbasis Model LeafNet</h2>
@@ -108,43 +82,50 @@ if st.session_state.page == "upload":
     col1, col2 = st.columns([1.6,1.2])
 
     with col1:
+        # ---- CSS Upload Area + Hidden Uploader ----
         st.markdown("""
-        <div class="upload-box" onclick="document.getElementById('true_uploader').click()">
-            <div class="upload-icon">📷</div>
-            <h4>Seret & Lepas Gambar Daun</h4>
+        <style>
+        .fake-upload-box {
+            padding: 60px;
+            border: 3px dashed #888;
+            border-radius: 18px;
+            text-align: center;
+            background: #f5f5f5;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .fake-upload-box:hover {
+            border-color: #4CAF50;
+            background: #eef8ee;
+        }
+        /* Sembunyikan uploader Streamlit */
+        div[data-testid="stFileUploader"] {
+            opacity: 0 !important;
+            height: 1px !important;
+            overflow: hidden !important;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+
+        # ---- Fake Upload Box ----
+        st.markdown("""
+        <div class="fake-upload-box" onclick="document.querySelector('input[type=file]').click()">
+            <h1 style="font-size:50px;">📷</h1>
+            <h3>Seret & Lepas Gambar Daun</h3>
             <p>atau klik untuk memilih file (JPG/JPEG/PNG)</p>
         </div>
         """, unsafe_allow_html=True)
-        
-        # ---- Real Hidden File Uploader ----
-        uploaded_img = st.file_uploader(
-            "Upload Gambar Daun",
-            type=["jpg","jpeg","png"],
-            key="true_uploader",
-            label_visibility="collapsed"
-        )
 
-        # ---- Preview Gambar ----
+        # ---- Hidden uploader asli ----
+        uploaded_img = st.file_uploader("Upload Gambar", type=["jpg","jpeg","png"])
+
+        # ---- Preview setelah upload ----
         if uploaded_img:
+            st.markdown("### 📌 Preview Gambar")
             img_preview = Image.open(uploaded_img)
-            st.markdown("### 📌 Preview Gambar:")
-            st.image(img_preview, width=320)
+            st.image(img_preview, width=300)
 
-        st.markdown("""
-            <div style="text-align:center; margin-top:20px;">
-                <button style="
-                    padding:10px 30px;
-                    background:#dcdcdc;
-                    border:none;
-                    border-radius:40px;
-                    font-size:18px;
-                    cursor:pointer;">
-                    Identifikasi
-                </button>
-            </div>
-        """, unsafe_allow_html=True)
-
-        # === CSS Tombol Bulat ===
+        # ==== CSS Tombol Bulat ====
         st.markdown("""
         <style>
         .round-btn button {
@@ -155,22 +136,19 @@ if st.session_state.page == "upload":
             border: none !important;
             font-size: 18px !important;
             font-weight: 600 !important;
-            cursor: pointer !important;
-            transition: 0.3s;
+            margin-top: 20px;
         }
         .round-btn button:hover {
             background-color: #45a049 !important;
         }
         </style>
         """, unsafe_allow_html=True)
-        
-        # === Tombol Bulat ===
-        with st.container():
-            st.markdown('<div class="round-btn">', unsafe_allow_html=True)
-            clicked = st.button("🔍 Identifikasi Daun", use_container_width=True)
-            st.markdown('</div>', unsafe_allow_html=True)
-        
-        # === Aksi tombol ===
+
+        # ---- Tombol Identifikasi bulat (berfungsi penuh) ----
+        st.markdown('<div class="round-btn">', unsafe_allow_html=True)
+        clicked = st.button("🔍 Identifikasi Daun", use_container_width=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+
         if clicked:
             if uploaded_img:
                 st.session_state.image = uploaded_img
