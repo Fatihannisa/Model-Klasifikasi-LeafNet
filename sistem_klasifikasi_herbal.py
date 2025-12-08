@@ -121,18 +121,18 @@ if st.session_state.page == "upload":
         # =============================
         # FILE UPLOADER 
         # =============================
-        uploaded_file = st.file_uploader("", type=["jpg","jpeg","png"])
+        uploaded_img = st.file_uploader("", type=["jpg","jpeg","png"])
         
         # PREVIEW GAMBAR
-        if uploaded_file:
-            img = Image.open(uploaded_file)
-            st.image(img, caption="Preview Gambar", use_column_width=True)
-        
+        if uploaded_img:
+            img = Image.open(uploaded_img)
+            st.markdown("### 📌 Preview Gambar:")
+            st.image(img, width=320)
         
         # =============================
         # TOMBOL IDENTIFIKASI
         # =============================
-        if st.button("Identifikasi", use_container_width=True):
+        if st.button("🔍 Identifikasi Daun", use_container_width=True):
             if uploaded_img:
                 st.session_state.image = uploaded_img
                 st.session_state.page = "result"
