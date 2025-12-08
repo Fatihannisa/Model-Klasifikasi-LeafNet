@@ -27,9 +27,17 @@ LABELS = [
 # ----- FUNGSI PREDIKSI ---
 # =========================
 def predict(image: Image.Image):
+    image = image.convert("RGB")
     img = image.resize((224, 224))     # sesuaikan ukuran input model
-    img = np.array(img, dtype=np.float32) / 255.0
-    img = np.expand_dims(img, axis=0)
+    img = np.array(img, dtype=np.float32) 
+    img = img / 255.0
+    img = np.expand_dims(img, axis=0).astype(np.float32)
+
+    expected = input_details[0]["shape"]
+    if list(img.shape) != list(expected):
+        st.error(f"Shape input salah: {img.shape}, harusnya {expected}")
+        return None, None
+
 
     interpreter.set_tensor(input_details[0]["index"], img)
     interpreter.invoke()
