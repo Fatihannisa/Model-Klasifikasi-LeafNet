@@ -2,8 +2,6 @@ import streamlit as st
 import numpy as np
 from PIL import Image
 import tensorflow as tf
-import base64
-import io
 
 # =========================
 # ----- LOAD MODEL --------
@@ -82,80 +80,94 @@ if st.session_state.page == "upload":
     col1, col2 = st.columns([1.6,1.2])
 
     with col1:
-        # ---- CSS Upload Area + Hidden Uploader ----
+        # ============================
+        # HIDDEN FILE UPLOADER (ASLI)
+        # ============================
+        uploaded_file = st.file_uploader(
+            "",
+            type=["jpg","jpeg","png"],
+            label_visibility="collapsed",
+            key="real_uploader"
+        )
+        
+        # Sembunyikan uploader asli
         st.markdown("""
         <style>
-        .fake-upload-box {
-            padding: 60px;
-            border: 3px dashed #888;
-            border-radius: 18px;
-            text-align: center;
-            background: #f5f5f5;
-            cursor: pointer;
-            transition: 0.3s;
+        [data-testid="stFileUploader"] {
+            display:none;
         }
-        .fake-upload-box:hover {
-            border-color: #4CAF50;
-            background: #eef8ee;
-        }
-        /* Sembunyikan uploader Streamlit */
-        div[data-testid="stFileUploader"] {
-            opacity: 0 !important;
-            height: 1px !important;
-            overflow: hidden !important;
+        #fake-upload-box:hover { 
+            background:#f2f2f2; 
         }
         </style>
         """, unsafe_allow_html=True)
-
-        # ---- Fake Upload Box ----
+        
+        # ============================
+        # FAKE UPLOAD BOX
+        # ============================
         st.markdown("""
-        <div class="fake-upload-box" onclick="document.querySelector('input[type=file]').click()">
-            <h1 style="font-size:50px;">📷</h1>
+        <div id="fake-upload-box"
+             style="
+                border:3px dashed #999;
+                padding:60px;
+                border-radius:20px;
+                text-align:center;
+                cursor:pointer;
+                background:#fafafa;
+             "
+        >
+            <h1 style="font-size:45px;margin:0;">📷</h1>
             <h3>Seret & Lepas Gambar Daun</h3>
             <p>atau klik untuk memilih file (JPG/JPEG/PNG)</p>
         </div>
+        
+        <script>
+            const fakeBox = document.getElementById("fake-upload-box");
+            fakeBox.onclick = () => {
+                const realInput = window.parent.document.querySelector('input[type="file"]');
+                if (realInput) realInput.click();
+            };
+        </script>
         """, unsafe_allow_html=True)
+        
+        
+        # ============================
+        # PREVIEW GAMBAR
+        # ============================
+        if uploaded_file:
+            img = Image.open(uploaded_file)
+            st.image(img, caption="Preview Gambar", use_column_width=True)
 
-        # ---- Hidden uploader asli ----
-        uploaded_img = st.file_uploader("Upload Gambar", type=["jpg","jpeg","png"])
-
-        # ---- Preview setelah upload ----
-        if uploaded_img:
-            st.markdown("### 📌 Preview Gambar")
-            img_preview = Image.open(uploaded_img)
-            st.image(img_preview, width=300)
-
-        # ==== CSS Tombol Bulat ====
+        # ============================
+        # TOMBOL IDENTIFIKASI (BULAT)
+        # ============================
         st.markdown("""
         <style>
-        .round-btn button {
-            background-color: #4CAF50 !important;
-            color: white !important;
-            padding: 14px 25px !important;
-            border-radius: 40px !important;
-            border: none !important;
-            font-size: 18px !important;
-            font-weight: 600 !important;
-            margin-top: 20px;
+        #identifikasi-btn {
+            width:200px;
+            height:60px;
+            border-radius:50px;
+            background:#dcdcdc;
+            font-size:20px;
+            border:none;
+            cursor:pointer;
         }
-        .round-btn button:hover {
-            background-color: #45a049 !important;
+        #identifikasi-btn:hover {
+            background:#c0c0c0;
         }
         </style>
         """, unsafe_allow_html=True)
-
-        # ---- Tombol Identifikasi bulat (berfungsi penuh) ----
-        st.markdown('<div class="round-btn">', unsafe_allow_html=True)
-        clicked = st.button("🔍 Identifikasi Daun", use_container_width=True)
-        st.markdown('</div>', unsafe_allow_html=True)
-
+        
+        clicked = st.button("Identifikasi", key="identifikasi-btn")
+        
+        # ============================
+        # AKSI IDENTIFIKASI
+        # ============================
         if clicked:
-            if uploaded_img:
-                st.session_state.image = uploaded_img
-                st.session_state.page = "result"
-                st.rerun()
+            if not uploaded_file:
+                st.error("Silakan unggah gambar dulu.")
             else:
-                st.warning("Silakan unggah gambar terlebih dahulu.")
+                st.success("Gambar berhasil diproses. (Hubungkan model Anda di sini)")
 
     with col2:
         st.markdown("""
