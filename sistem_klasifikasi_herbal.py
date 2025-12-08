@@ -119,11 +119,8 @@ if st.session_state.page == "upload":
         
         
         # =============================
-        # REAL FILE UPLOADER (BUT STYLED)
+        # FILE UPLOADER 
         # =============================
-        st.markdown("<div class='custom-upload-text'>📷 Seret & Lepas Gambar Daun</div>", unsafe_allow_html=True)
-        st.markdown("<div class='custom-upload-sub'>atau klik untuk memilih file (JPG/JPEG/PNG)</div>", unsafe_allow_html=True)
-        
         uploaded_file = st.file_uploader("", type=["jpg","jpeg","png"])
         
         # PREVIEW GAMBAR
