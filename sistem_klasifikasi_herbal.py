@@ -47,11 +47,10 @@ herbal_info = {
     },
     
     "Ziziphus mauritiana": {
-        "nama_umum": ["Sambiloto"],
+        "nama_umum": ["Bidara", "Widara", "Bukol", "Bekul", "Rangga", "Kalangga"],
         "status": "Tanaman herbal antidiabetes",
         "informasi": """
-            Sambiloto terkenal sebagai herbal dengan kandungan andrographolide
-            yang terbukti menurunkan kadar gula darah dan bersifat antiinflamasi.
+            Daun bidara bisa membantu mengendalikan diabetes dengan membuat penggunaan insulin untuk menyerap gula darah lebih efektif. Kandungan saponin dan flavonoid di dalam daun bidara bekerja sebagai antioksidan yang dapat membantu melawan stres oksidatif akibat radikal bebas. Dengan begitu, konsumsi ekstrak daun bidara dapat mendukung pencegahan diabetes, terutama jika disertai pola hidup sehat.
         """,
         "tautan_artikel": "https://hellosehat.com/herbal-alternatif/herbal/daun-bidara/",
         "tautan_jurnal": "https://doi.org/10.26740/icaj.v6i2.32598",
