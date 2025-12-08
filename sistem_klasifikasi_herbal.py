@@ -74,7 +74,7 @@ if st.session_state.page == "upload":
     
     st.markdown("""
         <h2 style="margin:0px; font-size:55px; font-weight:600; width:100%;">Sistem Identifikasi Daun Herbal Antidiabetes Berbasis Model LeafNet</h2>
-        <p style="font-size:40px; margin-top:10px; margin-bottom:40px; width:100%;">DiaHerb merupakan sebuah sistem berbasis website yang dibangun untuk membantu mengidentifikasi daun herbal antidiabetes yang mirip secara morfologi dengan tanaman lain. Sistem ini dibangun menggunakan teknologi Deep Learning dan Computer Vision.</p>
+        <p style="font-size:20px; margin-top:10px; margin-bottom:40px; width:100%;">DiaHerb merupakan sebuah sistem berbasis website yang dibangun untuk membantu mengidentifikasi daun herbal antidiabetes yang mirip secara morfologi dengan tanaman lain. Sistem ini dibangun menggunakan teknologi Deep Learning dan Computer Vision.</p>
     """, unsafe_allow_html=True)
 
     col1, col2 = st.columns([1.6,1.2])
