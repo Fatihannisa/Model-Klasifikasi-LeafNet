@@ -127,7 +127,7 @@ if st.session_state.page == "upload":
         if uploaded_img:
             img = Image.open(uploaded_img)
             st.markdown("##### 📌 Preview Gambar:")
-            st.image(img, use_column_width=True)
+            st.image(img, width=450)
         
         # =============================
         # TOMBOL IDENTIFIKASI
@@ -181,8 +181,7 @@ elif st.session_state.page == "result":
             st.markdown(f"""
                 <div style="background:#ededed; padding:18px; border-radius:10px; margin-top:0px;">
                     <b>Nama Ilmiah</b><br>
-                    {pred_name}<br><br>
-    
+                    {pred_name}<br>
                     <b>Nama Umum:</b><br>
                     <ul>
                         <li>Contoh 1</li>
@@ -197,8 +196,7 @@ elif st.session_state.page == "result":
         st.markdown(f"""
             <div style="background:#ededed; padding:18px; border-radius:10px;">
                 <b>Status</b><br>
-                Tanaman Herbal Antidiabetes<br><br>
-
+                Tanaman Herbal Antidiabetes<br>
                 <b>Tingkat kepercayaan sistem</b><br>
                 {conf*100:.2f}%
             </div>
@@ -213,8 +211,19 @@ elif st.session_state.page == "result":
     """, unsafe_allow_html=True)
 
     # ---- LINK ----
-    st.text_input("Tautan artikel", "https://contoh-artikel.com")
-    st.text_input("Tautan jurnal penelitian", "https://contoh-jurnal.com")
+    st.markdown("""
+        <div style="font-size:18px; font-weight:600; margin-top:25px; margin-bottom:8px;">
+            Tautan artikel
+        </div>
+    """, unsafe_allow_html=True)
+    st.text_input("", "https://contoh-artikel.com")
+    
+    st.markdown("""
+        <div style="font-size:18px; font-weight:600; margin-top:15px; margin-bottom:8px;">
+            Tautan jurnal penelitian
+        </div>
+    """, unsafe_allow_html=True)
+    st.text_input("", "https://contoh-jurnal.com")
 
     # ---- Cara mengolah ----
     st.markdown("""
@@ -227,8 +236,31 @@ elif st.session_state.page == "result":
         </div>
     """, unsafe_allow_html=True)
 
-    st.button("⬅️Kembali", on_click=lambda: (st.session_state.update({"page": "upload"}), st.rerun()))
+    # Tambah jarak sebelum tombol kembali
+    st.markdown("<div style='height:20px;'></div>", unsafe_allow_html=True)
+    
+    # Tombol kembali
+    st.button("⬅️ Kembali", on_click=lambda: (st.session_state.update({"page": "upload"}), st.rerun()))
 
 
 # ---- FOOTER ----
-st.markdown("<hr><center>©2025 | Klasifikasi Herbal Antidiabetes Berbasis Model LeafNet | 211401034 | Listy Zulmi</center>", unsafe_allow_html=True)
+st.markdown("""
+<style>
+.footer-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
+    border-top: 1px solid #ddd;
+}
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown(
+    "<div class='footer-fixed'>©2025 | Klasifikasi Herbal Antidiabetes Berbasis Model LeafNet | 211401034 | Listy Zulmi</div>",
+    unsafe_allow_html=True
+)
