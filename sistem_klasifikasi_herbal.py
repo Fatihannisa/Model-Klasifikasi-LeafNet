@@ -2,6 +2,8 @@ import streamlit as st
 import numpy as np
 from PIL import Image
 import tensorflow as tf
+import base64
+import io
 
 # =========================
 # ----- LOAD MODEL --------
@@ -71,6 +73,32 @@ if "page" not in st.session_state:
 # === HALAMAN UPLOAD ====
 # =======================
 if st.session_state.page == "upload":
+
+    # ---- Custom CSS Upload ----
+    st.markdown("""
+    <style>
+    .upload-box {
+        padding: 60px;
+        border: 3px dashed #999;
+        border-radius: 15px;
+        text-align: center;
+        background: #f5f5f5;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .upload-box:hover {
+        border-color: #4CAF50;
+        background: #eef7ee;
+    }
+    .upload-icon {
+        font-size: 60px;
+        color: #666;
+    }
+    .hidden-uploader {
+        display: none;
+    }
+    </style>
+    """, unsafe_allow_html=True)
     
     st.markdown("""
         <h2 style="margin:0px; font-size:55px; font-weight:600;">Sistem Identifikasi Daun Herbal Antidiabetes Berbasis Model LeafNet</h2>
@@ -81,13 +109,26 @@ if st.session_state.page == "upload":
 
     with col1:
         st.markdown("""
-            <div style="padding:80px; background:#e0e0e0; border-radius:15px; text-align:center;">
-                <h1 style="font-size:50px; margin:0;">📷</h1>
-                <p>Unggah gambar daun (JPG/JPEG/PNG)</p>
-            </div>
+        <div class="upload-box" onclick="document.getElementById('true_uploader').click()">
+            <div class="upload-icon">📷</div>
+            <h4>Seret & Lepas Gambar Daun</h4>
+            <p>atau klik untuk memilih file (JPG/JPEG/PNG)</p>
+        </div>
         """, unsafe_allow_html=True)
+        
+        # ---- Real Hidden File Uploader ----
+        uploaded_img = st.file_uploader(
+            "Upload Gambar Daun",
+            type=["jpg","jpeg","png"],
+            key="true_uploader",
+            label_visibility="collapsed"
+        )
 
-        uploaded_img = st.file_uploader("", type=["jpg", "jpeg", "png"])
+        # ---- Preview Gambar ----
+        if uploaded_img:
+            img_preview = Image.open(uploaded_img)
+            st.markdown("### 📌 Preview Gambar:")
+            st.image(img_preview, width=320)
 
         st.markdown("""
             <div style="text-align:center; margin-top:20px;">
@@ -102,8 +143,35 @@ if st.session_state.page == "upload":
                 </button>
             </div>
         """, unsafe_allow_html=True)
+
+        # === CSS Tombol Bulat ===
+        st.markdown("""
+        <style>
+        .round-btn button {
+            background-color: #4CAF50 !important;
+            color: white !important;
+            padding: 14px 25px !important;
+            border-radius: 40px !important;
+            border: none !important;
+            font-size: 18px !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            transition: 0.3s;
+        }
+        .round-btn button:hover {
+            background-color: #45a049 !important;
+        }
+        </style>
+        """, unsafe_allow_html=True)
         
-        if st.button("Identifikasi", use_container_width=True):
+        # === Tombol Bulat ===
+        with st.container():
+            st.markdown('<div class="round-btn">', unsafe_allow_html=True)
+            clicked = st.button("🔍 Identifikasi Daun", use_container_width=True)
+            st.markdown('</div>', unsafe_allow_html=True)
+        
+        # === Aksi tombol ===
+        if clicked:
             if uploaded_img:
                 st.session_state.image = uploaded_img
                 st.session_state.page = "result"
@@ -116,10 +184,10 @@ if st.session_state.page == "upload":
             <div style="padding:20px; background:#f2f2f2; border-radius:12px;">
                 <b>Tips pengambilan gambar:</b>
                 <ul>
-                    <li>Pastikan helai daun berada tepat di tengah frame kamera</li>
-                    <li>Pastikan pencahayaan mencukupi untuk dapat melihat venasi/urat daun</li>
-                    <li>Latar belakang wajib polos dan berwarna cerah (diutamakan putih)</li>
-                    <li>Fokus gambar daun jangan terlalu kecil</li>
+                    <li>Daun berada di tengah frame kamera</li>
+                    <li>Pencahayaan cukup & tidak terlalu gelap</li>
+                    <li>Latar belakang polos, lebih baik putih</li>
+                    <li>Daun harus jelas dan memenuhi area foto</li>
                 </ul>
             </div>
         """, unsafe_allow_html=True)
@@ -192,8 +260,8 @@ elif st.session_state.page == "result":
         </div>
     """, unsafe_allow_html=True)
 
-    st.button("Kembali", on_click=lambda: (st.session_state.update({"page": "upload"}), st.rerun()))
+    st.button("⬅️Kembali", on_click=lambda: (st.session_state.update({"page": "upload"}), st.rerun()))
 
 
 # ---- FOOTER ----
-st.markdown("<hr><center>copyright@2025 | Klasifikasi Herbal Antidiabetes Berbasis Model LeafNet | 211401034 | Listy Zulmi</center>", unsafe_allow_html=True)
+st.markdown("<hr><center>©2025 | Klasifikasi Herbal Antidiabetes Berbasis Model LeafNet | 211401034 | Listy Zulmi</center>", unsafe_allow_html=True)
