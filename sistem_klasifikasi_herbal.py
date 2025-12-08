@@ -18,9 +18,10 @@ output_details = interpreter.get_output_details()
 
 # Label contoh (sesuaikan)
 LABELS = [
-    "Andrographis paniculata",  # sambiloto
-    "Syzygium polyanthum",      # salam
-    "Orthosiphon aristatus"     # kumis kucing
+    "Acalypha siamensis", "Andrographis paniculata", "Cananga odorata", "Capsicum sp", "Catharanthus roseus",
+    "Dracaena angustifolia", "Ficus microcarpa", "Flueggea virosa", "Gardenia jasminoides", "Leucaena leucocephala",
+    "Moringa oleifera", "Orthosiphon aristatus", "Pandanus amaryllifolius", "Phyllanthus amarus",
+    "Physalis angulata", "Rosa sp", "Solanum nigrum", "Syzygium polyanthum", "Vernonia amygdalina", "Ziziphus mauritiana"
 ]
 
 # =========================
