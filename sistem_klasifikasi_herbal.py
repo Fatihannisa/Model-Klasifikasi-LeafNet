@@ -126,7 +126,7 @@ if st.session_state.page == "upload":
         <style>
         [data-testid="stFileUploader"] section {
             border: 3px dashed #999 !important;
-            padding: 70px !important;
+            padding: 100px !important;
             border-radius: 20px !important;
             background: #fafafa;
         }
