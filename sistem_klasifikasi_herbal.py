@@ -139,7 +139,7 @@ if st.session_state.page == "upload":
         if uploaded_img:
             img = Image.open(uploaded_img)
             st.markdown("##### 📌 Preview Gambar:")
-            st.image(img, width=450)
+            st.image(img, width=320)
         
         # =============================
         # TOMBOL IDENTIFIKASI
