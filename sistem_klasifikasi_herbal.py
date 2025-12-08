@@ -24,6 +24,49 @@ LABELS = [
 ]
 
 # =========================
+# ----- DATABASE DINAMIS --------
+# =========================
+
+herbal_info = {
+    "Andrographis paniculata": {
+        "nama_umum": ["Sambiloto", "Ki pait", "Ampadu tanah", "Ki oray"],
+        "status": "Tanaman herbal antidiabetes",
+        "informasi": """
+            Sambiloto terkenal sebagai herbal dengan kandungan andrographolide (AGL)
+            yang sangat pahit, tetapi berkhasiat dalam mengendalikan kadar gula darah dan bersifat antiinflamasi. AGL mampu meningkatkan produksi insulin dan  penyerapan glukosa sehingga bisa mengurangi kadar gula dalam darah. 
+        """,
+        "tautan_artikel": "https://hellosehat.com/diabetes/daun-sambiloto-untuk-diabetes/",
+        "tautan_jurnal": "https://jurnal.ikbis.ac.id/index.php/infokes/article/view/371/221 ",
+        "cara_mengolah": [
+            "Siapkan 25 lembar daun sambiloto dan 110 ml air.",
+            "Cuci bersih daun sambiloto di bawah air mengalir.",
+            "Rebus daun sambiloto sampai mendidih.",
+            "Minum air rebusan daun sambiloto satu kali sehari dengan takaran 100 ml.",
+            "Untuk menghindari risiko efek samping, disarankan untuk mengonsumsi dalam jumlah yang wajar dan tidak lebih dari dua kali sehari. Jika memiliki kondisi medis tertentu, konsultasikan terlebih dahulu dengan dokter sebelum mengonsumsi rebusan sambiloto.",
+        ]
+    },
+    
+    "Ziziphus mauritiana": {
+        "nama_umum": ["Sambiloto"],
+        "status": "Tanaman herbal antidiabetes",
+        "informasi": """
+            Sambiloto terkenal sebagai herbal dengan kandungan andrographolide
+            yang terbukti menurunkan kadar gula darah dan bersifat antiinflamasi.
+        """,
+        "tautan_artikel": "https://hellosehat.com/herbal-alternatif/herbal/daun-bidara/",
+        "tautan_jurnal": "https://doi.org/10.26740/icaj.v6i2.32598",
+        "cara_mengolah": [
+            "Siapkan 10 lembar daun bidara tua, setengah buah jeruk nipis, dan gula secukupnya.",
+            "Cuci bersih daun sambiloto di bawah air mengalir.",
+            "Rebus 600ml air hingga mendidih lalu masukkan daun bidara.",
+            "Masak selama 20 menit dengan api kecil.",
+            "Peras jeruk nipis. Tambahkan gula sesuai selera.",
+            "Untuk menghindari risiko efek samping, disarankan untuk mengonsumsi dalam jumlah yang wajar dan tidak lebih dari dua kali sehari. Jika memiliki kondisi medis tertentu, konsultasikan terlebih dahulu dengan dokter sebelum mengonsumsi rebusan sambiloto.",
+        ]
+    },
+}
+    
+# =========================
 # ----- PREDIKSI ---
 # =========================
 def predict(image: Image.Image):
@@ -46,7 +89,6 @@ def predict(image: Image.Image):
     confidence = float(np.max(output))
 
     return LABELS[pred_idx], confidence
-
 
 # =========================
 # ------ USER INTERFACE -------
@@ -83,44 +125,15 @@ if st.session_state.page == "upload":
         # CUSTOM CSS – UBAH FILE UPLOADER JADI KOTAK BESAR KEREN
         st.markdown("""
         <style>
-        /* Hilangkan border default */
         [data-testid="stFileUploader"] section {
             border: 3px dashed #999 !important;
             padding: 60px !important;
             border-radius: 20px !important;
             background: #fafafa;
         }
-        
-        /* Ubah icon kecil jadi besar */
-        [data-testid="stFileUploader"] section > div {
-            text-align:center !important;
-        }
-        
-        /* Hilangkan tulisan "Drag and drop" bawaan */
-        [data-testid="stFileUploader"] label {
-            display:none !important;
-        }
-        
-        /* Teks custom */
-        .custom-upload-text {
-            text-align:center;
-            font-size:22px;
-            font-weight:600;
-            margin-top:10px;
-        }
-        
-        .custom-upload-sub {
-            text-align:center;
-            margin-top:-5px;
-            color:#777;
-        }
         </style>
         """, unsafe_allow_html=True)
         
-        
-        # =============================
-        # FILE UPLOADER 
-        # =============================
         uploaded_img = st.file_uploader("", type=["jpg","jpeg","png"])
         
         # PREVIEW GAMBAR
@@ -161,13 +174,16 @@ elif st.session_state.page == "result":
 
     st.markdown("""
         <div style="text-align:center; margin-top:10px;">
-            <h2 style="margin:0; font-size:55px; font-weight:600;">Hasil Identifikasi</h2>
+            <h2 style="margin:0; padding-bottom:15px; padding-top:20px; font-size:50px; font-weight:600;">Hasil Identifikasi</h2>
         </div>
     """, unsafe_allow_html=True)
 
     img = Image.open(st.session_state.image)
     pred_name, conf = predict(img)
 
+    # ambil data dari database
+    data = herbal_info.get(pred_name, None)
+    
     colA, colB = st.columns([1.5,1])
 
     # ---- KIRI: Gambar & Detail ----
@@ -179,76 +195,59 @@ elif st.session_state.page == "result":
     
         with colA2:
             st.markdown(f"""
-                <div style="background:#ededed; padding:18px; border-radius:10px; margin-top:0px;">
-                    <b>Nama Ilmiah</b><br>
-                    {pred_name}<br><br>
+                <div style="background:#ededed; padding:18px; border-radius:10px;">
+                    <b>Nama Ilmiah:</b><br>{pred_name}<br><br>
                     <b>Nama Umum:</b><br>
-                    <ul>
-                        <li>Contoh 1</li>
-                        <li>Contoh 2</li>
-                        <li>Contoh 3</li>
-                    </ul>
-                </div>
             """, unsafe_allow_html=True)
+
+            if data:
+                for nm in data["nama_umum"]:
+                    st.markdown(f"- {nm}")
+            else:
+                st.markdown("- Tidak tersedia")
+            st.markdown("</div>", unsafe_allow_html=True)
 
     # ---- KANAN: STATUS ----
     with colB:
         st.markdown(f"""
             <div style="background:#ededed; padding:18px; border-radius:10px;">
                 <b>Status</b><br>
-                Tanaman Herbal Antidiabetes<br><br>
+                {data['status'] if data else "Tidak tersedia"}<br><br>
                 <b>Tingkat kepercayaan sistem</b><br>
                 {conf*100:.2f}%
             </div>
         """, unsafe_allow_html=True)
 
-    # ---- INFORMASI ----
-    st.markdown("""
-    <div style="margin-top:25px;">
-        <b>Informasi (jika herbal antidiabetes)</b><br>
-        <p>Tambahkan informasi herbal di sini...</p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # ---- LINK ----
-    st.markdown('<div style="font-size:18px; font-weight:500; margin-top:15px; margin-bottom:-5px;">Tautan artikel:</div>', unsafe_allow_html=True)
-    st.text_input("", "https://contoh-artikel.com")
-    
-    st.markdown('<div style="font-size:18px; font-weight:500; margin-top:15px; margin-bottom:-5px;">Tautan jurnal penelitian:</div>', unsafe_allow_html=True)
-    st.text_input("", "https://contoh-jurnal.com")
-    
-    # ---- CARA MENGOLAH ----
-    st.markdown("""
-    <div style="margin-top:20px;">
-        <b>Cara mengolah herbal antidiabetes</b><br>
-        1. langkah 1<br>
-        2. langkah 2<br>
-        3. langkah 3<br>
-        4. langkah x<br>
-    </div>
-    """, unsafe_allow_html=True)
+    # INFORMASI
+    st.markdown("<div style='margin-top:25px;'><b>Informasi</b></div>", unsafe_allow_html=True)
+    st.markdown(data["informasi"] if data else "Tidak ada informasi.", unsafe_allow_html=True)
+
+    # LINK DINAMIS
+    st.markdown('<div style="font-size:18px; font-weight:500; margin-top:15px;">Tautan artikel:</div>', unsafe_allow_html=True)
+    st.text_input("", data["tautan_artikel"] if data else "")
+
+    st.markdown('<div style="font-size:18px; font-weight:500; margin-top:15px;">Tautan jurnal penelitian:</div>', unsafe_allow_html=True)
+    st.text_input("", data["tautan_jurnal"] if data else "")
+
+    # CARA MENGOLAH
+    st.markdown("<b style='margin-top:20px;'>Cara mengolah herbal antidiabetes:</b>", unsafe_allow_html=True)
+    if data:
+        for langkah in data["cara_mengolah"]:
+            st.markdown(f"- {langkah}")
+    else:
+        st.markdown("- Tidak ada data.")
+
     
     # Tambah jarak sebelum tombol kembali
     st.markdown("<div style='height:20px;'></div>", unsafe_allow_html=True)
-    
     # Tombol kembali
     st.button("⬅️ Kembali", on_click=lambda: (st.session_state.update({"page": "upload"}), st.rerun()))
-
 
 # ---- FOOTER ----
 st.markdown("""
 <style>
-/* Hilangkan ruang kosong default di bawah halaman */
-main > div {
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
-}
-
-/* Rapikan footer agar tidak ada ruang ekstra */
-.custom-footer {
-    padding: 0 !important;
-    margin: 0 !important;
-}
+main > div { padding-bottom: 0 !important; margin-bottom: 0 !important; }
+.custom-footer { margin: 0 !important; padding: 0 !important; }
 </style>
 """, unsafe_allow_html=True)
 
