@@ -125,8 +125,8 @@ if st.session_state.page == "upload":
         st.markdown("""
         <style>
         [data-testid="stFileUploader"] section {
-            border: 3px dashed #999 !important;
-            padding: 60px !important;
+            border: 7px dashed #999 !important;
+            padding: 10px !important;
             border-radius: 20px !important;
             background: #fafafa;
         }
@@ -158,8 +158,8 @@ if st.session_state.page == "upload":
                 <b>Tips pengambilan gambar:</b>
                 <ul>
                     <li>Pastikan helai daun berada tepat di tengah frame kamera</li>
-                    <li>Pastikan pencahayaan mencukupi untuk dapat melihat venasi/urat daun</li>
-                    <li>Latar belakang wajib polos dan berwarna cerah (diutamakan putih)</li>
+                    <li>Pastikan pencahayaan mencukupi agar model dapat melihat venasi/urat daun</li>
+                    <li>Latar belakang daun wajib polos dan berwarna cerah (diutamakan putih)</li>
                     <li>Fokus gambar daun jangan terlalu kecil</li>
                 </ul>
             </div>
