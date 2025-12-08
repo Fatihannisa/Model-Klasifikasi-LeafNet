@@ -56,7 +56,7 @@ st.set_page_config(page_title="Sistem Identifikasi Herbal Antidiabetes Berbasis 
 # ---- HEADER ----
 st.markdown("""
     <div style="display:flex; justify-content:space-between; align-items:center;">
-        <h1 style='font-size:100px; font-weight:700;'>DiaHerb</h1>
+        <h1 style='font-size:70px; font-weight:700;'>DiaHerb</h1>
     </div>
     <hr>
 """, unsafe_allow_html=True)
@@ -76,10 +76,10 @@ if st.session_state.page == "upload":
         <div style="background:#f3f3f3; padding:18px; border-radius:8px; width:90%;">
             <h2 style="margin:0;">Sistem Identifikasi Daun Herbal Antidiabetes Berbasis Model LeafNet</h2>
         </div>
-        <p style="margin-top:10px;">DiaHerb merupakan sebuah sistem berbasis website yang dibangun untuk membantu mengidentifikasi daun herbal antidiabetes yang mirip secara morfologi dengan tanaman lain. Sistem ini dibangun menggunakan teknologi Deep Learning dan Computer Vision.</p>
+        <p style="margin-top:10px; width:85%;">DiaHerb merupakan sebuah sistem berbasis website yang dibangun untuk membantu mengidentifikasi daun herbal antidiabetes yang mirip secara morfologi dengan tanaman lain. Sistem ini dibangun menggunakan teknologi Deep Learning dan Computer Vision.</p>
     """, unsafe_allow_html=True)
 
-    col1, col2 = st.columns([1.8,1])
+    col1, col2 = st.columns([1.5,1.5])
 
     with col1:
         st.markdown("""
@@ -198,4 +198,4 @@ elif st.session_state.page == "result":
 
 
 # ---- FOOTER ----
-st.markdown("<hr><center>@2025 | KLASIFIKASI HERBAL ANTIDIABETES BERBASIS MODEL LEAFNET | LISTY ZULMI</center>", unsafe_allow_html=True)
+st.markdown("<hr><center>copyright@2025 | Klasifikasi Herbal Antidiabetes Berbasis Model LeafNet | 211401034 | Listy Zulmi</center>", unsafe_allow_html=True)
