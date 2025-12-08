@@ -181,7 +181,7 @@ elif st.session_state.page == "result":
             st.markdown(f"""
                 <div style="background:#ededed; padding:18px; border-radius:10px; margin-top:0px;">
                     <b>Nama Ilmiah</b><br>
-                    {pred_name}<br>
+                    {pred_name}<br><br>
                     <b>Nama Umum:</b><br>
                     <ul>
                         <li>Contoh 1</li>
@@ -196,7 +196,7 @@ elif st.session_state.page == "result":
         st.markdown(f"""
             <div style="background:#ededed; padding:18px; border-radius:10px;">
                 <b>Status</b><br>
-                Tanaman Herbal Antidiabetes<br>
+                Tanaman Herbal Antidiabetes<br><br>
                 <b>Tingkat kepercayaan sistem</b><br>
                 {conf*100:.2f}%
             </div>
@@ -212,15 +212,15 @@ elif st.session_state.page == "result":
 
     # ---- LINK ----
     st.markdown("""
-        <div style="font-size:18px; font-weight:600; margin-top:25px; margin-bottom:8px;">
-            Tautan artikel
+        <div style="font-size:18px; font-weight:500; margin-top:5px; margin-bottom:8px;">
+            Tautan artikel:
         </div>
     """, unsafe_allow_html=True)
     st.text_input("", "https://contoh-artikel.com")
     
     st.markdown("""
-        <div style="font-size:18px; font-weight:600; margin-top:15px; margin-bottom:8px;">
-            Tautan jurnal penelitian
+        <div style="font-size:18px; font-weight:500; margin-top:5px; margin-bottom:8px;">
+            Tautan jurnal penelitian:
         </div>
     """, unsafe_allow_html=True)
     st.text_input("", "https://contoh-jurnal.com")
@@ -246,21 +246,23 @@ elif st.session_state.page == "result":
 # ---- FOOTER ----
 st.markdown("""
 <style>
-.footer-fixed {
-    position: fixed;
-    bottom: 0;
-    left: 0;
+.page-container {
+    padding-bottom: 80px; /* memberi ruang agar footer tidak ikut scroll */
+}
+.footer-normal {
     width: 100%;
-    background: white;
     text-align: center;
     padding: 10px 0;
     font-size: 14px;
+    color: #555;
     border-top: 1px solid #ddd;
+    background: #fafafa;
 }
 </style>
+<div class='page-container'></div>
 """, unsafe_allow_html=True)
 
 st.markdown(
-    "<div class='footer-fixed'>©2025 | Klasifikasi Herbal Antidiabetes Berbasis Model LeafNet | 211401034 | Listy Zulmi</div>",
+    "<div class='footer-normal'>©2025 | Klasifikasi Herbal Antidiabetes Berbasis Model LeafNet | 211401034 | Listy Zulmi</div>",
     unsafe_allow_html=True
 )
