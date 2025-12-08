@@ -125,8 +125,8 @@ if st.session_state.page == "upload":
         st.markdown("""
         <style>
         [data-testid="stFileUploader"] section {
-            border: 7px dashed #999 !important;
-            padding: 10px !important;
+            border: 3px dashed #999 !important;
+            padding: 20px !important;
             border-radius: 20px !important;
             background: #fafafa;
         }
