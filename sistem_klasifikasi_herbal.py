@@ -55,7 +55,7 @@ st.set_page_config(page_title="Sistem Identifikasi Herbal Antidiabetes Berbasis 
 
 # ---- HEADER ----
 st.markdown("""
-    <div style="display:flex; justify-content:space-between; align-items:center;">
+    <div style="background:#f3f3f3; padding:18px; border-radius:8px; width:100%; display:flex; justify-content:space-between; align-items:center;">
         <h1 style='font-size:70px; font-weight:700;'>DiaHerb</h1>
     </div>
     <hr>
@@ -73,10 +73,8 @@ if "page" not in st.session_state:
 if st.session_state.page == "upload":
     
     st.markdown("""
-        <div style="background:#f3f3f3; padding:18px; border-radius:8px; width:100%;">
             <h2 style="margin:0px;">Sistem Identifikasi Daun Herbal Antidiabetes Berbasis Model LeafNet</h2>
         <p style="margin-top:20px; margin-bottom:20px; width:90%;">DiaHerb merupakan sebuah sistem berbasis website yang dibangun untuk membantu mengidentifikasi daun herbal antidiabetes yang mirip secara morfologi dengan tanaman lain. Sistem ini dibangun menggunakan teknologi Deep Learning dan Computer Vision.</p>
-        </div>
     """, unsafe_allow_html=True)
 
     col1, col2 = st.columns([1.6,1.2])
