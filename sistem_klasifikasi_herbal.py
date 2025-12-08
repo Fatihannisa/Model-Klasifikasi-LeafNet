@@ -193,6 +193,7 @@ elif st.session_state.page == "result":
             st.image(img, caption="Gambar yang diunggah", use_column_width=True)
     
         with colA2:
+            # --- CSS untuk list ---
             st.markdown("""
             <style>
             .custom-list li {
@@ -207,26 +208,25 @@ elif st.session_state.page == "result":
             }
             </style>
             """, unsafe_allow_html=True)
-            
-            # Ambil data
+        
+            # --- Ambil data ---
             nama_umum_list = herbal_info.get(pred_name, {}).get("nama_umum", [])
-            
-            # Card
+        
+            # --- Kartu informasi ---
             html = f"""
             <div style="background:#ededed; padding:18px; border-radius:10px; margin-top:10px;">
-            
+        
                 <b>Nama Ilmiah:</b><br>
                 {pred_name}<br><br>
-            
+        
                 <b>Nama Umum:</b>
                 <ul class="custom-list">
-                    {''.join(f"<li>{item}</li>" for item in nama_umum_list)}
+                    {''.join(f'<li>{item}</li>' for item in nama_umum_list)}
                 </ul>
-            
             </div>
             """
-            
             st.markdown(html, unsafe_allow_html=True)
+    
     # ---- KANAN: STATUS ----
     with colB:
         st.markdown(f"""
