@@ -215,6 +215,17 @@ elif st.session_state.page == "result":
         <div style="font-size:18px; font-weight:500; margin-top:15px; margin-bottom:0;">
             Tautan artikel:
         </div>
+    <style>
+    /* Mengurangi jarak antara label dan input */
+    .stTextInput > label {
+        margin-bottom: -5px !important;  /* geser label lebih dekat */
+    }
+    
+    /* Atur container input agar tidak punya margin-top */
+    .stTextInput div[data-baseweb="input"] {
+        margin-top: 0 !important;
+    }
+    </style>
     """, unsafe_allow_html=True)
     st.text_input("", "https://contoh-artikel.com")
     
@@ -222,6 +233,17 @@ elif st.session_state.page == "result":
         <div style="font-size:18px; font-weight:500; margin-top:15px; margin-bottom:0;">
             Tautan jurnal penelitian:
         </div>
+    <style>
+    /* Mengurangi jarak antara label dan input */
+    .stTextInput > label {
+        margin-bottom: -5px !important;  /* geser label lebih dekat */
+    }
+    
+    /* Atur container input agar tidak punya margin-top */
+    .stTextInput div[data-baseweb="input"] {
+        margin-top: 0 !important;
+    }
+    </style>
     """, unsafe_allow_html=True)
     st.text_input("", "https://contoh-jurnal.com")
 
@@ -254,7 +276,7 @@ main > div {
 
 /* Rapikan footer agar tidak ada ruang ekstra */
 .custom-footer {
-    padding: 10px 0 10px 0 !important;
+    padding: 0 !important;
     margin: 0 !important;
 }
 </style>
