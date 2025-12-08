@@ -210,43 +210,43 @@ elif st.session_state.page == "result":
         </div>
     """, unsafe_allow_html=True)
 
-    # ---- LINK ----
+    # ---- CSS GLOBAL ----
     st.markdown("""
-        <div style="font-size:18px; font-weight:500; margin-top:15px; margin-bottom:0;">
-            Tautan artikel:
-        </div>
     <style>
-    /* Mengurangi jarak antara label dan input */
-    .stTextInput > label {
-        margin-bottom: -5px !important;  /* geser label lebih dekat */
+    /* Hilangkan jarak besar antara judul custom dan input */
+    .custom-label {
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: -8px;   /* kunci utama agar rapat */
+        padding-bottom: 0;
     }
     
-    /* Atur container input agar tidak punya margin-top */
+    /* Hilangkan margin default pada container input */
     .stTextInput div[data-baseweb="input"] {
         margin-top: 0 !important;
     }
+    
+    /* Hapus padding bawah bawaan Streamlit */
+    main div[data-testid="block-container"] {
+        padding-bottom: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    
+    /* Footer tanpa ruang ekstra */
+    .custom-footer {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
     </style>
     """, unsafe_allow_html=True)
+    
+    # ---- LINK ----
+    st.markdown('<div class="custom-label">Tautan artikel:</div>', unsafe_allow_html=True)
     st.text_input("", "https://contoh-artikel.com")
     
-    st.markdown("""
-        <div style="font-size:18px; font-weight:500; margin-top:15px; margin-bottom:0;">
-            Tautan jurnal penelitian:
-        </div>
-    <style>
-    /* Mengurangi jarak antara label dan input */
-    .stTextInput > label {
-        margin-bottom: -5px !important;  /* geser label lebih dekat */
-    }
-    
-    /* Atur container input agar tidak punya margin-top */
-    .stTextInput div[data-baseweb="input"] {
-        margin-top: 0 !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
+    st.markdown('<div class="custom-label" style="margin-top:15px;">Tautan jurnal penelitian:</div>', unsafe_allow_html=True)
     st.text_input("", "https://contoh-jurnal.com")
-
+    
     # ---- Cara mengolah ----
     st.markdown("""
         <div style="background:#f2f2f2; padding:20px; border-radius:10px; margin-top:20px;">
@@ -258,33 +258,15 @@ elif st.session_state.page == "result":
         </div>
     """, unsafe_allow_html=True)
 
-    # Tambah jarak sebelum tombol kembali
-    st.markdown("<div style='height:20px;'></div>", unsafe_allow_html=True)
+    # Tambah jarak kecil sebelum tombol kembali
+    st.markdown("<div style='height:15px;'></div>", unsafe_allow_html=True)
     
-    # Tombol kembali
     st.button("⬅️ Kembali", on_click=lambda: (st.session_state.update({"page": "upload"}), st.rerun()))
-
-
-# ---- FOOTER ----
-st.markdown("""
-<style>
-/* Hilangkan ruang kosong default di bawah halaman */
-main > div {
-    padding-bottom: 0 !important;
-    margin-bottom: 0 !important;
-}
-
-/* Rapikan footer agar tidak ada ruang ekstra */
-.custom-footer {
-    padding: 0 !important;
-    margin: 0 !important;
-}
-</style>
-""", unsafe_allow_html=True)
-
-st.markdown("""
-<div class="custom-footer">
-    <hr>
-    <center>©2025 | Klasifikasi Herbal Antidiabetes Berbasis Model LeafNet | 211401034 | Listy Zulmi</center>
-</div>
-""", unsafe_allow_html=True)
+    
+    # ---- FOOTER ----
+    st.markdown("""
+    <div class="custom-footer">
+        <hr>
+        <center>©2025 | Klasifikasi Herbal Antidiabetes Berbasis Model LeafNet | 211401034 | Listy Zulmi</center>
+    </div>
+    """, unsafe_allow_html=True)
