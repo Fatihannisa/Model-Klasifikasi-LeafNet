@@ -28,7 +28,7 @@ LABELS = [
 # =========================
 def predict(image: Image.Image):
     image = image.convert("RGB")
-    img = image.resize((224, 224))     # sesuaikan ukuran input model
+    img = image.resize((224, 224))
     img = np.array(img, dtype=np.float32) 
     img = img / 255.0
     img = np.expand_dims(img, axis=0).astype(np.float32)
@@ -51,15 +51,12 @@ def predict(image: Image.Image):
 # =========================
 # ------ USER INTERFACE -------
 # =========================
-st.set_page_config(page_title="Identifikasi Herbal", layout="wide")
+st.set_page_config(page_title="Sistem Identifikasi Herbal Antidiabetes Berbasis LeafNet", layout="wide")
 
 # ---- HEADER ----
 st.markdown("""
     <div style="display:flex; justify-content:space-between; align-items:center;">
-        <h1 style='font-size:32px; font-weight:700;'>DiaHerb</h1>
-        <div style="padding:10px 25px; background:#ddd; border-radius:6px; font-weight:600;">
-            Navbar
-        </div>
+        <h1 style='font-size:100px; font-weight:700;'>DiaHerb</h1>
     </div>
     <hr>
 """, unsafe_allow_html=True)
@@ -77,9 +74,9 @@ if st.session_state.page == "upload":
     
     st.markdown("""
         <div style="background:#f3f3f3; padding:18px; border-radius:8px; width:90%;">
-            <h2 style="margin:0;">Deskripsi</h2>
+            <h2 style="margin:0;">Sistem Identifikasi Daun Herbal Antidiabetes Berbasis Model LeafNet</h2>
         </div>
-        <p style="margin-top:10px;">Perintah unggah</p>
+        <p style="margin-top:10px;">DiaHerb merupakan sebuah sistem berbasis website yang dibangun untuk membantu mengidentifikasi daun herbal antidiabetes yang mirip secara morfologi dengan tanaman lain. Sistem ini dibangun menggunakan teknologi Deep Learning dan Computer Vision.</p>
     """, unsafe_allow_html=True)
 
     col1, col2 = st.columns([1.8,1])
@@ -88,7 +85,7 @@ if st.session_state.page == "upload":
         st.markdown("""
             <div style="padding:40px; background:#e0e0e0; border-radius:15px; text-align:center;">
                 <h1 style="font-size:55px; margin:0;">📷</h1>
-                <p>Unggah gambar daun (JPG/PNG)</p>
+                <p>Unggah gambar daun (JPG/JPEG/PNG)</p>
             </div>
         """, unsafe_allow_html=True)
 
@@ -121,9 +118,10 @@ if st.session_state.page == "upload":
             <div style="padding:20px; background:#f2f2f2; border-radius:12px;">
                 <b>Tips pengambilan gambar:</b>
                 <ul>
-                    <li>tips 1</li>
-                    <li>tips 2</li>
-                    <li>tips 3</li>
+                    <li>Pastikan helai daun berada tepat di tengah frame kamera</li>
+                    <li>Pastikan pencahayaan mencukupi untuk dapat melihat venasi/urat daun</li>
+                    <li>Latar belakang wajib polos dan berwarna cerah (diutamakan putih)</li>
+                    <li>Fokus gambar daun jangan terlalu kecil</li>
                 </ul>
             </div>
         """, unsafe_allow_html=True)
