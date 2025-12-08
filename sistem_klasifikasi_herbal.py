@@ -193,46 +193,40 @@ elif st.session_state.page == "result":
             st.image(img, caption="Gambar yang diunggah", use_column_width=True)
     
         with colA2:
+            st.markdown("""
+            <style>
+            .custom-list li {
+                margin-bottom: 2px !important;
+                padding: 0 !important;
+            }
+            
+            .custom-list {
+                margin-top: 5px !important;
+                margin-bottom: 5px !important;
+                padding-left: 20px !important;
+            }
+            </style>
+            """, unsafe_allow_html=True)
+            
+            
+            # --- Ambil nama umum dari dictionary ---
+            nama_umum_list = herbal_info[pred_name]["nama_umum"] if pred_name in herbal_info else []
+            
+            
+            # --- Kartu Informasi Herbal ---
             st.markdown(f"""
-                <div style="background:#ededed; padding:18px; border-radius:10px;">
-                    <b>Nama Ilmiah:</b><br>{pred_name}<br><br>
-                    st.markdown("""
-                    <style>
-                    /* Rapikan bullet list */
-                    .custom-list li {
-                        margin-bottom: 2px !important;   /* jarak antar bullet */
-                        padding: 0 !important;
-                    }
-                    
-                    /* Hilangkan jarak besar antara <ul> dan elemen lain */
-                    .custom-list {
-                        margin-top: 5px !important;
-                        margin-bottom: 5px !important;
-                        padding-left: 20px !important;
-                    }
-                    </style>
-                    """, unsafe_allow_html=True)
-                    nama_umum_list = herbal_info[pred_name]["nama_umum"]
-
-                    st.markdown(f"""
-                        <div style="background:#ededed; padding:18px; border-radius:10px; margin-top:0px;">
-                            <b>Nama Ilmiah:</b><br>
-                            {pred_name}<br><br>
-                    
-                            <b>Nama Umum:</b>
-                            <ul class="custom-list">
-                                {''.join([f"<li>{item}</li>" for item in nama_umum_list])}
-                            </ul>
-                        </div>
-                    """, unsafe_allow_html=True)
-
-            if data:
-                for nm in data["nama_umum"]:
-                    st.markdown(f"- {nm}")
-            else:
-                st.markdown("- Tidak tersedia")
-            st.markdown("</div>", unsafe_allow_html=True)
-
+            <div style="background:#ededed; padding:18px; border-radius:10px; margin-top:10px;">
+            
+                <b>Nama Ilmiah:</b><br>
+                {pred_name}<br><br>
+            
+                <b>Nama Umum:</b>
+                <ul class="custom-list">
+                    {''.join([f"<li>{item}</li>" for item in nama_umum_list])}
+                </ul>
+            
+            </div>
+            """, unsafe_allow_html=True)
     # ---- KANAN: STATUS ----
     with colB:
         st.markdown(f"""
