@@ -126,8 +126,8 @@ if st.session_state.page == "upload":
         # PREVIEW GAMBAR
         if uploaded_img:
             img = Image.open(uploaded_img)
-            st.markdown("### 📌 Preview Gambar:")
-            st.image(img, width=320)
+            st.markdown("##### 📌 Preview Gambar:")
+            st.image(img, use_column_width=True)
         
         # =============================
         # TOMBOL IDENTIFIKASI
@@ -191,7 +191,7 @@ elif st.session_state.page == "result":
         st.markdown(f"""
             <div style="background:#ededed; padding:18px; border-radius:10px;">
                 <b>Status</b><br>
-                Tanaman obat antidiabetes<br><br>
+                {pred_name}<br><br>
 
                 <b>Tingkat kepercayaan sistem</b><br>
                 {conf*100:.2f}%
