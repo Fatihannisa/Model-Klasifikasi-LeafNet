@@ -133,32 +133,15 @@ if st.session_state.page == "upload":
         
         
         # =============================
-        # TOMBOL IDENTIFIKASI BULAT
+        # TOMBOL IDENTIFIKASI
         # =============================
-        st.markdown("""
-        <style>
-        #id-btn {
-            width:200px;
-            height:60px;
-            border-radius:50px;
-            background:#dcdcdc;
-            border:none;
-            font-size:20px;
-        }
-        #id-btn:hover {
-            background:#c0c0c0;
-        }
-        </style>
-        """, unsafe_allow_html=True)
-        
-        clicked = st.button("Identifikasi", key="id-btn")
-        
-        # AKSI MODEL
-        if clicked:
-            if not uploaded_file:
-                st.error("Silakan unggah gambar dulu.")
+        if st.button("Identifikasi", use_container_width=True):
+            if uploaded_img:
+                st.session_state.image = uploaded_img
+                st.session_state.page = "result"
+                st.rerun()
             else:
-                st.success("Model berjalan (hubungkan model Anda di bagian ini).")
+                st.warning("Silakan unggah gambar terlebih dahulu.")
 
     with col2:
         st.markdown("""
