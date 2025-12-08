@@ -161,7 +161,7 @@ elif st.session_state.page == "result":
 
     st.markdown("""
         <div style="text-align:center; margin-top:10px;">
-            <h2 style="margin:0;">Hasil Identifikasi</h2>
+            <h2 style="margin:0; font-size:55px; font-weight:600;">Hasil Identifikasi</h2>
         </div>
     """, unsafe_allow_html=True)
 
@@ -172,26 +172,32 @@ elif st.session_state.page == "result":
 
     # ---- KIRI: Gambar & Detail ----
     with colA:
-        st.image(img, caption="Gambar yang diunggah", width=350)
-        st.markdown(f"""
-            <div style="background:#ededed; padding:18px; border-radius:10px; margin-top:15px;">
-                <b>Nama Ilmiah</b><br>
-                {pred_name}<br><br>
-                <b>Nama Umum:</b><br>
-                <ul>
-                    <li>Contoh 1</li>
-                    <li>Contoh 2</li>
-                    <li>Contoh 3</li>
-                </ul>
-            </div>
-        """, unsafe_allow_html=True)
+        colA1, colA2 = st.columns([1, 1.2])  # kiri gambar, kanan info
+    
+        with colA1:
+            st.image(img, caption="Gambar yang diunggah", use_column_width=True)
+    
+        with colA2:
+            st.markdown(f"""
+                <div style="background:#ededed; padding:18px; border-radius:10px; margin-top:0px;">
+                    <b>Nama Ilmiah</b><br>
+                    {pred_name}<br><br>
+    
+                    <b>Nama Umum:</b><br>
+                    <ul>
+                        <li>Contoh 1</li>
+                        <li>Contoh 2</li>
+                        <li>Contoh 3</li>
+                    </ul>
+                </div>
+            """, unsafe_allow_html=True)
 
     # ---- KANAN: STATUS ----
     with colB:
         st.markdown(f"""
             <div style="background:#ededed; padding:18px; border-radius:10px;">
                 <b>Status</b><br>
-                {pred_name}<br><br>
+                Tanaman Herbal Antidiabetes<br><br>
 
                 <b>Tingkat kepercayaan sistem</b><br>
                 {conf*100:.2f}%
@@ -221,8 +227,8 @@ elif st.session_state.page == "result":
         </div>
     """, unsafe_allow_html=True)
 
-    st.button("Kembali", on_click=lambda: (st.session_state.update({"page": "upload"}), st.rerun()))
+    st.button("⬅️Kembali", on_click=lambda: (st.session_state.update({"page": "upload"}), st.rerun()))
 
 
 # ---- FOOTER ----
-st.markdown("<hr><center>copyright@2025 | Klasifikasi Herbal Antidiabetes Berbasis Model LeafNet | 211401034 | Listy Zulmi</center>", unsafe_allow_html=True)
+st.markdown("<hr><center>©2025 | Klasifikasi Herbal Antidiabetes Berbasis Model LeafNet | 211401034 | Listy Zulmi</center>", unsafe_allow_html=True)
