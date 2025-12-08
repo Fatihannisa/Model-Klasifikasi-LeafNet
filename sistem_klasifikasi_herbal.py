@@ -73,18 +73,18 @@ if "page" not in st.session_state:
 if st.session_state.page == "upload":
     
     st.markdown("""
-        <div style="background:#f3f3f3; padding:18px; border-radius:8px; width:90%;">
-            <h2 style="margin:0;">Sistem Identifikasi Daun Herbal Antidiabetes Berbasis Model LeafNet</h2>
+        <div style="background:#f3f3f3; padding:18px; border-radius:8px; width:100%;">
+            <h2 style="margin-bottom:20px;">Sistem Identifikasi Daun Herbal Antidiabetes Berbasis Model LeafNet</h2>
         </div>
-        <p style="margin-top:10px; width:85%;">DiaHerb merupakan sebuah sistem berbasis website yang dibangun untuk membantu mengidentifikasi daun herbal antidiabetes yang mirip secara morfologi dengan tanaman lain. Sistem ini dibangun menggunakan teknologi Deep Learning dan Computer Vision.</p>
+        <p style="margin-top:10px; padding-left:20px; width:90%;">DiaHerb merupakan sebuah sistem berbasis website yang dibangun untuk membantu mengidentifikasi daun herbal antidiabetes yang mirip secara morfologi dengan tanaman lain. Sistem ini dibangun menggunakan teknologi Deep Learning dan Computer Vision.</p>
     """, unsafe_allow_html=True)
 
-    col1, col2 = st.columns([1.5,1.5])
+    col1, col2 = st.columns([1.8,1])
 
     with col1:
         st.markdown("""
-            <div style="padding:40px; background:#e0e0e0; border-radius:15px; text-align:center;">
-                <h1 style="font-size:55px; margin:0;">📷</h1>
+            <div style="padding:30px; background:#e0e0e0; border-radius:15px; text-align:center;">
+                <h1 style="font-size:50px; margin:0;">📷</h1>
                 <p>Unggah gambar daun (JPG/JPEG/PNG)</p>
             </div>
         """, unsafe_allow_html=True)
