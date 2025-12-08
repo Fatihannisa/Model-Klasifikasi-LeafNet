@@ -126,9 +126,15 @@ if st.session_state.page == "upload":
         <style>
         [data-testid="stFileUploader"] section {
             border: 3px dashed #999 !important;
-            padding: 100px !important;
+            padding: 40px 30px !important;
             border-radius: 20px !important;
             background: #fafafa;
+        }
+        /* Pastikan kolom kiri & kanan sejajar di atas */
+        div[data-testid="column"] > div {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
         </style>
         """, unsafe_allow_html=True)
