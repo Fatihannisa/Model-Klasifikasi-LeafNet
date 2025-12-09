@@ -213,15 +213,15 @@ if st.session_state.page == "upload":
         st.markdown("""
             <b style="font-size:18px; font-weight:600; margin-left:30px;"><u>Tips pengambilan gambar</u></b>
             <ul style="margin-left:30px;">
-                <li>Foto satu(1) helai daun saja.</li>
+                <li>Foto 1 helai daun saja.</li>
                 <li>Pastikan helai daun berada tepat di tengah frame kamera.</li>
                 <li>Pastikan pencahayaan mencukupi agar model dapat melihat venasi/urat daun.</li>
                 <li>Latar belakang daun wajib polos dan berwarna cerah (diutamakan putih).</li>
-                <li>Fokus gambar daun tidak terlalu jauh.</li>
+                <li>Foto objek tidak terlalu jauh.</li>
                 <li>Foto dari sisi atas atau bawah helai daun.</li>
             </ul>
     
-            <b style="font-size:18px; font-weight:600; margin-left:30px;"><u>Contoh gambar yang baik:</u></b>
+            <b style="font-size:18px; font-weight:600; margin-left:30px;"><u>Contoh gambar yang baik</u></b>
         """, unsafe_allow_html=True)
 
         # Gambar contoh: 3 atau 4
