@@ -136,6 +136,27 @@ st.markdown("""
     font-size: 32px;
     font-weight: 700;
 }
+.header-box {
+    background: var(--header-bg);
+    padding: 18px 25px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+/* adaptif theme */
+:root {
+    --header-bg: rgba(255,255,255,0.65);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --header-bg: rgba(255,255,255,0.08);
+    }
+}
 
 /* ===============================
    VARIABEL WARNA ADAPTIF GLOBAL
@@ -206,23 +227,21 @@ div[data-testid="column"] > div {
 
 
 # ---- HEADER ----
-import streamlit as st
+col_logo, col_title = st.columns([0.12, 1])
 
-# Logo + Title Header
-header_col1, header_col2 = st.columns([0.15, 1])
+with col_logo:
+    st.image("images/diaherb_logo.png", width=70)
 
-with header_col1:
-    st.image("images/diaherb_logo.png", width=65)  # pastikan file ada di /images/
-
-with header_col2:
+with col_title:
     st.markdown("""
-        <h1 style="
-            margin: 0;
-            padding: 0;
-            font-weight: 700;
-        ">
-            DiaHerb — Identifikasi Daun Herbal Antidiabetes
-        </h1>
+        <div class="header-box">
+            <h1 style="margin:0; padding:0; font-size:36px; font-weight:700;">
+                DiaHerb
+            </h1>
+            <span style="font-size:18px; opacity:0.8;">
+                Sistem Identifikasi Daun Herbal Antidiabetes
+            </span>
+        </div>
     """, unsafe_allow_html=True)
 
 # -------------------------------
