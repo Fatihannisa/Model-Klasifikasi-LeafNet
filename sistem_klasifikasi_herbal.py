@@ -121,38 +121,68 @@ st.set_page_config(page_title="Sistem Identifikasi Herbal Antidiabetes Berbasis 
 st.markdown("""
 <style>
 
-/* Base variables that react to Streamlit theme */
+/* ===============================
+   VARIABEL WARNA ADAPTIF GLOBAL
+   =============================== */
 :root {
-    --bg-box: rgba(255,255,255,0.12);      /* adaptif light/dark */
-    --border-box: rgba(255,255,255,0.22);
+    /* Light mode */
+    --bg-box: #f1f1f1;
+    --border-box: #d0d0d0;
+
+    --bg-uploader: #f8f8f8;
+    --border-uploader: #bbb;
 }
 
-/* Dark mode stronger backdrop */
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg-box: rgba(255,255,255,0.06);
-        --border-box: rgba(255,255,255,0.18);
+        /* Dark mode */
+        --bg-box: #2a2a2a;
+        --border-box: #444;
+
+        --bg-uploader: #1f1f1f;
+        --border-uploader: #555;
     }
 }
 
-/* Universal info box */
-.adaptive-box {
-    background: var(--bg-box);
-    border: 1px solid var(--border-box);
+/* ===============================
+   INFO BOX (nama ilmiah/umum)
+   =============================== */
+.info-box, .adaptive-box {
+    background: var(--bg-box) !important;
+    border: 1px solid var(--border-box) !important;
     padding: 18px;
     border-radius: 12px;
-    color: inherit;
+    color: inherit !important;
 }
 
-/* Header adaptif */
-.header-adaptive {
-    background: rgba(240,240,240,0.6);
+/* ===============================
+   FILE UPLOADER BOX
+   =============================== */
+[data-testid="stFileUploader"] section {
+    background: var(--bg-uploader) !important;
+    border: 3px dashed var(--border-uploader) !important;
+    padding: 60px !important;
+    border-radius: 20px !important;
+    min-height: 260px !important;
 }
 
-@media (prefers-color-scheme: dark) {
-    .header-adaptive {
-        background: rgba(255,255,255,0.08);
-    }
+/* Agar teks + ikon uploader terlihat */
+[data-testid="stFileUploader"] * {
+    color: inherit !important;
+}
+
+/* Kolom tetap rata atas */
+div[data-testid="column"] > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Section title */
+.section-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 25px;
 }
 
 </style>
