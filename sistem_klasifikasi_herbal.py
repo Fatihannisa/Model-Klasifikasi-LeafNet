@@ -297,7 +297,7 @@ elif st.session_state.page == "result":
     )
 
     # === Cara Mengolah ===
-    st.markdown("<div class='section-title'>Cara Mengolah</div>", unsafe_allow_html=True)
+    st.markdown("<div class='section-title', style='margin-bottom:10px;'>Cara Mengolah</div>", unsafe_allow_html=True)
     if data:
         for langkah in data["cara_mengolah"]:
             st.markdown(f"- {langkah}")
