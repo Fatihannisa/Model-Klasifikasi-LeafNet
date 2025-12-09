@@ -329,7 +329,7 @@ if st.session_state.page == "upload":
     
         /* Hilangkan margin top berlebih pada gambar */
         div[data-testid="column"] div:has(img) {
-            margin-top: 5px !important;
+            margin-top: 15px !important;
         }
     
     </style>
