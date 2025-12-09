@@ -117,52 +117,6 @@ def predict(image: Image.Image):
 # =========================
 st.set_page_config(page_title="Sistem Identifikasi Herbal Antidiabetes Berbasis LeafNet", layout="wide")
 
-# ====== AUTO THEME (FOLLOW SYSTEM THEME) ======
-st.markdown("""
-<style>
-
-/* Universal Theme-Aware Colors */
-:root, [data-theme] {
-    --my-bg: var(--background-color);
-    --my-bg2: var(--secondary-background-color);
-    --my-text: var(--text-color);
-    --my-primary: var(--primary-color);
-    --my-border: var(--border-color);
-}
-
-/* Upload box */
-[data-testid="stFileUploader"] section {
-    border: 3px dashed var(--my-border) !important;
-    padding: 60px !important;
-    border-radius: 18px !important;
-    background: var(--my-bg2) !important;
-    color: var(--my-text) !important;
-}
-
-/* Scientific / Common Name Box */
-.card-box {
-    background: var(--my-bg2);
-    padding: 18px;
-    border-radius: 14px;
-    border: 1px solid var(--my-border);
-    color: var(--my-text);
-    margin-top: 10px;
-}
-
-/* Fix action buttons (follow theme) */
-.stButton > button {
-    background: var(--my-primary) !important;
-    color: white !important;
-    border-radius: 10px;
-    border: none;
-    padding: 10px 16px;
-    cursor: pointer;
-}
-
-</style>
-""", unsafe_allow_html=True)
-
-
 # ---- HEADER ----
 st.markdown("""
     <div style="background:#f3f3f3; padding-left:20px; border-radius:0px; width:100%; display:flex; justify-content:space-between; align-items:center;">
