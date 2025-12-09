@@ -267,7 +267,7 @@ elif st.session_state.page == "result":
             <div style="background:#ededed; padding:18px; border-radius:10px;">
                 <b class='section-title'>Status</b><br>
                 {data['status'] if data else "Tidak tersedia"}<br><br>
-                <b>Tingkat kepercayaan sistem: </b>{conf * 100:.2f}%
+                <b>Tingkat kepercayaan sistem: {conf * 100:.2f}% </b>
             </div>
         """, unsafe_allow_html=True)
 
