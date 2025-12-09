@@ -236,7 +236,7 @@ if st.session_state.page == "upload":
                     st.markdown(
                         f"""
                         <div style="margin-left:30px;">
-                            <img src="{path}" width="150">
+                            <img src="{path}" width="120">
                         </div>
                         """,
                         unsafe_allow_html=True
