@@ -250,24 +250,24 @@ elif st.session_state.page == "result":
         with colA2:
             # buat list nama umum dalam HTML
             if data and "nama_umum" in data:
-                list_html = "<ul>"
+                list_html = "<ul style='margin-top:5px;'>"
                 for nm in data["nama_umum"]:
                     list_html += f"<li>{nm}</li>"
                 list_html += "</ul>"
             else:
                 list_html = "<ul><li>Tidak tersedia</li></ul>"
         
-            # render seluruh box dalam satu markdown
-            st.markdown(f"""
+            # HTML box lengkap
+            html_box = f"""
                 <div class="info-box">
-                    <b class='section-title'>Nama Ilmiah:</b><br>
-                    <b style="font-size:40px; font-weight:300;"><i>{pred_name}</i></b>
-                    
+                    <b class="section-title">Nama Ilmiah:</b><br>
+                    <span style="font-size:40px; font-weight:300;"><i>{pred_name}</i></span>
                     <br><br>
-                    <b class='section-title'>Nama Umum:</b>
+                    <b class="section-title">Nama Umum:</b>
                     {list_html}
                 </div>
-            """, unsafe_allow_html=True)
+            """
+            st.markdown(html_box, unsafe_allow_html=True)
 
     # =====================================
     # KOLOM B — STATUS + CONFIDENCE (KANAN)
