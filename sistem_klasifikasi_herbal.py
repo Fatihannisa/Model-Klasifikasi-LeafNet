@@ -201,7 +201,7 @@ if st.session_state.page == "upload":
 elif st.session_state.page == "result":
 
     st.markdown("""
-        <h2 style="margin:0; font-size:50px; font-weight:600; text-align:center;">
+        <h2 style="margin-bottom:30px; font-size:50px; font-weight:600; text-align:center;">
             Hasil Identifikasi
         </h2>
     """, unsafe_allow_html=True)
