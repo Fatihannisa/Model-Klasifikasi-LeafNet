@@ -254,7 +254,7 @@ elif st.session_state.page == "result":
             st.markdown(f"""
                 <div class="info-box">
                     <b>Nama Ilmiah:</b><br>
-                    {pred_name}<br><br>
+                    {pred_name}<br>
         
                     <b>Nama Umum:</b>
                     <ul>
@@ -270,7 +270,7 @@ elif st.session_state.page == "result":
         st.markdown(f"""
             <div style="background:#ededed; padding:18px; border-radius:10px;">
                 <b>Status</b><br>
-                {data['status'] if data else "Tidak tersedia"}<br><br>
+                {data['status'] if data else "Tidak tersedia"}<br>
     
                 <b>Tingkat kepercayaan sistem</b><br>
                 {conf * 100:.2f}%
