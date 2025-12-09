@@ -232,9 +232,6 @@ elif st.session_state.page == "result":
                 padding: 18px;
                 border-radius: 10px;
                 min-height: 340px;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
             }
             .section-title {
                 font-size: 22px;
@@ -250,16 +247,14 @@ elif st.session_state.page == "result":
                 <div class="info-box">
                     <b>Nama Ilmiah:</b><br>{pred_name}<br><br>
                     <b>Nama Umum:</b>
-                """, unsafe_allow_html=True)
-    
-            # Menampilkan nama umum TANPA membuat HTML list baru
+            """, unsafe_allow_html=True)
+
             if data and "nama_umum" in data:
                 for nm in data["nama_umum"]:
-                    st.write(f"- {nm}")
+                    st.markdown(f"- {nm}")
             else:
-                st.write("- Tidak tersedia")
-    
-            # Tutup box
+                st.markdown("- Tidak tersedia")
+
             st.markdown("</div>", unsafe_allow_html=True)
 
     # =====================================
@@ -271,7 +266,8 @@ elif st.session_state.page == "result":
                 <b>Status</b><br>
                 {data['status'] if data else "Tidak tersedia"}<br><br>
     
-                <b>Tingkat kepercayaan sistem</b><br>{conf * 100:.2f}%
+                <b>Tingkat kepercayaan sistem</b><br>
+                {conf * 100:.2f}%
             </div>
         """, unsafe_allow_html=True)
 
