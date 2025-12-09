@@ -191,27 +191,13 @@ div[data-testid="column"] > div {
     margin-top: 25px;
 }
 
-/* FOOTER ADAPTIF */
+/* FOOTER */
 .custom-footer {
-    padding: 12px 0 20px 0;
+    padding: 10px 0 25px 0;
     text-align: center;
-    border-radius: 10px;
-}
-
-/* Light Mode */
-@media (prefers-color-scheme: light) {
-    .custom-footer {
-        background: #f2f2f2 !important;
-        color: #000 !important;
-    }
-}
-
-/* Dark Mode */
-@media (prefers-color-scheme: dark) {
-    .custom-footer {
-        background: #1e1e1e !important;
-        color: #eaeaea !important;
-    }
+    background: none !important;   /* TANPA KOTAK */
+    border: none !important;
+    color: inherit !important;     /* Ikut tema */
 }
 </style>
 """, unsafe_allow_html=True)
@@ -499,9 +485,9 @@ st.markdown("""
 
 <div class="disclaimer-box">
     <strong>Disclaimer:</strong><br>
-    Sistem klasifikasi herbal ini dikembangkan sebagai bagian dari penyusunan tugas akhir.
+    <i>Sistem ini dikembangkan sebagai bagian dari penyusunan tugas akhir.
     Hasil prediksi bersifat estimasi dan tidak dimaksudkan sebagai acuan medis atau botani yang bersifat final.
-    Validasi tetap disarankan melalui literatur ilmiah atau ahli terkait.
+    Validasi tetap disarankan melalui ahli terkait.</i>
 </div>
 """, unsafe_allow_html=True)
 
