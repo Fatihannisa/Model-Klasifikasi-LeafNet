@@ -187,8 +187,39 @@ if st.session_state.page == "upload":
             else:
                 st.warning("Silakan unggah gambar terlebih dahulu.")
 
-    with col2:  # box tips kamu
-        # Box tips (teks)
+    # =============================
+    # TIPS PENGAMBILAN GAMBAR
+    # =============================
+    st.markdown("""
+    <style>
+    .info-box {
+        background: #f3f3f3;
+        padding: 20px 25px;
+        border-radius: 16px;
+        margin-top: 5px;
+        margin-bottom: 20px;
+        box-shadow: 0px 3px 10px rgba(0,0,0,0.05);
+    }
+    
+    .section-title {
+        font-size: 16px;
+        font-weight: 600;
+    }
+    
+    .info-box ul {
+        padding-left: 20px;
+        margin-bottom: 15px;
+    }
+    
+    /* Agar gambar contoh punya jarak dari teks */
+    .example-row {
+        margin-top: 10px;
+    }
+    
+    </style>
+    """, unsafe_allow_html=True)
+
+    with col2: 
         st.markdown("""
         <div class="info-box">
             <b class='section-title'>Tips pengambilan gambar:</b>
@@ -199,9 +230,10 @@ if st.session_state.page == "upload":
                 <li>Fokus gambar daun jangan terlalu kecil</li>
             </ul>
             <b class='section-title'>Contoh gambar yang baik:</b>
+            <div class="example-row">
         """, unsafe_allow_html=True)
     
-        # Grid 3-4 gambar contoh
+        # Grid 4 gambar contoh
         ex_cols = st.columns(4)
     
         example_paths = [
@@ -213,9 +245,9 @@ if st.session_state.page == "upload":
         
         for col, path in zip(ex_cols, example_paths):
             with col:
-                st.image(path, width=120, use_container_width=False)
+                st.image(path, width=120)
     
-        st.markdown("</div>", unsafe_allow_html=True)
+        st.markdown("</div></div>", unsafe_allow_html=True)
 
 # =======================
 # === HALAMAN HASIL =====
