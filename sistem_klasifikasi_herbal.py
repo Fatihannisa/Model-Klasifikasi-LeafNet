@@ -211,7 +211,7 @@ if st.session_state.page == "upload":
 
     with col2:
         st.markdown("""
-            <b style="font-size:18px; font-weight:600; margin-left:30px;"><u>Tips pengambilan gambar</u></b>
+            <b style="font-size:18px; font-weight:600; margin-left:30px;">Tips pengambilan gambar</b>
             <ul style="margin-left:30px;">
                 <li>Foto 1 helai daun saja.</li>
                 <li>Pastikan helai daun berada tepat di tengah frame kamera.</li>
@@ -221,7 +221,7 @@ if st.session_state.page == "upload":
                 <li>Foto dari sisi atas atau bawah helai daun.</li>
             </ul>
     
-            <b style="font-size:18px; font-weight:600; margin-left:30px;"><u>Contoh gambar yang baik</u></b>
+            <b style="font-size:18px; font-weight:600; margin-left:30px;">Contoh gambar yang baik</b>
         """, unsafe_allow_html=True)
 
         # Gambar contoh: 3 atau 4
