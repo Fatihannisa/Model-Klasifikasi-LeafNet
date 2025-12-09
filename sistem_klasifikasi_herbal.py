@@ -205,10 +205,10 @@ if st.session_state.page == "upload":
         ex_cols = st.columns(4)
     
         example_paths = [
-            "examples/good1.jpg",
-            "examples/good2.jpg",
-            "examples/good3.jpg",
-            "examples/good4.jpg"
+            "images/IMG_20251028_152831.jpg",
+            "images/IMG_20251029_170845.jpg",
+            "images/IMG_20251031_131056.jpg",
+            "images/IMG_20251114_161441.jpg"
         ]
         
         for col, path in zip(ex_cols, example_paths):
