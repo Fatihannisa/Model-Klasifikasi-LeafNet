@@ -220,6 +220,7 @@ if st.session_state.page == "upload":
     """, unsafe_allow_html=True)
 
     with col2: 
+        st.markdown("<div class='info-box'>", unsafe_allow_html=True)
         st.markdown("""
         <div class="info-box">
             <b class='section-title'>Tips pengambilan gambar:</b>
@@ -230,7 +231,6 @@ if st.session_state.page == "upload":
                 <li>Fokus gambar daun jangan terlalu kecil</li>
             </ul>
             <b class='section-title'>Contoh gambar yang baik:</b>
-            <div class="example-row">
         """, unsafe_allow_html=True)
     
         # Grid 4 gambar contoh
@@ -247,7 +247,7 @@ if st.session_state.page == "upload":
             with col:
                 st.image(path, width=120)
     
-        st.markdown("</div></div>", unsafe_allow_html=True)
+        st.markdown("</div>", unsafe_allow_html=True)
 
 # =======================
 # === HALAMAN HASIL =====
