@@ -266,16 +266,13 @@ elif st.session_state.page == "result":
         st.markdown(f"""
             <div style="background:#ededed; padding:18px; border-radius:10px;">
                 <b class='section-title'>Status</b><br>
-                <b style="color:#018790;">{data['status'] if data else "Bukan herbal antidiabetes"}</b><br><br>
+                <b style="color:#018790; font-weight:300;">{data['status'] if data else "Bukan herbal antidiabetes"}</b><br><br>
                 <b>Tingkat kepercayaan sistem: </b> 
                 <b style="color:#018790;">{conf * 100:.2f}% </b>
             </div>
         """, unsafe_allow_html=True)
 
-    # =====================================
-    # BAGIAN INFORMASI — KEMBALI KE POSISI AWAL
-    # (di bawah colA, bukan di colB)
-    # =====================================
+    # === Informasi ===
     st.markdown("<div class='section-title'>Informasi</div>", unsafe_allow_html=True)
     st.markdown(data["informasi"] if data else "Tidak ada informasi.", unsafe_allow_html=True)
 
