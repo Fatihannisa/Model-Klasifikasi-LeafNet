@@ -233,8 +233,7 @@ elif st.session_state.page == "result":
                     st.markdown(f"- {nm}")
             else:
                 st.markdown("- Tidak tersedia")
-                </div>
-            st.markdown( unsafe_allow_html=True)
+            st.markdown("</div>", unsafe_allow_html=True)
     
     # ---- KANAN: STATUS ----
     with colB:
@@ -247,25 +246,28 @@ elif st.session_state.page == "result":
             </div>
         """, unsafe_allow_html=True)
 
-    # INFORMASI
-    st.markdown("<div style='margin-top:25px;'><b>Informasi</b></div>", unsafe_allow_html=True)
-    st.markdown(data["informasi"] if data else "Tidak ada informasi.", unsafe_allow_html=True)
-
-    # LINK DINAMIS
-    st.markdown('<div style="font-size:18px; font-weight:500; margin-top:15px;">Tautan artikel:</div>', unsafe_allow_html=True)
-    st.text_input("", data["tautan_artikel"] if data else "")
-
-    st.markdown('<div style="font-size:18px; font-weight:500; margin-top:15px;">Tautan jurnal penelitian:</div>', unsafe_allow_html=True)
-    st.text_input("", data["tautan_jurnal"] if data else "")
-
-    # CARA MENGOLAH
-    st.markdown("<b style='margin-top:20px;'>Cara mengolah herbal antidiabetes:</b>", unsafe_allow_html=True)
-    if data:
-        for langkah in data["cara_mengolah"]:
-            st.markdown(f"- {langkah}")
-    else:
-        st.markdown("- Tidak ada data.")
-
+        # === TAMPILKAN INFO HERBAL HANYA UNTUK 10 TANAMAN HERBAL ===
+        if pred_name in herbal_classes:
+            # INFORMASI
+            st.markdown("<div style='margin-top:25px;'><b>Informasi</b></div>", unsafe_allow_html=True)
+            st.markdown(data["informasi"] if data else "Tidak ada informasi.", unsafe_allow_html=True)
+        
+            # LINK DINAMIS
+            st.markdown('<div style="font-size:18px; font-weight:500; margin-top:15px;">Tautan artikel:</div>', unsafe_allow_html=True)
+            st.text_input("", data["tautan_artikel"] if data else "")
+        
+            st.markdown('<div style="font-size:18px; font-weight:500; margin-top:15px;">Tautan jurnal penelitian:</div>', unsafe_allow_html=True)
+            st.text_input("", data["tautan_jurnal"] if data else "")
+        
+            # CARA MENGOLAH
+            st.markdown("<b style='margin-top:20px;'>Cara mengolah herbal antidiabetes:</b>", unsafe_allow_html=True)
+            if data:
+                for langkah in data["cara_mengolah"]:
+                    st.markdown(f"- {langkah}")
+            else:
+                st.markdown("- Tidak ada data.")
+        else:
+            st.info("Tanaman ini bukan termasuk 10 herbal antidiabetes, sehingga informasi tambahan tidak ditampilkan.")
     
     # Tambah jarak sebelum tombol kembali
     st.markdown("<div style='height:20px;'></div>", unsafe_allow_html=True)
