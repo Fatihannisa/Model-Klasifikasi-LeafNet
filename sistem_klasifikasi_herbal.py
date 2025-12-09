@@ -120,6 +120,22 @@ st.set_page_config(page_title="Sistem Identifikasi Herbal Antidiabetes Berbasis 
 # --- GLOBAL ADAPTIVE CSS ---
 st.markdown("""
 <style>
+/* ===============================
+   LOGO HEADER
+   =============================== */
+.header-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.header-logo {
+    width: 70px;
+    height: auto;
+}
+.header-title {
+    font-size: 32px;
+    font-weight: 700;
+}
 
 /* ===============================
    VARIABEL WARNA ADAPTIF GLOBAL
@@ -191,8 +207,9 @@ div[data-testid="column"] > div {
 
 # ---- HEADER ----
 st.markdown("""
-    <div class="header-adaptive" style="padding-left:20px; border-radius:0px; width:100%; display:flex; justify-content:space-between; align-items:center;">
-        <h1 style='font-size:30px; font-weight:700;'>🌿DiaHerb</h1>
+    <div class="header-wrapper" style="padding-left:20px; border-radius:0px; width:100%; display:flex; justify-content:space-between; align-items:center;">
+        <img src="images/diaherb_logo.png" class="header-logo">
+        <div class="header-title" style="font-size:30px; font-weight:700;">🌿DiaHerb</div>
     </div>
     <hr>
 """, unsafe_allow_html=True)
