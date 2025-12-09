@@ -234,7 +234,7 @@ elif st.session_state.page == "result":
                 min-height: 340px;
             }
             .section-title {
-                font-size: 22px;
+                font-size: 20px;
                 font-weight: 600;
                 margin-top: 25px;
             }
