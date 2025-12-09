@@ -209,23 +209,23 @@ if st.session_state.page == "upload":
             img = Image.open(st.session_state.image)
             pred_name, conf = predict(img)
         
-            # ambil data dari database
             data = herbal_info.get(pred_name, None)
         
-            colA, colB = st.columns([1.5,1])
+            # ==============================
+            # LAYOUT ATAS (colA + colB)
+            # ==============================
+            colA, colB = st.columns([1.5, 1])
         
-            # =====================================
-            # KOLOM A — GAMBAR + INFO BOX (KIRI)
-            # =====================================
+            # === KIRI: Gambar + info box ===
             with colA:
         
                 colA1, colA2 = st.columns([1, 1.2])
                 
-                # --- KIRI: Gambar ---
+                # Gambar
                 with colA1:
                     st.image(img, caption="Gambar yang diunggah", use_column_width=True)
         
-                # --- CSS untuk info box ---
+                # CSS box info
                 st.markdown("""
                 <style>
                 .info-box {
@@ -242,7 +242,7 @@ if st.session_state.page == "upload":
                 </style>
                 """, unsafe_allow_html=True)
         
-                # --- KANAN: Box Info ---
+                # Info box
                 with colA2:
                     st.markdown(f"""
                         <div class="info-box">
@@ -250,7 +250,7 @@ if st.session_state.page == "upload":
                             <b>Nama Umum:</b>
                     """, unsafe_allow_html=True)
         
-                    if data and "nama_umum" in data:
+                    if data:
                         for nm in data["nama_umum"]:
                             st.markdown(f"- {nm}")
                     else:
@@ -258,9 +258,7 @@ if st.session_state.page == "upload":
         
                     st.markdown("</div>", unsafe_allow_html=True)
         
-            # =====================================
-            # KOLOM B — STATUS + CONFIDENCE (KANAN)
-            # =====================================
+            # === KANAN: Status dan Confidence ===
             with colB:
                 st.markdown(f"""
                     <div style="background:#ededed; padding:18px; border-radius:10px;">
@@ -273,37 +271,43 @@ if st.session_state.page == "upload":
                 """, unsafe_allow_html=True)
         
             # =====================================
-            # BAGIAN INFORMASI — KEMBALI KE POSISI AWAL
-            # (di bawah colA, bukan di colB)
+            # INFORMASI DI BAWAH colA + colB
             # =====================================
-            st.markdown("<div class='section-title'>Informasi</div>", unsafe_allow_html=True)
-            st.markdown(data["informasi"] if data else "Tidak ada informasi.", unsafe_allow_html=True)
+            st.markdown("<hr>", unsafe_allow_html=True)
         
-            # === Tautan Artikel ===
-            st.markdown("<div class='section-title'>Link Artikel</div>", unsafe_allow_html=True)
-            st.markdown(
-                f"<a href='{data['tautan_artikel']}' target='_blank'>{data['tautan_artikel']}</a>"
-                if data else "Tidak ada link.",
-                unsafe_allow_html=True
-            )
+            if pred_name in herbal_info:
         
-            # === Tautan Jurnal Penelitian ===
-            st.markdown("<div class='section-title'>Link Jurnal Penelitian</div>", unsafe_allow_html=True)
-            st.markdown(
-                f"<a href='{data['tautan_jurnal']}' target='_blank'>{data['tautan_jurnal']}</a>"
-                if data else "Tidak ada link.",
-                unsafe_allow_html=True
-            )
+                # INFORMASI
+                st.markdown("<div class='section-title'>Informasi</div>", unsafe_allow_html=True)
+                st.markdown(data["informasi"], unsafe_allow_html=True)
         
-            # === Cara Mengolah ===
-            st.markdown("<div class='section-title'>Cara Mengolah</div>", unsafe_allow_html=True)
-            if data:
+                # LINK ARTIKEL
+                st.markdown("<div class='section-title'>Link Artikel</div>", unsafe_allow_html=True)
+                st.markdown(
+                    f"<a href='{data['tautan_artikel']}' target='_blank'>{data['tautan_artikel']}</a>",
+                    unsafe_allow_html=True
+                )
+        
+                # LINK JURNAL
+                st.markdown("<div class='section-title'>Link Jurnal Penelitian</div>", unsafe_allow_html=True)
+                st.markdown(
+                    f"<a href='{data['tautan_jurnal']}' target='_blank'>{data['tautan_jurnal']}</a>",
+                    unsafe_allow_html=True
+                )
+        
+                # CARA MENGOLAH
+                st.markdown("<div class='section-title'>Cara Mengolah</div>", unsafe_allow_html=True)
                 for langkah in data["cara_mengolah"]:
                     st.markdown(f"- {langkah}")
-            else:
-                st.markdown("- Tidak ada data.")
         
-            # Jarak & tombol kembali
+            else:
+                st.info(
+                    "Tanaman ini **bukan termasuk 10 herbal antidiabetes**, "
+                    "sehingga informasi tambahan tidak ditampilkan.",
+                    unsafe_allow_html=True
+                )
+        
+            # Tombol kembali
             st.markdown("<div style='height:25px;'></div>", unsafe_allow_html=True)
             st.button("⬅️ Kembali", on_click=lambda: (st.session_state.update({"page": "upload"}), st.rerun()))
 
