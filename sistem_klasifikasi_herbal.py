@@ -206,13 +206,24 @@ div[data-testid="column"] > div {
 
 
 # ---- HEADER ----
-st.markdown("""
-    <div class="header-wrapper" style="padding-left:20px; border-radius:0px; width:100%; display:flex; justify-content:space-between; align-items:center;">
-        <img src="images/diaherb_logo.png" class="header-logo">
-        <div class="header-title" style="font-size:30px; font-weight:700;">DiaHerb</div>
-    </div>
-    <hr>
-""", unsafe_allow_html=True)
+import streamlit as st
+
+# Logo + Title Header
+header_col1, header_col2 = st.columns([0.15, 1])
+
+with header_col1:
+    st.image("images/diaherb_logo.png", width=65)  # pastikan file ada di /images/
+
+with header_col2:
+    st.markdown("""
+        <h1 style="
+            margin: 0;
+            padding: 0;
+            font-weight: 700;
+        ">
+            DiaHerb — Identifikasi Daun Herbal Antidiabetes
+        </h1>
+    """, unsafe_allow_html=True)
 
 # -------------------------------
 # PAGE SELECTOR
