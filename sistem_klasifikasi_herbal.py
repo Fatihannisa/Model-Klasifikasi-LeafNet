@@ -121,68 +121,95 @@ st.set_page_config(page_title="Sistem Identifikasi Herbal Antidiabetes Berbasis 
 st.markdown("""
 <style>
 
-/* ===============================
-   VARIABEL WARNA ADAPTIF GLOBAL
-   =============================== */
+/* ======================================
+   THEME VARIABLES (Light & Dark Adaptif)
+   ====================================== */
 :root {
     /* Light mode */
-    --bg-box: #f1f1f1;
-    --border-box: #d0d0d0;
+    --bg-box: rgba(255, 255, 255, 0.55);
+    --bg-box-blur: blur(12px);
+    --border-box: rgba(180, 180, 180, 0.55);
+    --shadow-box: rgba(0, 0, 0, 0.08);
 
-    --bg-uploader: #f8f8f8;
-    --border-uploader: #bbb;
+    --bg-uploader: rgba(255,255,255,0.65);
+    --border-uploader: rgba(160,160,160,0.55);
+    --shadow-uploader: rgba(0,0,0,0.12);
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         /* Dark mode */
-        --bg-box: #2a2a2a;
-        --border-box: #444;
+        --bg-box: rgba(40, 40, 40, 0.45);
+        --bg-box-blur: blur(14px);
+        --border-box: rgba(80, 80, 80, 0.55);
+        --shadow-box: rgba(0, 0, 0, 0.6);
 
-        --bg-uploader: #1f1f1f;
-        --border-uploader: #555;
+        --bg-uploader: rgba(30,30,30,0.45);
+        --border-uploader: rgba(80,80,80,0.5);
+        --shadow-uploader: rgba(0,0,0,0.7);
     }
 }
 
-/* ===============================
-   INFO BOX (nama ilmiah/umum)
-   =============================== */
-.info-box, .adaptive-box {
+/* =======================================================
+   GLASS EFFECT + SOFT SHADOW (info box + status box)
+   ======================================================= */
+.info-box, 
+.adaptive-box {
     background: var(--bg-box) !important;
+    backdrop-filter: var(--bg-box-blur) !important;
+    -webkit-backdrop-filter: var(--bg-box-blur) !important;
+
     border: 1px solid var(--border-box) !important;
-    padding: 18px;
-    border-radius: 12px;
-    color: inherit !important;
+    padding: 20px;
+    border-radius: 16px;
+
+    box-shadow: 0 4px 12px var(--shadow-box);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
 }
 
-/* ===============================
-   FILE UPLOADER BOX
-   =============================== */
+/* Hover: naik & glowing */
+.info-box:hover,
+.adaptive-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px var(--shadow-box);
+}
+
+/* =======================================================
+   FILE UPLOADER – GLASS STYLE + HOVER
+   ======================================================= */
 [data-testid="stFileUploader"] section {
     background: var(--bg-uploader) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+
     border: 3px dashed var(--border-uploader) !important;
     padding: 60px !important;
-    border-radius: 20px !important;
+    border-radius: 22px !important;
     min-height: 260px !important;
+
+    box-shadow: 0 4px 12px var(--shadow-uploader);
+    transition: 0.25s ease;
 }
 
-/* Agar teks + ikon uploader terlihat */
+/* Hover: scale + vivid border */
+[data-testid="stFileUploader"] section:hover {
+    transform: scale(1.015);
+    border-color: #00c2ff !important;
+    box-shadow: 0 8px 20px var(--shadow-uploader);
+}
+
+/* Biar teks match tema */
 [data-testid="stFileUploader"] * {
     color: inherit !important;
 }
 
-/* Kolom tetap rata atas */
-div[data-testid="column"] > div {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-/* Section title */
+/* =======================================================
+   TITLES
+   ======================================================= */
 .section-title {
     font-size: 20px;
     font-weight: 600;
-    margin-top: 25px;
+    margin-top: 20px;
 }
 
 </style>
