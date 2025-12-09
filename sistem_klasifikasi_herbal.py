@@ -493,6 +493,6 @@ st.markdown("""
 st.markdown("""
 <div class="custom-footer">
     <hr>
-    ©2025 | Klasifikasi Herbal Antidiabetes Berbasis Model LeafNet | 211401034 | Listy Zulmi
+    ©2025 | Klasifikasi Herbal Antidiabetes Berbasis Model LeafNet | 211401034
 </div>
 """, unsafe_allow_html=True)
