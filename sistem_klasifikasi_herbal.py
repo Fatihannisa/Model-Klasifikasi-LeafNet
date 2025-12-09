@@ -483,13 +483,17 @@ st.markdown("""
         <center>211401034 — Listy Zulmi</center>
         <center>©2025 | Tugas Akhir/Skripsi</center>
 
+        st.markdown("""
         <div class="footer-disclaimer">
-            <strong>Disclaimer:</strong><br>
-            Sistem klasifikasi herbal ini dikembangkan untuk kebutuhan akademik dalam rangka penyusunan tugas akhir. 
-            Hasil prediksi bersifat estimasi dan tidak dimaksudkan sebagai acuan medis atau botani yang bersifat final. 
-            Verifikasi tetap diperlukan melalui referensi ilmiah atau ahli terkait.
+            <strong>Disclaimer:</strong>
+            <p style="margin:8px 0 0 0; line-height:1.45;">
+                Sistem klasifikasi herbal ini dikembangkan untuk kebutuhan akademik dalam rangka penyusunan tugas akhir.
+                Hasil prediksi bersifat estimasi dan tidak dimaksudkan sebagai acuan medis atau botani yang bersifat final.
+                Verifikasi tetap diperlukan melalui referensi ilmiah atau ahli terkait.
+            </p>
         </div>
-
+        </div>
+        """, unsafe_allow_html=True)
     </div>
 </div>
 """, unsafe_allow_html=True)
