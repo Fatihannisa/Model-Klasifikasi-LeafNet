@@ -163,13 +163,18 @@ if st.session_state.page == "upload":
         </style>
         """, unsafe_allow_html=True)
         
-        uploaded_img = st.file_uploader("", type=["jpg","jpeg","png"])
+        uploaded_img = st.file_uploader("", type=["jpg","jpeg","png", "webp"])
+
+        img = None 
         
         # PREVIEW GAMBAR
-        if uploaded_img:
-            img = Image.open(uploaded_img)
-            st.markdown("##### 📌 Preview Gambar:")
-            st.image(img, width=320)
+        if uploaded_img is not None:
+            try:
+                img = Image.open(uploaded_img)
+                st.markdown("##### 📌 Preview Gambar:")
+                st.image(img, width=320)
+            except Exception as e:
+                st.error(f"Format gambar tidak dapat dibaca: {e}")
         
         # =============================
         # TOMBOL IDENTIFIKASI
