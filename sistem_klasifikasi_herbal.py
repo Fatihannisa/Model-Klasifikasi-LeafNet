@@ -221,23 +221,19 @@ if st.session_state.page == "upload":
             <b style="font-size:18px; font-weight:600; margin-left:30px;">Contoh gambar yang baik:</b>
         """, unsafe_allow_html=True)
 
-        # Grid 3-4 gambar contoh 
-        ex_cols = st.columns(4) 
-        example_paths = [ 
-            "images/IMG_20251028_152831.jpg", 
-            "images/IMG_20251029_170845.jpg", 
-            "images/IMG_20251031_131056.jpg", 
-            "images/IMG_20251114_161441.jpg" 
-        ] 
-        for i, (col, path) in enumerate(zip(ex_cols, example_paths)):
+        # Gambar contoh: 3 atau 4
+        offset_col, *ex_cols = st.columns([0.2, 1, 1, 1, 1])
+        
+        example_paths = [
+            "images/IMG_20251028_152831.jpg",
+            "images/IMG_20251029_170845.jpg",
+            "images/IMG_20251031_131056.jpg",
+            "images/IMG_20251114_161441.jpg"
+        ]
+        
+        for col, path in zip(ex_cols, example_paths):
             with col:
-                if i == 0:
-                    # Geser gambar pertama 30px, tapi tetap gunakan st.image
-                    st.markdown('<div style="margin-left:30px;">', unsafe_allow_html=True)
-                    st.image(path, width=150)
-                    st.markdown('</div>', unsafe_allow_html=True)
-                else:
-                    st.image(path, width=150)
+                st.image(path, width=150)
 
 # =======================
 # === HALAMAN HASIL =====
