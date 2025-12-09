@@ -136,25 +136,15 @@ st.markdown("""
     font-size: 32px;
     font-weight: 700;
 }
-.header-box {
-    background: var(--header-bg);
-    padding: 18px 25px;
-    border-radius: 16px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.12);
-    margin-bottom: 25px;
-    display: flex;
-    align-items: center;
-    gap: 18px;
-}
-
-/* adaptif theme */
-:root {
-    --header-bg: rgba(255,255,255,0.65);
+.logo-shadow {
+    width: 75px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
 @media (prefers-color-scheme: dark) {
-    :root {
-        --header-bg: rgba(255,255,255,0.08);
+    .logo-shadow {
+        box-shadow: 0 4px 14px rgba(255,255,255,0.12);
     }
 }
 
@@ -227,21 +217,18 @@ div[data-testid="column"] > div {
 
 
 # ---- HEADER ----
-col_logo, col_title = st.columns([0.12, 1])
+col_logo, col_title = st.columns([0.14, 1])
 
 with col_logo:
-    st.image("images/diaherb_logo.png", width=70)
+    st.markdown("""
+        <img src="images/diaherb_logo.png" class="logo-shadow">
+    """, unsafe_allow_html=True)
 
 with col_title:
     st.markdown("""
-        <div class="header-box">
-            <h1 style="margin:0; padding:0; font-size:36px; font-weight:700;">
-                DiaHerb
-            </h1>
-            <span style="font-size:18px; opacity:0.8;">
-                Sistem Identifikasi Daun Herbal Antidiabetes
-            </span>
-        </div>
+        <h1 style="margin:0; padding:0; font-size:38px; font-weight:700;">
+            DiaHerb
+        </h1>
     """, unsafe_allow_html=True)
 
 # -------------------------------
