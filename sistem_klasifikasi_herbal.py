@@ -273,11 +273,11 @@ elif st.session_state.page == "result":
         """, unsafe_allow_html=True)
 
     # === Informasi ===
-    st.markdown("<div class='section-title'>Informasi:</div>", unsafe_allow_html=True)
+    st.markdown("<div class='section-title'>Informasi herbal:</div>", unsafe_allow_html=True)
     st.markdown(data["informasi"] if data else "Tidak ada informasi.", unsafe_allow_html=True)
 
     # === Tautan Artikel ===
-    st.markdown("<div class='section-title'>Tautan ke Artikel Terkait: </div>", unsafe_allow_html=True)
+    st.markdown("<div class='section-title'>Tautan ke artikel terkait: </div>", unsafe_allow_html=True)
     st.markdown(
         f"<a href='{data['tautan_artikel']}' target='_blank'>{data['tautan_artikel']}</a>"
         if data else "Tidak ada link.",
@@ -285,7 +285,7 @@ elif st.session_state.page == "result":
     )
 
     # === Tautan Jurnal Penelitian ===
-    st.markdown("<div class='section-title'>Tautan ke Jurnal Penelitian:</div>", unsafe_allow_html=True)
+    st.markdown("<div class='section-title'>Tautan ke jurnal penelitian:</div>", unsafe_allow_html=True)
     st.markdown(
         f"<a href='{data['tautan_jurnal']}' target='_blank'>{data['tautan_jurnal']}</a>"
         if data else "Tidak ada link.",
@@ -293,7 +293,7 @@ elif st.session_state.page == "result":
     )
 
     # === Cara Mengolah ===
-    st.markdown("<div class='section-title', style='margin-bottom:10px;'>Cara Mengolah:</div>", unsafe_allow_html=True)
+    st.markdown("<div class='section-title', style='margin-bottom:10px;'>Cara mengolah herbal:</div>", unsafe_allow_html=True)
     if data:
         for langkah in data["cara_mengolah"]:
             st.markdown(f"- {langkah}")
