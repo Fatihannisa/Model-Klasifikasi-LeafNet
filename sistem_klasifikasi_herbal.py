@@ -201,7 +201,7 @@ if st.session_state.page == "upload":
 elif st.session_state.page == "result":
 
     st.markdown("""
-        <h2 style="margin:0; font-size:55px; font-weight:600; text-align:center;">
+        <h2 style="margin:0; font-size:50px; font-weight:600; text-align:center;">
             Hasil Identifikasi
         </h2>
     """, unsafe_allow_html=True)
@@ -234,7 +234,7 @@ elif st.session_state.page == "result":
                 min-height: 340px;
             }
             .section-title {
-                font-size: 22px;
+                font-size: 20px;
                 font-weight: 600;
                 margin-top: 25px;
             }
@@ -245,8 +245,8 @@ elif st.session_state.page == "result":
         with colA2:
             st.markdown(f"""
                 <div class="info-box">
-                    <b>Nama Ilmiah:</b><br>{pred_name}<br><br>
-                    <b>Nama Umum:</b>
+                    <b class='section-title'>Nama Ilmiah:</b><br style="font-size:30px;">{pred_name}<br><br>
+                    <b class='section-title'>Nama Umum:</b>
                 """, unsafe_allow_html=True)
     
             # Menampilkan nama umum TANPA membuat HTML list baru
@@ -265,11 +265,9 @@ elif st.session_state.page == "result":
     with colB:
         st.markdown(f"""
             <div style="background:#ededed; padding:18px; border-radius:10px;">
-                <b>Status</b><br>
+                <b class='section-title'>Status</b><br>
                 {data['status'] if data else "Tidak tersedia"}<br><br>
-    
-                <b>Tingkat kepercayaan sistem</b><br>
-                {conf * 100:.2f}%
+                <b class='section-title'>Tingkat kepercayaan sistem: </b>{conf * 100:.2f}%
             </div>
         """, unsafe_allow_html=True)
 
