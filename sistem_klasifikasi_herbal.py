@@ -199,7 +199,7 @@ div[data-testid="column"] > div {
 logo_base64 = load_base64("images/diaherb_logo.png")
 components.html(f"""
     <div style="
-        padding:12px 20px; 
+        padding:50px 20px; 
         width:100%; 
         display:flex; 
         align-items:center;
