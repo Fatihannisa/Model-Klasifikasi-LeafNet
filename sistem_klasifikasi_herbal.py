@@ -248,21 +248,26 @@ elif st.session_state.page == "result":
 
         # --- KANAN: Box Info ---
         with colA2:
+            # buat list nama umum dalam HTML
+            if data and "nama_umum" in data:
+                list_html = "<ul>"
+                for nm in data["nama_umum"]:
+                    list_html += f"<li>{nm}</li>"
+                list_html += "</ul>"
+            else:
+                list_html = "<ul><li>Tidak tersedia</li></ul>"
+        
+            # render seluruh box dalam satu markdown
             st.markdown(f"""
                 <div class="info-box">
-                    <b class='section-title'>Nama Ilmiah:</b><br><b style="font-size:40px; font-weight:300;"><i>{pred_name}</i></b><br><br>
+                    <b class='section-title'>Nama Ilmiah:</b><br>
+                    <b style="font-size:40px; font-weight:300;"><i>{pred_name}</i></b>
+                    
+                    <br><br>
                     <b class='section-title'>Nama Umum:</b>
-                """, unsafe_allow_html=True)
-    
-            # Menampilkan nama umum TANPA membuat HTML list baru
-            if data and "nama_umum" in data:
-                for nm in data["nama_umum"]:
-                    st.write(f"- {nm}")
-            else:
-                st.write("- Tidak tersedia")
-    
-            # Tutup box
-            st.markdown("</div>", unsafe_allow_html=True)
+                    {list_html}
+                </div>
+            """, unsafe_allow_html=True)
 
     # =====================================
     # KOLOM B — STATUS + CONFIDENCE (KANAN)
