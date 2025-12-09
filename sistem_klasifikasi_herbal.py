@@ -232,17 +232,12 @@ if st.session_state.page == "upload":
         for i, (col, path) in enumerate(zip(ex_cols, example_paths)):
             with col:
                 if i == 0:
-                    # Geser gambar pertama 30px ke kanan
-                    st.markdown(
-                        f"""
-                        <div style="margin-left:30px;">
-                            <img src="{path}" width="100">
-                        </div>
-                        """,
-                        unsafe_allow_html=True
-                    )
+                    # Geser gambar pertama 30px, tapi tetap gunakan st.image
+                    st.markdown('<div style="margin-left:30px;">', unsafe_allow_html=True)
+                    st.image(path, width=120)
+                    st.markdown('</div>', unsafe_allow_html=True)
                 else:
-                    st.image(path, width=100)
+                    st.image(path, width=120)
 
 # =======================
 # === HALAMAN HASIL =====
