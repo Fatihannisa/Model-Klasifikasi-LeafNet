@@ -233,8 +233,8 @@ elif st.session_state.page == "result":
                     st.markdown(f"- {nm}")
             else:
                 st.markdown("- Tidak tersedia")
-
-            st.markdown("</div>", unsafe_allow_html=True)
+                </div>
+            st.markdown( unsafe_allow_html=True)
     
     # ---- KANAN: STATUS ----
     with colB:
