@@ -119,58 +119,46 @@ st.set_page_config(page_title="Sistem Identifikasi Herbal Antidiabetes Berbasis 
 
 # ====== AUTO THEME (FOLLOW SYSTEM THEME) ======
 st.markdown("""
-<script>
-const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
-
-function applyTheme(e) {
-    const isDark = e.matches;
-    const root = window.parent.document.documentElement;
-    if (isDark) {
-        root.style.setProperty('--background-color', '#0e1117');
-        root.style.setProperty('--text-color', 'white');
-        root.style.setProperty('--box-color', '#1a1d23');
-        root.style.setProperty('--border-color', '#555');
-    } else {
-        root.style.setProperty('--background-color', 'white');
-        root.style.setProperty('--text-color', 'black');
-        root.style.setProperty('--box-color', '#f2f2f2');
-        root.style.setProperty('--border-color', '#ddd');
-    }
-}
-
-// Initial apply
-applyTheme(darkThemeMq);
-
-// Listen for changes
-darkThemeMq.addListener(applyTheme);
-</script>
-
 <style>
-/* Apply variables */
-body, .stApp {
-    background-color: var(--background-color) !important;
-    color: var(--text-color) !important;
+
+/* Universal Theme-Aware Colors */
+:root, [data-theme] {
+    --my-bg: var(--background-color);
+    --my-bg2: var(--secondary-background-color);
+    --my-text: var(--text-color);
+    --my-primary: var(--primary-color);
+    --my-border: var(--border-color);
 }
 
-/* Card / box dasar */
-.info-box, .upload-wrapper,
-div[data-testid="stFileUploader"] section,
-[data-testid="stSidebar"], .stMarkdown {
-    background-color: var(--box-color) !important;
-    color: var(--text-color) !important;
-    border-color: var(--border-color) !important;
+/* Upload box */
+[data-testid="stFileUploader"] section {
+    border: 3px dashed var(--my-border) !important;
+    padding: 60px !important;
+    border-radius: 18px !important;
+    background: var(--my-bg2) !important;
+    color: var(--my-text) !important;
 }
 
-/* Perbaikan label & teks yg tidak ikut berubah */
-h1, h2, h3, h4, h5, p, label, span {
-    color: var(--text-color) !important;
+/* Scientific / Common Name Box */
+.card-box {
+    background: var(--my-bg2);
+    padding: 18px;
+    border-radius: 14px;
+    border: 1px solid var(--my-border);
+    color: var(--my-text);
+    margin-top: 10px;
 }
 
-/* Tombol */
-button[kind="primary"] {
-    background-color: #008cff !important;
+/* Fix action buttons (follow theme) */
+.stButton > button {
+    background: var(--my-primary) !important;
     color: white !important;
+    border-radius: 10px;
+    border: none;
+    padding: 10px 16px;
+    cursor: pointer;
 }
+
 </style>
 """, unsafe_allow_html=True)
 
