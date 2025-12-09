@@ -206,12 +206,8 @@ components.html(f"""
         gap:14px;
     ">
         <img src="data:image/png;base64,{logo_base64}"
-             style="height:40px; width:auto;
+             style="height:60px; width:30px;
              filter: drop-shadow(0px 0px 4px rgba(0,0,0,0.35));">
-
-        <h1 style="font-size:30px; margin:0; font-weight:700;">
-            DiaHerb
-        </h1>
     </div>
     <hr>
 """, height=80)
