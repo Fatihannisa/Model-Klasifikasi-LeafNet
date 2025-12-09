@@ -33,7 +33,9 @@ herbal_info = {
         "status": "Tanaman herbal antidiabetes",
         "informasi": """
             Sambiloto terkenal sebagai herbal dengan kandungan andrographolide (AGL)
-            yang sangat pahit, tetapi berkhasiat dalam mengendalikan kadar gula darah dan bersifat antiinflamasi. AGL mampu meningkatkan produksi insulin dan  penyerapan glukosa sehingga bisa mengurangi kadar gula dalam darah. 
+            yang sangat pahit, tetapi berkhasiat dalam mengendalikan kadar gula darah dan 
+            bersifat antiinflamasi. AGL mampu meningkatkan produksi insulin dan  penyerapan 
+            glukosa sehingga bisa mengurangi kadar gula dalam darah. 
         """,
         "tautan_artikel": "https://hellosehat.com/diabetes/daun-sambiloto-untuk-diabetes/",
         "tautan_jurnal": "https://jurnal.ikbis.ac.id/index.php/infokes/article/view/371/221 ",
@@ -47,10 +49,14 @@ herbal_info = {
     },
     
     "Ziziphus mauritiana": {
-        "nama_umum": ["Bidara", "Widara", "Bukol", "Bekul", "Rangga", "Kalangga"],
+        "nama_umum": ["Bidara", "Widara", "Bukol", "Kalangga"],
         "status": "Tanaman herbal antidiabetes",
         "informasi": """
-            Daun bidara bisa membantu mengendalikan diabetes dengan membuat penggunaan insulin untuk menyerap gula darah lebih efektif. Kandungan saponin dan flavonoid di dalam daun bidara bekerja sebagai antioksidan yang dapat membantu melawan stres oksidatif akibat radikal bebas. Dengan begitu, konsumsi ekstrak daun bidara dapat mendukung pencegahan diabetes, terutama jika disertai pola hidup sehat.
+            Daun bidara bisa membantu mengendalikan diabetes dengan membuat penggunaan insulin 
+            untuk menyerap gula darah lebih efektif. Kandungan saponin dan flavonoid di dalam 
+            daun bidara bekerja sebagai antioksidan yang dapat membantu melawan stres oksidatif 
+            akibat radikal bebas. Dengan begitu, konsumsi ekstrak daun bidara dapat mendukung 
+            pencegahan diabetes, terutama jika disertai pola hidup sehat.
         """,
         "tautan_artikel": "https://hellosehat.com/herbal-alternatif/herbal/daun-bidara/",
         "tautan_jurnal": "https://doi.org/10.26740/icaj.v6i2.32598",
@@ -60,7 +66,25 @@ herbal_info = {
             "Rebus 600ml air hingga mendidih lalu masukkan daun bidara.",
             "Masak selama 20 menit dengan api kecil.",
             "Peras jeruk nipis. Tambahkan gula sesuai selera.",
-            "Untuk menghindari risiko efek samping, disarankan untuk mengonsumsi dalam jumlah yang wajar dan tidak lebih dari dua kali sehari. Jika memiliki kondisi medis tertentu, konsultasikan terlebih dahulu dengan dokter sebelum mengonsumsi rebusan sambiloto.",
+            "Untuk menghindari risiko efek samping, disarankan untuk mengonsumsi dalam jumlah yang wajar. Jika memiliki kondisi medis tertentu, konsultasikan terlebih dahulu dengan dokter sebelum mengonsumsi rebusan ini.",
+        ]
+    },
+
+    "Pandanus amaryllifolius": {
+        "nama_umum": ["Pandan wangi", "Pandan", "Pandan rampe", "Pandan arrum"],
+        "status": "Tanaman herbal antidiabetes",
+        "informasi": """
+            Pandanus amaryllifolius adalah tanaman tropis yang umum dikenal sebagai pandan. Daun pandan mengandung senyawa seperti flavonoid, tanin, dan polifenol. Menurut sebuah studi dalam jurnal Pharmacognosy Magazine, ekstrak pandan mampu merangsang produksi hormon insulin dari pankreas.
+        """,
+        "tautan_artikel": "https://share.google/BTrQ3MBtqbTndrJvO",
+        "tautan_jurnal": "https://share.google/gjM9cfXFP00DH7rjF",
+        "cara_mengolah": [
+            "Siapkan 3-4 lembar daun pandan(segar atau kering), 500 ml air, dan pemanis alami(jika diperlukan).",
+            "Cuci bersih daun pandan di bawah air mengalir lalu potong menjadi beberapa bagian.",
+            "Rebus 500ml air hingga mendidih lalu masukkan potongan daun pandan.",
+            "Biarkan daun pandan direbus selama 10-15 menit hingga air berubah warna menjadi hijau kekuningan.",
+            "Saring air rebusan dan tuangkan ke dalam gelas (tambahkan pemanis alami jika diperlukan).",
+            "Untuk menghindari risiko efek samping, disarankan untuk mengonsumsi dalam jumlah yang wajar. Jika memiliki kondisi medis tertentu, konsultasikan terlebih dahulu dengan dokter sebelum mengonsumsi rebusan ini.",
         ]
     },
 }
