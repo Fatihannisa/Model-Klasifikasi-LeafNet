@@ -231,7 +231,14 @@ if st.session_state.page == "upload":
         ex_cols = st.columns(4)
         for col, path in zip(ex_cols, example_paths):
             with col:
-                st.image(path, width=150)
+                st.markdown(
+                    """
+                    <div style="margin-left: 30px;">
+                        <img src="{}" width="150">
+                    </div>
+                    """.format(path),
+                    unsafe_allow_html=True
+                )
 
 # =======================
 # === HALAMAN HASIL =====
