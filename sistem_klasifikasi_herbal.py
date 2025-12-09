@@ -193,9 +193,9 @@ div[data-testid="column"] > div {
 
 /* DISCLAIMER BOX ADAPTIVE */
 .disclaimer-box {
-    padding: 30px 18px;
+    padding: 12px 18px;
     border-radius: 10px;
-    margin-top: 30px;
+    margin-top: 60px;
     font-size: 15px;
     line-height: 1.45;
 }
