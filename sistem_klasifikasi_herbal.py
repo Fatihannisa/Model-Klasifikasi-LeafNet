@@ -2,6 +2,13 @@ import streamlit as st
 import numpy as np
 from PIL import Image
 import tensorflow as tf
+import streamlit.components.v1 as components
+import base64
+
+def load_base64(path):
+    with open(path, "rb") as f:
+        data = f.read()
+    return base64.b64encode(data).decode()
 
 # =========================
 # ----- LOAD MODEL --------
@@ -189,12 +196,25 @@ div[data-testid="column"] > div {
 
 
 # ---- HEADER ----
-st.markdown("""
-    <div class="header-adaptive" style="padding-left:20px; border-radius:0px; width:100%; display:flex; justify-content:space-between; align-items:center;">
-        <h1 style='font-size:30px; font-weight:700;'>DiaHerb</h1>
+components.html(f"""
+    <div style="
+        padding:12px 20px; 
+        width:100%; 
+        display:flex; 
+        align-items:center;
+        gap:14px;
+    ">
+        <img src="data:image/png;base64,{logo_base64}"
+             style="height:40px; width:auto;
+             filter: drop-shadow(0px 0px 4px rgba(0,0,0,0.35));">
+
+        <h1 style="font-size:30px; margin:0; font-weight:700;">
+            DiaHerb
+        </h1>
     </div>
     <hr>
-""", unsafe_allow_html=True)
+""", height=80)
+
 
 # -------------------------------
 # PAGE SELECTOR
