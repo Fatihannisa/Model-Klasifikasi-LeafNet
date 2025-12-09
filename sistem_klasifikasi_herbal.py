@@ -210,15 +210,15 @@ if st.session_state.page == "upload":
 
     with col2:
         st.markdown("""
-            <b style="font-size:20px; font-weight:500; margin-left:30px;">Tips pengambilan gambar:</b>
-            <ul>
+            <b style="font-size:18px; font-weight:700; margin-left:30px;">Tips pengambilan gambar:</b>
+            <ul style="margin-left:30px;">
                 <li>Pastikan helai daun berada tepat di tengah frame kamera</li>
                 <li>Pastikan pencahayaan mencukupi agar model dapat melihat venasi/urat daun</li>
                 <li>Latar belakang daun wajib polos dan berwarna cerah (diutamakan putih)</li>
                 <li>Fokus gambar daun jangan terlalu kecil</li>
             </ul>
     
-            <b style="font-size:20px; font-weight:500; margin-left:30px;">Contoh gambar yang baik:</b>
+            <b style="font-size:18px; font-weight:700; margin-left:30px;">Contoh gambar yang baik:</b>
         """, unsafe_allow_html=True)
 
         # — GAMBAR DALAM BOX YANG SAMA —
