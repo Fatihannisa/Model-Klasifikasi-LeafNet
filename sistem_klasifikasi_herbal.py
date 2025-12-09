@@ -117,9 +117,51 @@ def predict(image: Image.Image):
 # =========================
 st.set_page_config(page_title="Sistem Identifikasi Herbal Antidiabetes Berbasis LeafNet", layout="wide")
 
+# --- GLOBAL ADAPTIVE CSS ---
+st.markdown("""
+<style>
+
+/* Base variables that react to Streamlit theme */
+:root {
+    --bg-box: rgba(255,255,255,0.12);      /* adaptif light/dark */
+    --border-box: rgba(255,255,255,0.22);
+}
+
+/* Dark mode stronger backdrop */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-box: rgba(255,255,255,0.06);
+        --border-box: rgba(255,255,255,0.18);
+    }
+}
+
+/* Universal info box */
+.adaptive-box {
+    background: var(--bg-box);
+    border: 1px solid var(--border-box);
+    padding: 18px;
+    border-radius: 12px;
+    color: inherit;
+}
+
+/* Header adaptif */
+.header-adaptive {
+    background: rgba(240,240,240,0.6);
+}
+
+@media (prefers-color-scheme: dark) {
+    .header-adaptive {
+        background: rgba(255,255,255,0.08);
+    }
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+
 # ---- HEADER ----
 st.markdown("""
-    <div style="background:#f3f3f3; padding-left:20px; border-radius:0px; width:100%; display:flex; justify-content:space-between; align-items:center;">
+    <div class="header-adaptive" style="padding-left:20px; border-radius:0px; width:100%; display:flex; justify-content:space-between; align-items:center;">
         <h1 style='font-size:30px; font-weight:700;'>DiaHerb</h1>
     </div>
     <hr>
@@ -270,9 +312,10 @@ elif st.session_state.page == "result":
         st.markdown("""
             <style>
             .info-box {
-                background: #ededed;
+                background: var(--bg-box);
+                border: 1px solid var(--border-box);
                 padding: 18px;
-                border-radius: 10px;
+                border-radius: 12px;
                 min-height: 340px;
             }
             .section-title {
@@ -311,7 +354,7 @@ elif st.session_state.page == "result":
     # =====================================
     with colB:
         st.markdown(f"""
-            <div style="background:#ededed; padding:18px; border-radius:10px;">
+            <div class="adaptive-box">
                 <b class='section-title'>Status</b><br>
                 <b style="color:#018790; font-weight:400;">{data['status'] if data else "Bukan herbal antidiabetes"}</b><br><br>
                 <b>Tingkat kepercayaan sistem: </b> 
