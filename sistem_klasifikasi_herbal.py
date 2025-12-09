@@ -236,7 +236,7 @@ if st.session_state.page == "upload":
                     <div style="margin-left: 30px;">
                         <img src="{}" width="150">
                     </div>
-                    """.format(path),
+                    """.format(example_paths),
                     unsafe_allow_html=True
                 )
 
