@@ -218,7 +218,6 @@ elif st.session_state.page == "result":
     # KOLOM A — GAMBAR + INFO BOX (KIRI)
     # =====================================
     with colA:
-
         colA1, colA2 = st.columns([1, 1.2])
         
         # --- KIRI: Gambar ---
@@ -227,41 +226,41 @@ elif st.session_state.page == "result":
 
         # --- CSS untuk info box ---
         st.markdown("""
-        <style>
-        .info-box {
-            background: #ededed;
-            padding: 18px;
-            border-radius: 10px;
-            min-height: 340px;
-        }
-        .section-title {
-            font-size: 22px;
-            font-weight: 600;
-            margin-top: 25px;
-        }
-        </style>
+            <style>
+            .info-box {
+                background: #ededed;
+                padding: 18px;
+                border-radius: 10px;
+                min-height: 340px;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+            .section-title {
+                font-size: 22px;
+                font-weight: 600;
+                margin-top: 25px;
+            }
+            </style>
         """, unsafe_allow_html=True)
 
         # --- KANAN: Box Info ---
         with colA2:
-            # ambil list nama umum kalau ada
-            nama_list_html = ""
-            if data:
-                for nm in data["nama_umum"]:
-                    nama_list_html += f"<li>{nm}</li>"
-            else:
-                nama_list_html = "<li>Tidak tersedia</li>"
             st.markdown(f"""
                 <div class="info-box">
-                    <b>Nama Ilmiah:</b><br>
-                    {pred_name}<br>
-        
+                    <b>Nama Ilmiah:</b><br>{pred_name}<br><br>
                     <b>Nama Umum:</b>
-                    <ul>
-                        {nama_list_html}
-                    </ul>
-                </div>
-            """, unsafe_allow_html=True)
+                """, unsafe_allow_html=True)
+    
+            # Menampilkan nama umum TANPA membuat HTML list baru
+            if data and "nama_umum" in data:
+                for nm in data["nama_umum"]:
+                    st.write(f"- {nm}")
+            else:
+                st.write("- Tidak tersedia")
+    
+            # Tutup box
+            st.markdown("</div>", unsafe_allow_html=True)
 
     # =====================================
     # KOLOM B — STATUS + CONFIDENCE (KANAN)
@@ -270,10 +269,9 @@ elif st.session_state.page == "result":
         st.markdown(f"""
             <div style="background:#ededed; padding:18px; border-radius:10px;">
                 <b>Status</b><br>
-                {data['status'] if data else "Tidak tersedia"}<br>
+                {data['status'] if data else "Tidak tersedia"}<br><br>
     
-                <b>Tingkat kepercayaan sistem</b><br>
-                {conf * 100:.2f}%
+                <b>Tingkat kepercayaan sistem</b><br>{conf * 100:.2f}%
             </div>
         """, unsafe_allow_html=True)
 
