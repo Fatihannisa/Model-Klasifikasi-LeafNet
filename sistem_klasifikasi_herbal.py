@@ -247,7 +247,7 @@ elif st.session_state.page == "result":
         """, unsafe_allow_html=True)
 
         # === TAMPILKAN INFO HERBAL HANYA UNTUK 10 TANAMAN HERBAL ===
-        if pred_name in herbal_classes:
+        if pred_name in herbal_info:
             # INFORMASI
             st.markdown("<div style='margin-top:25px;'><b>Informasi</b></div>", unsafe_allow_html=True)
             st.markdown(data["informasi"] if data else "Tidak ada informasi.", unsafe_allow_html=True)
