@@ -49,7 +49,7 @@ herbal_info = {
     },
     
     "Ziziphus mauritiana": {
-        "nama_umum": ["Bidara", "Widara", "Bukol", "Kalangga"],
+        "nama_umum": ["Bidara", "Widara", "Bukol", "Kalangga", "Bukol", "Kalangga"],
         "status": "Tanaman herbal antidiabetes",
         "informasi": """
             Daun bidara bisa membantu mengendalikan diabetes dengan membuat penggunaan insulin 
