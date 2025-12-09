@@ -220,21 +220,39 @@ elif st.session_state.page == "result":
         
         with colA1:
             st.image(img, caption="Gambar yang diunggah", use_column_width=True)
-        
-        with colA2:
-            st.markdown(f"""
-                <div style="background:#ededed; padding:18px; border-radius:10px;">
-                    <b>Nama Ilmiah:</b><br>{pred_name}<br><br>
-                    <b>Nama Umum:</b><br>
-            """, unsafe_allow_html=True)
 
-            if data:
-                for nm in data["nama_umum"]:
-                    st.markdown(f"- {nm}")
-            else:
-                st.markdown("- Tidak tersedia")
-            st.markdown("</div>", unsafe_allow_html=True)
+        # ====================
+        # CSS untuk info-box
+        # ====================
+        st.markdown("""
+        <style>
+        .info-box {
+            background: #ededed;
+            padding: 18px;
+            border-radius: 10px;
+            min-height: 340px;        /* 👉 Atur tinggi minimum box */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        </style>
+        """, unsafe_allow_html=True)
+
+        with colA2:
+        st.markdown(f"""
+            <div class="info-box">
+                <b>Nama Ilmiah:</b><br>{pred_name}<br><br>
     
+                <b>Nama Umum:</b><br>
+        """, unsafe_allow_html=True)
+    
+        if data:
+            for nm in data["nama_umum"]:
+                st.markdown(f"- {nm}")
+        else:
+            st.markdown("- Tidak tersedia")
+        st.markdown("</div>", unsafe_allow_html=True)
+
     # ---- KANAN: STATUS ----
     with colB:
         st.markdown(f"""
@@ -249,25 +267,30 @@ elif st.session_state.page == "result":
         # === TAMPILKAN INFO HERBAL HANYA UNTUK 10 TANAMAN HERBAL ===
         if pred_name in herbal_info:
             # INFORMASI
-            st.markdown("<div style='margin-top:25px;'><b>Informasi</b></div>", unsafe_allow_html=True)
+            st.markdown("<div style='font-size:18px; font-weight:500; margin-top:25px;'><b>Informasi</b></div>", unsafe_allow_html=True)
             st.markdown(data["informasi"] if data else "Tidak ada informasi.", unsafe_allow_html=True)
         
-            # LINK DINAMIS
-            st.markdown('<div style="font-size:18px; font-weight:500; margin-top:15px;">Tautan artikel:</div>', unsafe_allow_html=True)
-            st.text_input("", data["tautan_artikel"] if data else "")
-        
-            st.markdown('<div style="font-size:18px; font-weight:500; margin-top:15px;">Tautan jurnal penelitian:</div>', unsafe_allow_html=True)
-            st.text_input("", data["tautan_jurnal"] if data else "")
+            # === Tautan Artikel ===
+            st.markdown('<div style="font-size:18px; font-weight:500; margin-top:10px;">Tautan artikel:</div>',
+                        unsafe_allow_html=True)
+            st.markdown(f"<a href='{data['tautan_artikel']}' target='_blank'>{data['tautan_artikel']}</a>",
+                        unsafe_allow_html=True)
+            
+            # === Tautan Jurnal ===
+            st.markdown('<div style="font-size:18px; font-weight:500; margin-top:10px;">Tautan jurnal penelitian:</div>',
+                        unsafe_allow_html=True)
+            st.markdown(f"<a href='{data['tautan_jurnal']}' target='_blank'>{data['tautan_jurnal']}</a>",
+                        unsafe_allow_html=True)
         
             # CARA MENGOLAH
-            st.markdown("<b style='margin-top:20px;'>Cara mengolah herbal antidiabetes:</b>", unsafe_allow_html=True)
+            st.markdown("<b style='margin-top:40px; font-size:18px; font-weight:500;'>Cara mengolah herbal antidiabetes:</b>", unsafe_allow_html=True)
             if data:
                 for langkah in data["cara_mengolah"]:
                     st.markdown(f"- {langkah}")
             else:
                 st.markdown("- Tidak ada data.")
         else:
-            st.info("Tanaman ini bukan termasuk 10 herbal antidiabetes, sehingga informasi tambahan tidak ditampilkan.")
+            st.info("<b style='margin-top:30px;'>Tanaman ini bukan termasuk 10 herbal antidiabetes, sehingga informasi tambahan tidak ditampilkan.")
     
     # Tambah jarak sebelum tombol kembali
     st.markdown("<div style='height:20px;'></div>", unsafe_allow_html=True)
