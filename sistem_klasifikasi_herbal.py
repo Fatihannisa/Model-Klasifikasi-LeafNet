@@ -243,19 +243,20 @@ elif st.session_state.page == "result":
 
         # --- KANAN: Box Info ---
         with colA2:
-            st.markdown(f"""
-                <div class="info-box">
-                    <b>Nama Ilmiah:</b><br>{pred_name}<br><br>
-                    <b>Nama Umum:</b>
-            """, unsafe_allow_html=True)
-
-            if data and "nama_umum" in data:
-                for nm in data["nama_umum"]:
-                    st.markdown(f"- {nm}")
-            else:
-                st.markdown("- Tidak tersedia")
-
-            st.markdown("</div>", unsafe_allow_html=True)
+            nama_umum_list = herbal_info.get(pred_name, {}).get("nama_umum", [])
+            html_info = f"""
+            <div class="info-card">
+            
+                <b>Nama Ilmiah:</b><br>
+                {pred_name}<br><br>
+            
+                <b>Nama Umum:</b>
+                <ul class="custom-list">
+                    {''.join(f'<li>{nm}</li>' for nm in nama_umum_list)}
+                </ul>
+            </div>
+            """
+            st.markdown(html_info, unsafe_allow_html=True)
 
     # =====================================
     # KOLOM B — STATUS + CONFIDENCE (KANAN)
