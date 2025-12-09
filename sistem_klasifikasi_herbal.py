@@ -122,93 +122,94 @@ st.markdown("""
 <style>
 
 /* ======================================
-     BUTTON BASE – STREAMLIT OVERRIDE
+   THEME VARIABLES (Light & Dark Adaptif)
    ====================================== */
-
 :root {
-    /* Light */
-    --btn-bg: rgba(255,255,255,0.55);
-    --btn-border: rgba(0,0,0,0.25);
-    --btn-shadow: rgba(0,0,0,0.13);
+    /* Light mode */
+    --bg-box: rgba(255, 255, 255, 0.55);
+    --bg-box-blur: blur(12px);
+    --border-box: rgba(180, 180, 180, 0.55);
+    --shadow-box: rgba(0, 0, 0, 0.08);
 
-    --btn-hover-bg: rgba(255,255,255,0.75);
-    --btn-hover-border: rgba(0,0,0,0.35);
-    --btn-hover-shadow: rgba(0,0,0,0.2);
+    --bg-uploader: rgba(255,255,255,0.65);
+    --border-uploader: rgba(160,160,160,0.55);
+    --shadow-uploader: rgba(0,0,0,0.12);
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        /* Dark */
-        --btn-bg: rgba(40,40,40,0.45);
-        --btn-border: rgba(255,255,255,0.28);
-        --btn-shadow: rgba(0,0,0,0.65);
+        /* Dark mode */
+        --bg-box: rgba(40, 40, 40, 0.45);
+        --bg-box-blur: blur(14px);
+        --border-box: rgba(80, 80, 80, 0.55);
+        --shadow-box: rgba(0, 0, 0, 0.6);
 
-        --btn-hover-bg: rgba(60,60,60,0.55);
-        --btn-hover-border: rgba(255,255,255,0.38);
-        --btn-hover-shadow: rgba(0,0,0,0.8);
+        --bg-uploader: rgba(30,30,30,0.45);
+        --border-uploader: rgba(80,80,80,0.5);
+        --shadow-uploader: rgba(0,0,0,0.7);
     }
 }
 
-/* ==========================
-   APPLY TO ALL STREAMLIT BUTTON
-   ========================== */
-div.stButton > button {
-    background: var(--btn-bg) !important;
-    border: 2px solid var(--btn-border) !important;
+/* =======================================================
+   GLASS EFFECT + SOFT SHADOW (info box + status box)
+   ======================================================= */
+.info-box, 
+.adaptive-box {
+    background: var(--bg-box) !important;
+    backdrop-filter: var(--bg-box-blur) !important;
+    -webkit-backdrop-filter: var(--bg-box-blur) !important;
+
+    border: 1px solid var(--border-box) !important;
+    padding: 20px;
+    border-radius: 16px;
+
+    box-shadow: 0 4px 12px var(--shadow-box);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+/* Hover: naik & glowing */
+.info-box:hover,
+.adaptive-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px var(--shadow-box);
+}
+
+/* =======================================================
+   FILE UPLOADER – GLASS STYLE + HOVER
+   ======================================================= */
+[data-testid="stFileUploader"] section {
+    background: var(--bg-uploader) !important;
     backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
 
-    padding: 12px 22px !important;
-    border-radius: 12px !important;
+    border: 3px dashed var(--border-uploader) !important;
+    padding: 60px !important;
+    border-radius: 22px !important;
+    min-height: 260px !important;
 
+    box-shadow: 0 4px 12px var(--shadow-uploader);
+    transition: 0.25s ease;
+}
+
+/* Hover: scale + vivid border */
+[data-testid="stFileUploader"] section:hover {
+    transform: scale(1.015);
+    border-color: #00c2ff !important;
+    box-shadow: 0 8px 20px var(--shadow-uploader);
+}
+
+/* Biar teks match tema */
+[data-testid="stFileUploader"] * {
     color: inherit !important;
-    font-weight: 600 !important;
-    font-size: 17px !important;
-
-    box-shadow: 0 4px 10px var(--btn-shadow) !important;
-    transition: 0.25s ease !important;
 }
 
-/* ===== Hover: kuat, naik, solid ===== */
-div.stButton > button:hover {
-    background: var(--btn-hover-bg) !important;
-    border-color: var(--btn-hover-border) !important;
-    box-shadow: 0 6px 18px var(--btn-hover-shadow) !important;
-
-    transform: translateY(-3px) scale(1.03);
-}
-
-/* ===== Active: klik efek ===== */
-div.stButton > button:active {
-    transform: scale(0.97) !important;
-    box-shadow: 0 3px 8px var(--btn-shadow) !important;
-}
-
-/* ==========================
-   FILE UPLOADER – BUTTON “Browse”
-   ========================== */
-[data-testid="stFileUploader"] button {
-    background: var(--btn-bg) !important;
-    border: 2px solid var(--btn-border) !important;
-    backdrop-filter: blur(10px) !important;
-
-    padding: 8px 18px !important;
-    border-radius: 10px !important;
-
-    color: inherit !important;
-    font-weight: 600 !important;
-    box-shadow: 0 3px 10px var(--btn-shadow) !important;
-    transition: 0.25s ease !important;
-}
-
-[data-testid="stFileUploader"] button:hover {
-    background: var(--btn-hover-bg) !important;
-    border-color: var(--btn-hover-border) !important;
-    transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 6px 16px var(--btn-hover-shadow) !important;
-}
-
-[data-testid="stFileUploader"] button:active {
-    transform: scale(0.97) !important;
+/* =======================================================
+   TITLES
+   ======================================================= */
+.section-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 20px;
 }
 
 </style>
