@@ -187,18 +187,35 @@ if st.session_state.page == "upload":
             else:
                 st.warning("Silakan unggah gambar terlebih dahulu.")
 
-    with col2:
+    with colB:  # box tips kamu
+        # Box tips (teks)
         st.markdown("""
-            <div style="padding:20px; background:#f2f2f2; border-radius:12px;">
-                <b>Tips pengambilan gambar:</b>
-                <ul>
-                    <li>Pastikan helai daun berada tepat di tengah frame kamera</li>
-                    <li>Pastikan pencahayaan mencukupi agar model dapat melihat venasi/urat daun</li>
-                    <li>Latar belakang daun wajib polos dan berwarna cerah (diutamakan putih)</li>
-                    <li>Fokus gambar daun jangan terlalu kecil</li>
-                </ul>
-            </div>
+        <div class="info-box">
+            <b class='section-title'>Tips pengambilan gambar:</b>
+            <ul>
+                <li>Pastikan helai daun berada tepat di tengah frame kamera</li>
+                <li>Pastikan pencahayaan mencukupi agar model dapat melihat venasi/urat daun</li>
+                <li>Latar belakang daun wajib polos dan berwarna cerah (diutamakan putih)</li>
+                <li>Fokus gambar daun jangan terlalu kecil</li>
+            </ul>
+            <b class='section-title'>Contoh gambar yang baik:</b>
         """, unsafe_allow_html=True)
+    
+        # Grid 3-4 gambar contoh
+        ex_cols = st.columns(4)
+    
+        example_paths = [
+            "examples/good1.jpg",
+            "examples/good2.jpg",
+            "examples/good3.jpg",
+            "examples/good4.jpg"
+        ]
+        
+        for col, path in zip(ex_cols, example_paths):
+            with col:
+                st.image(path, width=120, use_container_width=False)
+    
+        st.markdown("</div>", unsafe_allow_html=True)
 
 # =======================
 # === HALAMAN HASIL =====
