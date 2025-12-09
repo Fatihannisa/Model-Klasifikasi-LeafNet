@@ -192,12 +192,6 @@ if st.session_state.page == "upload":
     # =============================
     st.markdown("""
     <style>
-    
-        /* Tambah jarak antara col1 dan col2 */
-        div[data-testid="column"]:nth-child(2) {
-            padding: 40px !important;
-        }
-    
         /* Rapatkan jarak antar gambar dalam kolom */
         div[data-testid="column"] div:has(img) {
             padding-right: 5px !important;
@@ -216,7 +210,7 @@ if st.session_state.page == "upload":
 
     with col2:
         st.markdown("""
-            <b class='section-title'>Tips pengambilan gambar:</b>
+            <b style="font-size:20px; font-weight:500; margin-left:30px;">Tips pengambilan gambar:</b>
             <ul>
                 <li>Pastikan helai daun berada tepat di tengah frame kamera</li>
                 <li>Pastikan pencahayaan mencukupi agar model dapat melihat venasi/urat daun</li>
@@ -224,7 +218,7 @@ if st.session_state.page == "upload":
                 <li>Fokus gambar daun jangan terlalu kecil</li>
             </ul>
     
-            <b class='section-title'>Contoh gambar yang baik:</b>
+            <b style="font-size:20px; font-weight:500; margin-left:30px;">Contoh gambar yang baik:</b>
         """, unsafe_allow_html=True)
 
         # — GAMBAR DALAM BOX YANG SAMA —
