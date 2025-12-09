@@ -231,7 +231,7 @@ if st.session_state.page == "upload":
         ] 
         for col, path in zip(ex_cols, example_paths): 
             with col: 
-                st.image(path, width=120, use_container_width=False)
+                st.image(path, width=100)
 
 # =======================
 # === HALAMAN HASIL =====
