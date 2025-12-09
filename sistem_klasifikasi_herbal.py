@@ -195,117 +195,117 @@ if st.session_state.page == "upload":
             </div>
         """, unsafe_allow_html=True)
 
-    # =======================
-    # === HALAMAN HASIL =====
-    # =======================
-    elif st.session_state.page == "result":
-    
-        st.markdown("""
-            <h2 style="margin:0; font-size:55px; font-weight:600; text-align:center;">
-                Hasil Identifikasi
-            </h2>
-        """, unsafe_allow_html=True)
-    
-        img = Image.open(st.session_state.image)
-        pred_name, conf = predict(img)
-    
-        # ambil data dari database
-        data = herbal_info.get(pred_name, None)
-    
-        colA, colB = st.columns([1.5,1])
-    
-        # =====================================
-        # KOLOM A — GAMBAR + INFO BOX (KIRI)
-        # =====================================
-        with colA:
-    
-            colA1, colA2 = st.columns([1, 1.2])
-            
-            # --- KIRI: Gambar ---
-            with colA1:
-                st.image(img, caption="Gambar yang diunggah", use_column_width=True)
-    
-            # --- CSS untuk info box ---
+        # =======================
+        # === HALAMAN HASIL =====
+        # =======================
+        elif st.session_state.page == "result":
+        
             st.markdown("""
-            <style>
-            .info-box {
-                background: #ededed;
-                padding: 18px;
-                border-radius: 10px;
-                min-height: 340px;
-            }
-            .section-title {
-                font-size: 22px;
-                font-weight: 600;
-                margin-top: 25px;
-            }
-            </style>
+                <h2 style="margin:0; font-size:55px; font-weight:600; text-align:center;">
+                    Hasil Identifikasi
+                </h2>
             """, unsafe_allow_html=True)
-    
-            # --- KANAN: Box Info ---
-            with colA2:
-                st.markdown(f"""
-                    <div class="info-box">
-                        <b>Nama Ilmiah:</b><br>{pred_name}<br><br>
-                        <b>Nama Umum:</b>
+        
+            img = Image.open(st.session_state.image)
+            pred_name, conf = predict(img)
+        
+            # ambil data dari database
+            data = herbal_info.get(pred_name, None)
+        
+            colA, colB = st.columns([1.5,1])
+        
+            # =====================================
+            # KOLOM A — GAMBAR + INFO BOX (KIRI)
+            # =====================================
+            with colA:
+        
+                colA1, colA2 = st.columns([1, 1.2])
+                
+                # --- KIRI: Gambar ---
+                with colA1:
+                    st.image(img, caption="Gambar yang diunggah", use_column_width=True)
+        
+                # --- CSS untuk info box ---
+                st.markdown("""
+                <style>
+                .info-box {
+                    background: #ededed;
+                    padding: 18px;
+                    border-radius: 10px;
+                    min-height: 340px;
+                }
+                .section-title {
+                    font-size: 22px;
+                    font-weight: 600;
+                    margin-top: 25px;
+                }
+                </style>
                 """, unsafe_allow_html=True)
-    
-                if data and "nama_umum" in data:
-                    for nm in data["nama_umum"]:
-                        st.markdown(f"- {nm}")
-                else:
-                    st.markdown("- Tidak tersedia")
-    
-                st.markdown("</div>", unsafe_allow_html=True)
-    
-        # =====================================
-        # KOLOM B — STATUS + CONFIDENCE (KANAN)
-        # =====================================
-        with colB:
-            st.markdown(f"""
-                <div style="background:#ededed; padding:18px; border-radius:10px;">
-                    <b>Status</b><br>
-                    {data['status'] if data else "Tidak tersedia"}<br><br>
-    
-                    <b>Tingkat kepercayaan sistem</b><br>
-                    {conf*100:.2f}%
-                </div>
-            """, unsafe_allow_html=True)
-    
-        # =====================================
-        # BAGIAN INFORMASI — KEMBALI KE POSISI AWAL
-        # (di bawah colA, bukan di colB)
-        # =====================================
-        st.markdown("<div class='section-title'>Informasi</div>", unsafe_allow_html=True)
-        st.markdown(data["informasi"] if data else "Tidak ada informasi.", unsafe_allow_html=True)
-    
-        # === Tautan Artikel ===
-        st.markdown("<div class='section-title'>Link Artikel</div>", unsafe_allow_html=True)
-        st.markdown(
-            f"<a href='{data['tautan_artikel']}' target='_blank'>{data['tautan_artikel']}</a>"
-            if data else "Tidak ada link.",
-            unsafe_allow_html=True
-        )
-    
-        # === Tautan Jurnal Penelitian ===
-        st.markdown("<div class='section-title'>Link Jurnal Penelitian</div>", unsafe_allow_html=True)
-        st.markdown(
-            f"<a href='{data['tautan_jurnal']}' target='_blank'>{data['tautan_jurnal']}</a>"
-            if data else "Tidak ada link.",
-            unsafe_allow_html=True
-        )
-    
-        # === Cara Mengolah ===
-        st.markdown("<div class='section-title'>Cara Mengolah</div>", unsafe_allow_html=True)
-        if data:
-            for langkah in data["cara_mengolah"]:
-                st.markdown(f"- {langkah}")
-        else:
-            st.markdown("- Tidak ada data.")
-    
-        # Jarak & tombol kembali
-        st.markdown("<div style='height:25px;'></div>", unsafe_allow_html=True)
-        st.button("⬅️ Kembali", on_click=lambda: (st.session_state.update({"page": "upload"}), st.rerun()))
+        
+                # --- KANAN: Box Info ---
+                with colA2:
+                    st.markdown(f"""
+                        <div class="info-box">
+                            <b>Nama Ilmiah:</b><br>{pred_name}<br><br>
+                            <b>Nama Umum:</b>
+                    """, unsafe_allow_html=True)
+        
+                    if data and "nama_umum" in data:
+                        for nm in data["nama_umum"]:
+                            st.markdown(f"- {nm}")
+                    else:
+                        st.markdown("- Tidak tersedia")
+        
+                    st.markdown("</div>", unsafe_allow_html=True)
+        
+            # =====================================
+            # KOLOM B — STATUS + CONFIDENCE (KANAN)
+            # =====================================
+            with colB:
+                st.markdown(f"""
+                    <div style="background:#ededed; padding:18px; border-radius:10px;">
+                        <b>Status</b><br>
+                        {data['status'] if data else "Tidak tersedia"}<br><br>
+        
+                        <b>Tingkat kepercayaan sistem</b><br>
+                        {conf*100:.2f}%
+                    </div>
+                """, unsafe_allow_html=True)
+        
+            # =====================================
+            # BAGIAN INFORMASI — KEMBALI KE POSISI AWAL
+            # (di bawah colA, bukan di colB)
+            # =====================================
+            st.markdown("<div class='section-title'>Informasi</div>", unsafe_allow_html=True)
+            st.markdown(data["informasi"] if data else "Tidak ada informasi.", unsafe_allow_html=True)
+        
+            # === Tautan Artikel ===
+            st.markdown("<div class='section-title'>Link Artikel</div>", unsafe_allow_html=True)
+            st.markdown(
+                f"<a href='{data['tautan_artikel']}' target='_blank'>{data['tautan_artikel']}</a>"
+                if data else "Tidak ada link.",
+                unsafe_allow_html=True
+            )
+        
+            # === Tautan Jurnal Penelitian ===
+            st.markdown("<div class='section-title'>Link Jurnal Penelitian</div>", unsafe_allow_html=True)
+            st.markdown(
+                f"<a href='{data['tautan_jurnal']}' target='_blank'>{data['tautan_jurnal']}</a>"
+                if data else "Tidak ada link.",
+                unsafe_allow_html=True
+            )
+        
+            # === Cara Mengolah ===
+            st.markdown("<div class='section-title'>Cara Mengolah</div>", unsafe_allow_html=True)
+            if data:
+                for langkah in data["cara_mengolah"]:
+                    st.markdown(f"- {langkah}")
+            else:
+                st.markdown("- Tidak ada data.")
+        
+            # Jarak & tombol kembali
+            st.markdown("<div style='height:25px;'></div>", unsafe_allow_html=True)
+            st.button("⬅️ Kembali", on_click=lambda: (st.session_state.update({"page": "upload"}), st.rerun()))
 
 # ---- FOOTER ----
 st.markdown("""
