@@ -242,7 +242,7 @@ if st.session_state.page == "upload":
                         unsafe_allow_html=True
                     )
                 else:
-                    st.image(path, width=150)
+                    st.image(path, width=100)
 
 # =======================
 # === HALAMAN HASIL =====
