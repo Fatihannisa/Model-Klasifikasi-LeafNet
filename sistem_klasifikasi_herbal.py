@@ -329,7 +329,7 @@ if st.session_state.page == "upload":
     
         /* Hilangkan margin top berlebih pada gambar */
         div[data-testid="column"] div:has(img) {
-            margin-top: 15px !important;
+            margin-top: 5px !important;
         }
     
     </style>
@@ -337,7 +337,7 @@ if st.session_state.page == "upload":
 
     with col2:
         st.markdown("""
-            <b style="font-size:18px; font-weight:600; margin-left:30px;">Tips pengambilan gambar</b>
+            <b style="font-size:18px; font-weight:600; margin-left:30px; margin-top:30px;">Tips pengambilan gambar</b>
             <ul style="margin-left:30px;">
                 <li>Foto 1 helai daun saja.</li>
                 <li>Pastikan helai daun berada tepat di tengah frame kamera.</li>
