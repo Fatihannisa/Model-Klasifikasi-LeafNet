@@ -228,17 +228,11 @@ if st.session_state.page == "upload":
             "images/IMG_20251031_131056.jpg",
             "images/IMG_20251114_161441.jpg"
         ]
-        ex_cols = st.columns(4)
+        
+        ex_cols = st.columns([0.1, 1, 1, 1])   # kolom pertama lebih kecil → efek mirip margin-left
         for col, path in zip(ex_cols, example_paths):
             with col:
-                st.markdown(
-                    """
-                    <div style="margin-left: 30px;">
-                        <img src="{}" width="150">
-                    </div>
-                    """.format(example_paths),
-                    unsafe_allow_html=True
-                )
+                st.image(path, width=150)
 
 # =======================
 # === HALAMAN HASIL =====
