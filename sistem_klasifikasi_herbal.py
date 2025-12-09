@@ -245,7 +245,7 @@ elif st.session_state.page == "result":
         with colA2:
             st.markdown(f"""
                 <div class="info-box">
-                    <b class='section-title'>Nama Ilmiah:</b><br><b style="font-size:40px; font-weight:400;"><i>{pred_name}</i></b><br><br>
+                    <b class='section-title'>Nama Ilmiah:</b><br><b style="font-size:40px; font-weight:300;"><i>{pred_name}</i></b><br><br>
                     <b class='section-title'>Nama Umum:</b>
                 """, unsafe_allow_html=True)
     
