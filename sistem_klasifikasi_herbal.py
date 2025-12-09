@@ -2,7 +2,6 @@ import streamlit as st
 import numpy as np
 from PIL import Image
 import tensorflow as tf
-import streamlit.components.v1 as components
 
 # =========================
 # ----- LOAD MODEL --------
@@ -188,39 +187,11 @@ div[data-testid="column"] > div {
 </style>
 """, unsafe_allow_html=True)
 
-components.html("""
-    <div style="
-        padding:12px 20px; 
-        width:100%; 
-        display:flex; 
-        align-items:center;
-        gap:14px;
-        background:transparent;
-    ">
-        <img src="images/diaherb_logo.png"
-             style="height:40px; width:auto;
-             filter: drop-shadow(0px 0px 4px rgba(0,0,0,0.35));">
-
-        <h1 style="font-size:30px; margin:0; font-weight:700;">
-            DiaHerb
-        </h1>
-    </div>
-    <hr>
-""", height=80)
-
 
 # ---- HEADER ----
-st.markdown(f"""
-    <div class="header-adaptive" 
-         style="padding-left:20px; border-radius:0px; width:100%;
-                display:flex; justify-content:flex-start; align-items:center; gap:12px;">
-        
-        <!-- Logo -->
-        <img src="images/diaherb_logo.png" 
-             style="height:40px; width:auto; filter:drop-shadow(0px 0px 4px rgba(0,0,0,0.35));">
-        
-        <!-- Title -->
-        <h1 style='font-size:30px; font-weight:700; margin:0;'>DiaHerb</h1>
+st.markdown("""
+    <div class="header-adaptive" style="padding-left:20px; border-radius:0px; width:100%; display:flex; justify-content:space-between; align-items:center;">
+        <h1 style='font-size:30px; font-weight:700;'>DiaHerb</h1>
     </div>
     <hr>
 """, unsafe_allow_html=True)
