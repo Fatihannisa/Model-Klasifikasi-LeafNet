@@ -306,7 +306,7 @@ elif st.session_state.page == "result":
         st.markdown("- Tidak ada data.")
 
     # Jarak & tombol kembali
-    st.markdown("<div style='height:25px;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='height:40px;'></div>", unsafe_allow_html=True)
     st.button("⬅️ Kembali", on_click=lambda: (st.session_state.update({"page": "upload"}), st.rerun()))
 
 # ---- FOOTER ----
