@@ -259,8 +259,8 @@ if "page" not in st.session_state:
 if st.session_state.page == "upload":
     
     st.markdown("""
-        <h2 style="margin:0px; margin-bottom:25px; font-size:45px; font-weight:600;">Sistem Identifikasi Daun Herbal Antidiabetes Berbasis Model LeafNet</h2>
-        <p style="font-size:18px; margin-bottom:40px; width:95%;">DiaHerb merupakan sebuah 
+        <h2 style="margin:0px; font-size:45px; font-weight:600;">Sistem Identifikasi Daun Herbal Antidiabetes Berbasis Model LeafNet</h2>
+        <p style="font-size:18px; margin-bottom:70px; width:90%;">DiaHerb merupakan sebuah 
         sistem berbasis teknologi yang dikembangkan untuk mengidentifikasi tanaman herbal 
         antidiabetes berdasarkan citra daun. DiaHerb bertujuan mengidentifikasi tanaman herbal 
         antidiabetes secara tepat untuk mendukung penelitian dan edukasi masyarakat, serta 
