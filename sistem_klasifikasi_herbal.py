@@ -191,6 +191,33 @@ div[data-testid="column"] > div {
     margin-top: 25px;
 }
 
+/* DISCLAIMER BOX ADAPTIVE */
+.disclaimer-box {
+    padding: 12px 18px;
+    border-radius: 10px;
+    margin-top: 30px;
+    font-size: 15px;
+    line-height: 1.45;
+}
+
+/* Light Mode */
+@media (prefers-color-scheme: light) {
+    .disclaimer-box {
+        background: #f8f8f8;
+        color: #333;
+        border: 1px solid #ddd;
+    }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    .disclaimer-box {
+        background: #2a2a2a;
+        color: #e2e2e2;
+        border: 1px solid #444;
+    }
+}
+
 /* FOOTER */
 .custom-footer {
     padding: 10px 0 25px 0;
@@ -452,39 +479,10 @@ elif st.session_state.page == "result":
     st.markdown("<div style='height:70px;'></div>", unsafe_allow_html=True)
     st.button("⬅️ Kembali", on_click=lambda: (st.session_state.update({"page": "upload"}), st.rerun()))
 
-
+# ---- DISCLAIMER BOX ----
 st.markdown("""
-<style>
-/* DISCLAIMER BOX ADAPTIVE */
-.disclaimer-box {
-    padding: 12px 18px;
-    border-radius: 10px;
-    margin-top: 30px;
-    font-size: 15px;
-    line-height: 1.45;
-}
-
-/* Light Mode */
-@media (prefers-color-scheme: light) {
-    .disclaimer-box {
-        background: #f8f8f8;
-        color: #333;
-        border: 1px solid #ddd;
-    }
-}
-
-/* Dark Mode */
-@media (prefers-color-scheme: dark) {
-    .disclaimer-box {
-        background: #2a2a2a;
-        color: #e2e2e2;
-        border: 1px solid #444;
-    }
-}
-</style>
-
 <div class="disclaimer-box">
-    <strong>Disclaimer:</strong><br>
+    <strong><b style="font-size:28px; font-weight:600:">Disclaimer:</b></strong><br>
     <i>Sistem ini dikembangkan sebagai bagian dari penyusunan tugas akhir.
     Hasil prediksi bersifat estimasi dan tidak dimaksudkan sebagai acuan medis atau botani yang bersifat final.
     Validasi tetap disarankan melalui ahli terkait.</i>
