@@ -192,40 +192,29 @@ if st.session_state.page == "upload":
     # =============================
     st.markdown("""
     <style>
-    .info-box {
-        background: #f3f3f3;
-        padding: 20px 25px;
-        border-radius: 16px;
-        margin-top: 5px;
-        margin-bottom: 20px;
-        box-shadow: 0px 3px 10px rgba(0,0,0,0.05);
-    }
     
-    .section-title {
-        font-size: 16px;
-        font-weight: 600;
-    }
+        /* Tambah jarak antara col1 dan col2 */
+        div[data-testid="column"]:nth-child(2) {
+            padding-left: 40px !important;
+        }
     
-    .info-box ul {
-        padding-left: 20px;
-        margin-bottom: 15px;
-    }
+        /* Rapatkan jarak antar gambar dalam kolom */
+        div[data-testid="column"] div:has(img) {
+            padding-right: 5px !important;
+            padding-left: 5px !important;
+            margin-right: 0 !important;
+            margin-left: 0 !important;
+        }
     
-    /* Agar gambar contoh punya jarak dari teks */
-    .example-row {
-        margin-top: 10px;
-    }
-
-    div[data-testid="column"] div:has(img) {
-        margin-top: 0px !important;
-        padding-top: 0px !important;
-    }
+        /* Hilangkan margin top berlebih pada gambar */
+        div[data-testid="column"] div:has(img) {
+            margin-top: 5px !important;
+        }
+    
     </style>
     """, unsafe_allow_html=True)
 
     with col2:
-        st.markdown("<div class='info-box'>", unsafe_allow_html=True)
-        # — TEKS —
         st.markdown("""
             <b class='section-title'>Tips pengambilan gambar:</b>
             <ul>
@@ -236,7 +225,6 @@ if st.session_state.page == "upload":
             </ul>
     
             <b class='section-title'>Contoh gambar yang baik:</b>
-            <div style='height:5px'></div>
         """, unsafe_allow_html=True)
 
         # — GAMBAR DALAM BOX YANG SAMA —
@@ -250,7 +238,6 @@ if st.session_state.page == "upload":
         for col, path in zip(ex_cols, example_paths):
             with col:
                 st.image(path, width=150)
-        st.markdown("</div>", unsafe_allow_html=True)   # TUTUP BOX
 
 # =======================
 # === HALAMAN HASIL =====
