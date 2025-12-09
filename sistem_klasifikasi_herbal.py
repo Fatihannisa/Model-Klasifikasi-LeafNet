@@ -277,12 +277,15 @@ elif st.session_state.page == "result":
     st.markdown(data["informasi"] if data else "Tidak ada informasi.", unsafe_allow_html=True)
 
     # === Tautan Artikel ===
-    st.markdown("<div class='section-title'>Link Artikel: <a href='{data['tautan_artikel']}' target='_blank'>{data['tautan_artikel']}</a>"
-        if data else "Tidak ada link.", </div>", unsafe_allow_html=True)
+    st.markdown("<div class='section-title'>Tautan ke Artikel Terkait: </div>", unsafe_allow_html=True)
+    st.markdown(
+        f"<a href='{data['tautan_artikel']}' target='_blank'>{data['tautan_artikel']}</a>"
+        if data else "Tidak ada link.",
+        unsafe_allow_html=True
     )
 
     # === Tautan Jurnal Penelitian ===
-    st.markdown("<div class='section-title'>Link Jurnal Penelitian</div>", unsafe_allow_html=True)
+    st.markdown("<div class='section-title'>Tautan ke Jurnal Penelitian</div>", unsafe_allow_html=True)
     st.markdown(
         f"<a href='{data['tautan_jurnal']}' target='_blank'>{data['tautan_jurnal']}</a>"
         if data else "Tidak ada link.",
