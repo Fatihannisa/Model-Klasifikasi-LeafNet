@@ -49,7 +49,7 @@ herbal_info = {
     },
     
     "Ziziphus mauritiana": {
-        "nama_umum": ["Bidara", "Widara", "Bukol", "Kalangga", "Bukol", "Kalangga"],
+        "nama_umum": ["Bidara", "Widara", "Bukol", "Kalangga", "Bekul", "Rangga"],
         "status": "Tanaman herbal antidiabetes",
         "informasi": """
             Daun bidara bisa membantu mengendalikan diabetes dengan membuat penggunaan insulin 
@@ -187,7 +187,7 @@ if st.session_state.page == "upload":
             else:
                 st.warning("Silakan unggah gambar terlebih dahulu.")
 
-    with colB:  # box tips kamu
+    with col2:  # box tips kamu
         # Box tips (teks)
         st.markdown("""
         <div class="info-box">
