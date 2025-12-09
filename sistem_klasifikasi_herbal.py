@@ -115,7 +115,7 @@ def predict(image: Image.Image):
 # =========================
 # ------ USER INTERFACE -------
 # =========================
-st.set_page_config(page_title="Sistem Identifikasi Herbal Antidiabetes Berbasis LeafNet", layout="wide")
+st.set_page_config(page_title="Sistem Identifikasi Herbal Antidiabetes Berbasis LeafNet 🌿 ", layout="wide")
 
 # --- GLOBAL ADAPTIVE CSS ---
 st.markdown("""
@@ -192,7 +192,7 @@ div[data-testid="column"] > div {
 # ---- HEADER ----
 st.markdown("""
     <div class="header-adaptive" style="padding-left:20px; border-radius:0px; width:100%; display:flex; justify-content:space-between; align-items:center;">
-        <h1 style='font-size:30px; font-weight:700;'>DiaHerb</h1>
+        <h1 style='font-size:30px; font-weight:700;'>🌿DiaHerb</h1>
     </div>
     <hr>
 """, unsafe_allow_html=True)
@@ -209,8 +209,13 @@ if "page" not in st.session_state:
 if st.session_state.page == "upload":
     
     st.markdown("""
-        <h2 style="margin:0px; font-size:55px; font-weight:600;">Sistem Identifikasi Daun Herbal Antidiabetes Berbasis Model LeafNet</h2>
-        <p style="font-size:18px; margin-bottom:40px; width:95%;">DiaHerb merupakan sebuah sistem berbasis website yang dibangun untuk membantu mengidentifikasi daun herbal antidiabetes yang mirip secara morfologi dengan tanaman lain. Sistem ini dibangun menggunakan teknologi Deep Learning dan Computer Vision.</p>
+        <h2 style="margin:0px; font-size:45px; font-weight:600;">Sistem Identifikasi Daun Herbal Antidiabetes Berbasis Model LeafNet</h2>
+        <p style="font-size:18px; margin-bottom:40px; width:95%;">DiaHerb merupakan sebuah 
+        sistem berbasis teknologi yang dikembangkan untuk mengidentifikasi tanaman herbal 
+        antidiabetes berdasarkan citra daun. DiaHerb bertujuan mengidentifikasi tanaman herbal 
+        antidiabetes secara tepat untuk mendukung penelitian dan edukasi masyarakat, serta 
+        mempromosikan potensi tanaman herbal lokal Indonesia. Sistem ini dibangun berbasis Deep 
+        Learning menggunakan Model LeafNet yang diintegrasikan dengan Transfer Learning untuk menganalisis ciri pada daun.</p>
     """, unsafe_allow_html=True)
 
     col1, col2 = st.columns([1.6,1.2])
