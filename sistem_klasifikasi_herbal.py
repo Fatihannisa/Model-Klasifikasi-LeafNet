@@ -153,7 +153,7 @@ if st.session_state.page == "upload":
             padding: 60px !important;
             border-radius: 20px !important;
             background: #fafafa;
-            min-height: 220px !important;
+            min-height: 260px !important;
         }
         /* Pastikan kolom kiri & kanan sejajar di atas */
         div[data-testid="column"] > div {
