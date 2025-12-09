@@ -266,9 +266,9 @@ elif st.session_state.page == "result":
         st.markdown(f"""
             <div style="background:#ededed; padding:18px; border-radius:10px;">
                 <b class='section-title'>Status</b><br>
-                {data['status'] if data else "Tidak tersedia"}<br><br>
+                <b style="color:#018790;">{data['status'] if data else "Bukan herbal antidiabetes"}</b><br><br>
                 <b>Tingkat kepercayaan sistem: </b> 
-                <b style="color:#FF0000;">{conf * 100:.2f}% </b>
+                <b style="color:#018790;">{conf * 100:.2f}% </b>
             </div>
         """, unsafe_allow_html=True)
 
