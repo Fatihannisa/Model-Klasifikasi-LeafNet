@@ -76,8 +76,8 @@ herbal_info = {
         "informasi": """
             Pandanus amaryllifolius adalah tanaman tropis yang umum dikenal sebagai pandan. Daun pandan mengandung senyawa seperti flavonoid, tanin, dan polifenol. Menurut sebuah studi dalam jurnal Pharmacognosy Magazine, ekstrak pandan mampu merangsang produksi hormon insulin dari pankreas.
         """,
-        "tautan_artikel": "https://share.google/BTrQ3MBtqbTndrJvO",
-        "tautan_jurnal": "https://share.google/gjM9cfXFP00DH7rjF",
+        "tautan_artikel": "https://www.halodoc.com/artikel/manfaat-daun-pandan-dan-efek-sampingnya-bagi-tubuh?srsltid=AfmBOoq7fJ-Up5emjKX-zFlcgvMiiFUf-myDu9zotaOuc1uwwwfuYXun",
+        "tautan_jurnal": "https://ejurnalmalahayati.ac.id/index.php/kebidanan/article/view/3024/pdf",
         "cara_mengolah": [
             "Siapkan 3-4 lembar daun pandan(segar atau kering), 500 ml air, dan pemanis alami(jika diperlukan).",
             "Cuci bersih daun pandan di bawah air mengalir lalu potong menjadi beberapa bagian.",
