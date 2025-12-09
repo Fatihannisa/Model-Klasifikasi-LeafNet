@@ -229,9 +229,20 @@ if st.session_state.page == "upload":
             "images/IMG_20251031_131056.jpg", 
             "images/IMG_20251114_161441.jpg" 
         ] 
-        for col, path in zip(ex_cols, example_paths): 
-            with col: 
-                st.image(path, width=150)
+        for i, (col, path) in enumerate(zip(ex_cols, example_paths)):
+            with col:
+                if i == 0:
+                    # Geser gambar pertama 30px ke kanan
+                    st.markdown(
+                        f"""
+                        <div style="margin-left:30px;">
+                            <img src="{path}" width="150">
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
+                else:
+                    st.image(path, width=150)
 
 # =======================
 # === HALAMAN HASIL =====
