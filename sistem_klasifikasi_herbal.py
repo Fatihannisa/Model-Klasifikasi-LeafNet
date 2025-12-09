@@ -191,6 +191,28 @@ div[data-testid="column"] > div {
     margin-top: 25px;
 }
 
+/* FOOTER ADAPTIF */
+.custom-footer {
+    padding: 12px 0 20px 0;
+    text-align: center;
+    border-radius: 10px;
+}
+
+/* Light Mode */
+@media (prefers-color-scheme: light) {
+    .custom-footer {
+        background: #f2f2f2 !important;
+        color: #000 !important;
+    }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    .custom-footer {
+        background: #1e1e1e !important;
+        color: #eaeaea !important;
+    }
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -444,56 +466,49 @@ elif st.session_state.page == "result":
     st.markdown("<div style='height:70px;'></div>", unsafe_allow_html=True)
     st.button("⬅️ Kembali", on_click=lambda: (st.session_state.update({"page": "upload"}), st.rerun()))
 
-# ---- FOOTER ----
+
 st.markdown("""
 <style>
-    main > div { padding-bottom: 0 !important; margin-bottom: 0 !important; }
-    .custom-footer { 
-        margin: 0 !important; 
-        padding: 0 !important; 
-        font-size: 14px; 
-        color: #e6edf3;
+/* DISCLAIMER BOX ADAPTIVE */
+.disclaimer-box {
+    padding: 12px 18px;
+    border-radius: 10px;
+    margin-top: 30px;
+    font-size: 15px;
+    line-height: 1.45;
+}
+
+/* Light Mode */
+@media (prefers-color-scheme: light) {
+    .disclaimer-box {
+        background: #f8f8f8;
+        color: #333;
+        border: 1px solid #ddd;
     }
-    .footer-box {
-        background: #0d1117;
-        padding: 20px;
-        border-radius: 10px;
-        margin-top: 30px;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    .disclaimer-box {
+        background: #2a2a2a;
+        color: #e2e2e2;
+        border: 1px solid #444;
     }
-    .footer-disclaimer {
-        background:#161b22; 
-        padding:15px; 
-        border-radius:8px; 
-        margin-top:10px;
-        font-size: 13px;
-        opacity: 0.9;
-        line-height: 1.4;
-    }
-    .footer-link {
-        color: #58a6ff !important;
-        text-decoration: none;
-    }
+}
 </style>
+
+<div class="disclaimer-box">
+    <strong>Disclaimer:</strong><br>
+    Sistem klasifikasi herbal ini dikembangkan sebagai bagian dari penyusunan tugas akhir.
+    Hasil prediksi bersifat estimasi dan tidak dimaksudkan sebagai acuan medis atau botani yang bersifat final.
+    Validasi tetap disarankan melalui literatur ilmiah atau ahli terkait.
+</div>
 """, unsafe_allow_html=True)
 
+# ---- FOOTER ----
 st.markdown("""
 <div class="custom-footer">
-    <div class="footer-box">
-        <center><strong>Klasifikasi Herbal Antidiabetes Berbasis Model LeafNet</strong></center>
-        <center>211401034 — Listy Zulmi</center>
-        <center>©2025 | Tugas Akhir/Skripsi</center>
-
-        st.markdown("""
-        <div class="footer-disclaimer">
-            <strong>Disclaimer:</strong>
-            <p style="margin:8px 0 0 0; line-height:1.45;">
-                Sistem klasifikasi herbal ini dikembangkan untuk kebutuhan akademik dalam rangka penyusunan tugas akhir.
-                Hasil prediksi bersifat estimasi dan tidak dimaksudkan sebagai acuan medis atau botani yang bersifat final.
-                Verifikasi tetap diperlukan melalui referensi ilmiah atau ahli terkait.
-            </p>
-        </div>
-        </div>
-        """, unsafe_allow_html=True)
-    </div>
+    <hr>
+    ©2025 | Klasifikasi Herbal Antidiabetes Berbasis Model LeafNet | 211401034 | Listy Zulmi
 </div>
 """, unsafe_allow_html=True)
