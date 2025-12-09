@@ -189,9 +189,17 @@ div[data-testid="column"] > div {
 
 
 # ---- HEADER ----
-st.markdown("""
-    <div class="header-adaptive" style="padding-left:20px; border-radius:0px; width:100%; display:flex; justify-content:space-between; align-items:center;">
-        <h1 style='font-size:30px; font-weight:700;'>DiaHerb</h1>
+st.markdown(f"""
+    <div class="header-adaptive" 
+         style="padding-left:20px; border-radius:0px; width:100%;
+                display:flex; justify-content:flex-start; align-items:center; gap:12px;">
+        
+        <!-- Logo -->
+        <img src="images/diaherb_logo.png" 
+             style="height:40px; width:auto; filter:drop-shadow(0px 0px 4px rgba(0,0,0,0.35));">
+        
+        <!-- Title -->
+        <h1 style='font-size:30px; font-weight:700; margin:0;'>DiaHerb</h1>
     </div>
     <hr>
 """, unsafe_allow_html=True)
