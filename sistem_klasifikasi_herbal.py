@@ -145,7 +145,7 @@ if st.session_state.page == "upload":
     col1, col2 = st.columns([1.6,1.2])
 
     with col1:
-        # CUSTOM CSS – UBAH FILE UPLOADER JADI KOTAK BESAR KEREN
+        # CUSTOM CSS – UBAH FILE UPLOADER JADI KOTAK BESAR
         st.markdown("""
         <style>
         [data-testid="stFileUploader"] section {
@@ -153,6 +153,7 @@ if st.session_state.page == "upload":
             padding: 60px !important;
             border-radius: 20px !important;
             background: #fafafa;
+            min-height: 220px !important;
         }
         /* Pastikan kolom kiri & kanan sejajar di atas */
         div[data-testid="column"] > div {
