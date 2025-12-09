@@ -205,7 +205,7 @@ components.html(f"""
         align-items:center;
     ">
         <img src="data:image/png;base64,{logo_base64}"
-             style="height:60px; width:auto;
+             style="height:100px; width:auto;
              filter: drop-shadow(0px 0px 4px rgba(0,0,0,0.35));">
     </div>
     <hr>
