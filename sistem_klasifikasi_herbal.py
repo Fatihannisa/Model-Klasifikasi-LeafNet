@@ -245,7 +245,7 @@ elif st.session_state.page == "result":
         with colA2:
             st.markdown(f"""
                 <div class="info-box">
-                    <b class='section-title'>Nama Ilmiah:</b><br style="font-size:30px;">{pred_name}<br><br>
+                    <b class='section-title'>Nama Ilmiah:</b><br><b style="font-size:30px;">{pred_name}</b><br><br>
                     <b class='section-title'>Nama Umum:</b>
                 """, unsafe_allow_html=True)
     
@@ -267,7 +267,7 @@ elif st.session_state.page == "result":
             <div style="background:#ededed; padding:18px; border-radius:10px;">
                 <b class='section-title'>Status</b><br>
                 {data['status'] if data else "Tidak tersedia"}<br><br>
-                <b class='section-title'>Tingkat kepercayaan sistem: </b>{conf * 100:.2f}%
+                <b>Tingkat kepercayaan sistem: </b>{conf * 100:.2f}%
             </div>
         """, unsafe_allow_html=True)
 
