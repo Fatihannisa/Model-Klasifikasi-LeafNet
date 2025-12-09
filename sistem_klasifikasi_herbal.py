@@ -221,18 +221,17 @@ if st.session_state.page == "upload":
             <b style="font-size:18px; font-weight:600; margin-left:30px;">Contoh gambar yang baik:</b>
         """, unsafe_allow_html=True)
 
-        # — GAMBAR DALAM BOX YANG SAMA —
-        example_paths = [
-            "images/IMG_20251028_152831.jpg",
-            "images/IMG_20251029_170845.jpg",
-            "images/IMG_20251031_131056.jpg",
-            "images/IMG_20251114_161441.jpg"
-        ]
-        
-        ex_cols = st.columns([0.1, 1, 1, 1])   # kolom pertama lebih kecil → efek mirip margin-left
-        for col, path in zip(ex_cols, example_paths):
-            with col:
-                st.image(path, width=150)
+        # Grid 3-4 gambar contoh 
+        ex_cols = st.columns(4) 
+        example_paths = [ 
+            "images/IMG_20251028_152831.jpg", 
+            "images/IMG_20251029_170845.jpg", 
+            "images/IMG_20251031_131056.jpg", 
+            "images/IMG_20251114_161441.jpg" 
+        ] 
+        for col, path in zip(ex_cols, example_paths): 
+            with col: 
+                st.image(path, width=120, use_container_width=False)
 
 # =======================
 # === HALAMAN HASIL =====
