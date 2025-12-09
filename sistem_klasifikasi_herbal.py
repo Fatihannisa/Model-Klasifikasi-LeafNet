@@ -218,9 +218,12 @@ elif st.session_state.page == "result":
     with colA:
         colA1, colA2 = st.columns([1, 1.2])
         
+        # ====================
+        # KIRI: Gambar
+        # ====================
         with colA1:
             st.image(img, caption="Gambar yang diunggah", use_column_width=True)
-
+    
         # ====================
         # CSS untuk info-box
         # ====================
@@ -230,28 +233,33 @@ elif st.session_state.page == "result":
             background: #ededed;
             padding: 18px;
             border-radius: 10px;
-            min-height: 340px;        /* 👉 Atur tinggi minimum box */
+            min-height: 340px;       /* bisa ubah sesuai tinggi gambar */
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
         }
         </style>
         """, unsafe_allow_html=True)
-
+    
+        # ====================
+        # KANAN: BOX INFO
+        # ====================
         with colA2:
-        st.markdown(f"""
-            <div class="info-box">
-                <b>Nama Ilmiah:</b><br>{pred_name}<br><br>
+            st.markdown(f"""
+                <div class="info-box">
+                    <b>Nama Ilmiah:</b><br>{pred_name}<br><br>
     
-                <b>Nama Umum:</b><br>
-        """, unsafe_allow_html=True)
+                    <b>Nama Umum:</b><br>
+            """, unsafe_allow_html=True)
     
-        if data:
-            for nm in data["nama_umum"]:
-                st.markdown(f"- {nm}")
-        else:
-            st.markdown("- Tidak tersedia")
-        st.markdown("</div>", unsafe_allow_html=True)
+            # isi list
+            if data:
+                for nm in data["nama_umum"]:
+                    st.markdown(f"- {nm}")
+            else:
+                st.markdown("- Tidak tersedia")
+    
+            st.markdown("</div>", unsafe_allow_html=True)
 
     # ---- KANAN: STATUS ----
     with colB:
