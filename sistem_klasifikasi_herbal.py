@@ -121,7 +121,7 @@ st.set_page_config(page_title="Sistem Identifikasi Herbal Antidiabetes Berbasis 
 # ---- HEADER ----
 st.markdown("""
     <div style="background:#f3f3f3; padding-left:20px; border-radius:0px; width:100%; display:flex; justify-content:space-between; align-items:center;">
-        <h1 style='font-size:30px; font-weight:700;'>DiaHerb</h1>
+        <h1 style='font-size:30px; font-weight:700; href:https://model-klasifikasi-leafnet.streamlit.app/;'>DiaHerb</h1>
     </div>
     <hr>
 """, unsafe_allow_html=True)
