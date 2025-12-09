@@ -203,10 +203,9 @@ components.html(f"""
         width:100%; 
         display:flex; 
         align-items:center;
-        gap:14px;
     ">
         <img src="data:image/png;base64,{logo_base64}"
-             style="height:60px; width:30px;
+             style="height:60px; width:auto;
              filter: drop-shadow(0px 0px 4px rgba(0,0,0,0.35));">
     </div>
     <hr>
