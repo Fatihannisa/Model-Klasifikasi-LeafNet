@@ -445,16 +445,51 @@ elif st.session_state.page == "result":
     st.button("⬅️ Kembali", on_click=lambda: (st.session_state.update({"page": "upload"}), st.rerun()))
 
 # ---- FOOTER ----
-st.markdown("""
-<style>
-main > div { padding-bottom: 0 !important; margin-bottom: 0 !important; }
-.custom-footer { margin: 0 !important; padding: 0 !important; }
-</style>
-""", unsafe_allow_html=True)
+<footer style="
+    background:#0d1117;
+    color:#e6edf3;
+    padding:30px 20px;
+    text-align:center;
+    font-size:14px;
+    margin-top:40px;
+">
 
-st.markdown("""
-<div class="custom-footer">
-    <hr>
-    <center>©2025 | Klasifikasi Herbal Antidiabetes Berbasis Model LeafNet | 211401034 | Listy Zulmi</center>
-</div>
-""", unsafe_allow_html=True)
+    <!-- Informasi Umum -->
+    <div style="margin-bottom:15px;">
+        <strong>Sistem Identifikasi Daun Berbasis CNN</strong><br>
+        Tugas Akhir/Skripsi — 2025
+    </div>
+
+    <!-- Informasi Pembuat -->
+    <div style="margin-bottom:15px; opacity:0.85;">
+        Dibuat oleh: <strong>Listy Zulmi</strong><br>
+        Program Studi: <strong>Teknik Informatika</strong><br>
+        Universitas: <strong>Nama Universitasmu</strong>
+    </div>
+
+    <!-- Kontak -->
+    <div style="margin-bottom:15px; opacity:0.85;">
+        Kontak:  
+        <a href="mailto:emailmu@example.com" style="color:#58a6ff;">emailmu@example.com</a>
+    </div>
+
+    <!-- Disclaimer -->
+    <div style="
+        margin-top:20px; 
+        padding:12px 18px; 
+        background:#161b22; 
+        border-radius:8px; 
+        opacity:0.9;
+        line-height:1.5;
+    ">
+        <strong>Disclaimer:</strong><br>
+        Sistem identifikasi daun ini dikembangkan sebagai bagian dari tugas akhir akademik.  
+        Hasil prediksi yang diberikan bersifat estimasi dan tidak dimaksudkan sebagai acuan ilmiah tunggal.  
+        Penggunaan hasil identifikasi tetap memerlukan verifikasi dari sumber ahli atau referensi botani yang valid.
+    </div>
+
+    <div style="margin-top:20px; opacity:0.6;">
+        © 2025 — Semua Hak Dilindungi.
+    </div>
+
+</footer>
