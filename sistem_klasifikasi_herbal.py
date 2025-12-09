@@ -215,14 +215,18 @@ if st.session_state.page == "upload":
     .example-row {
         margin-top: 10px;
     }
-    
+
+    div[data-testid="column"] div:has(img) {
+        margin-top: 0px !important;
+        padding-top: 0px !important;
+    }
     </style>
     """, unsafe_allow_html=True)
 
-    with col2: 
+    with col2:
         st.markdown("<div class='info-box'>", unsafe_allow_html=True)
+        # — TEKS —
         st.markdown("""
-        <div class="info-box">
             <b class='section-title'>Tips pengambilan gambar:</b>
             <ul>
                 <li>Pastikan helai daun berada tepat di tengah frame kamera</li>
@@ -230,24 +234,23 @@ if st.session_state.page == "upload":
                 <li>Latar belakang daun wajib polos dan berwarna cerah (diutamakan putih)</li>
                 <li>Fokus gambar daun jangan terlalu kecil</li>
             </ul>
+    
             <b class='section-title'>Contoh gambar yang baik:</b>
+            <div style='height:5px'></div>
         """, unsafe_allow_html=True)
-    
-        # Grid 4 gambar contoh
-        ex_cols = st.columns(4)
-    
+
+        # — GAMBAR DALAM BOX YANG SAMA —
         example_paths = [
             "images/IMG_20251028_152831.jpg",
             "images/IMG_20251029_170845.jpg",
             "images/IMG_20251031_131056.jpg",
             "images/IMG_20251114_161441.jpg"
         ]
-        
+        ex_cols = st.columns(4)
         for col, path in zip(ex_cols, example_paths):
             with col:
-                st.image(path, width=120)
-    
-        st.markdown("</div>", unsafe_allow_html=True)
+                st.image(path, width=150)
+        st.markdown("</div>", unsafe_allow_html=True)   # TUTUP BOX
 
 # =======================
 # === HALAMAN HASIL =====
