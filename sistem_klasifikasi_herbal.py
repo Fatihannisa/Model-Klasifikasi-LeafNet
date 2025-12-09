@@ -244,19 +244,24 @@ elif st.session_state.page == "result":
 
         # --- KANAN: Box Info ---
         with colA2:
+            # ambil list nama umum kalau ada
+            nama_list_html = ""
+            if data:
+                for nm in data["nama_umum"]:
+                    nama_list_html += f"<li>{nm}</li>"
+            else:
+                nama_list_html = "<li>Tidak tersedia</li>"
             st.markdown(f"""
                 <div class="info-box">
-                    <b>Nama Ilmiah:</b><br>{pred_name}<br><br>
+                    <b>Nama Ilmiah:</b><br>
+                    {pred_name}<br><br>
+        
                     <b>Nama Umum:</b>
+                    <ul>
+                        {nama_list_html}
+                    </ul>
+                </div>
             """, unsafe_allow_html=True)
-
-            if data and "nama_umum" in data:
-                for nm in data["nama_umum"]:
-                    st.markdown(f"- {nm}")
-            else:
-                st.markdown("- Tidak tersedia")
-
-            st.markdown("</div>", unsafe_allow_html=True)
 
     # =====================================
     # KOLOM B — STATUS + CONFIDENCE (KANAN)
@@ -266,9 +271,9 @@ elif st.session_state.page == "result":
             <div style="background:#ededed; padding:18px; border-radius:10px;">
                 <b>Status</b><br>
                 {data['status'] if data else "Tidak tersedia"}<br><br>
-
+    
                 <b>Tingkat kepercayaan sistem</b><br>
-                {conf*100:.2f}%
+                {conf * 100:.2f}%
             </div>
         """, unsafe_allow_html=True)
 
