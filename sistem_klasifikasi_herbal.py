@@ -195,7 +195,7 @@ if st.session_state.page == "upload":
     
         /* Tambah jarak antara col1 dan col2 */
         div[data-testid="column"]:nth-child(2) {
-            padding-left: 70px !important;
+            padding: 40px !important;
         }
     
         /* Rapatkan jarak antar gambar dalam kolom */
