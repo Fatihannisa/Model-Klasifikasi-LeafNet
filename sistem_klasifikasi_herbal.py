@@ -482,7 +482,7 @@ elif st.session_state.page == "result":
 # ---- DISCLAIMER BOX ----
 st.markdown("""
 <div class="disclaimer-box">
-    <strong><b style="font-size:18px; font-weight:700:">Disclaimer:</b></strong><br>
+    <strong><b style="font-size:18px; font-weight:700;">Catatan penafian (disclaimer notice)</b></strong><br>
     <i>Sistem ini dikembangkan sebagai bagian dari penyusunan tugas akhir.
     Hasil prediksi bersifat estimasi dan tidak dimaksudkan sebagai acuan medis atau botani yang bersifat final.
     Validasi tetap disarankan melalui ahli terkait.</i>
